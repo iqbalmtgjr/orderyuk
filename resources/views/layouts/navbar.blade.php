@@ -39,7 +39,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                            <h4 class="modal-title w-100 font-weight-bold">MASUK</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"></span>
                             </button>
@@ -47,41 +47,63 @@
                                 aria-label="Close"></button> --}}
                         </div>
                         <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
+                            <div class="md-form mb-4">
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-2">
                                         <i style="font-size: 30px" class="fas fa-envelope prefix grey-text"></i>
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-10">
                                         <input type="email" id="defaultForm-email" class="form-control validate"
                                             placeholder="Your Email">
                                     </div>
                                 </div>
-                                {{-- <label data-bs-error="wrong" data-bs-success="right" for="defaultForm-email">Your
-                                    email</label> --}}
                             </div>
 
                             <div class="md-form mb-4">
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-2">
                                         <i style="font-size: 30px" class="fas fa-lock prefix grey-text"></i>
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-10">
                                         <input type="password" id="defaultForm-pass" class="form-control validate"
                                             placeholder="Your Password">
                                     </div>
                                 </div>
-                                {{-- <label data-error="wrong" data-success="right" for="defaultForm-pass">Your
-                                    password</label> --}}
                             </div>
 
-                            <div class="">
+                            <div class="row mb-3">
                                 <a href="">Lupa Kata Sandi?</a>
                             </div>
-
+                            <div class="row mb-2">
+                                <center>
+                                    <button style="border-radius:17px;" class="col-12 btn btn-primary">Login</button>
+                                </center>
+                            </div>
+                            <div class="row">
+                                <center>
+                                    <button style="border-radius:17px;" class="col-12 btn btn-success">Daftar</button>
+                                </center>
+                            </div>
+                            <div class="row mt-4">
+                                <center>
+                                    <p>------------------------- atau -------------------------</p>
+                                </center>
+                            </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-success">Login</button>
+                            <div class="row">
+                                <button class="col-12 myButtonFacebook"><i
+                                        class="fab fa-facebook-f"></i>&nbsp;&nbsp;Login
+                                    Dengan
+                                    Facebook</button>
+                                {{-- <a class="btn btn-outline-light btn-social" href=""><i
+                                        class="fab fa-facebook-f"></i></a> --}}
+                            </div>
+                            <div class="row">
+                                <button class="col-12 myButtonGoogle"><i class="fab fa-google"></i>&nbsp;&nbsp;Login
+                                    Dengan
+                                    Google</button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -42,6 +42,81 @@
 
 
 /*** Button ***/
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color:#ffec64;
+	border-radius:17px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color:#ffab23;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.myButtonFacebook {
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:linear-gradient(to bottom, rgb(57, 89, 152) 5%, rgb(57, 89, 152) 100%);
+	background-color:rgb(57, 89, 152);
+	border-radius:17px;
+	border:1px solid rgb(57, 89, 152);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px rgb(57, 89, 152);
+}
+.myButtonFacebook:hover {
+	background:linear-gradient(to bottom, rgb(20, 57, 131) 5%, rgb(66, 99, 167) 100%);
+	background-color:rgb(57, 89, 152);
+}
+.myButtonFacebook:active {
+	position:relative;
+	top:1px;
+}
+
+.myButtonGoogle {
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:linear-gradient(to bottom, rgb(66, 133, 244) 5%, rgb(66, 133, 244) 100%);
+	background-color:rgb(66, 133, 244);
+	border-radius:17px;
+	border:1px solid rgb(66, 133, 244);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px rgb(66, 133, 244);
+}
+.myButtonGoogle:hover {
+	background:linear-gradient(to bottom, rgb(28, 87, 184) 5%, rgb(66, 133, 244) 100%);
+	background-color:rgb(66, 133, 244);
+}
+.myButtonGoogle:active {
+	position:relative;
+	top:1px;
+}
+
 .btn {
     font-family: 'Nunito', sans-serif;
     font-weight: 500;
