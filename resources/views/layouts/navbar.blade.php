@@ -28,14 +28,8 @@
                         <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
                         <a href="menu.html" class="nav-item nav-link">Menu</a>
                     </div>
-                    {{-- @include('auth.logins') --}}
                     <button type="button" class="btn btn-primary py-2 px-3" data-bs-toggle="modal"
                         data-bs-target="#logins"><i class="fas fa-user"></i>&nbsp;&nbsp;Log-in</button>
-                    {{-- <div class="text-center">
-                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
-                            data-target="#modalLoginForm">Launch
-                            Modal Login Form</a>
-                    </div> --}}
                 </div>
             </nav>
 
@@ -81,7 +75,7 @@
                                     password</label> --}}
                             </div>
 
-                            <div>
+                            <div class="">
                                 <a href="">Lupa Kata Sandi?</a>
                             </div>
 
