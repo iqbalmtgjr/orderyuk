@@ -43,68 +43,171 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"></span>
                             </button>
-                            {{-- <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button> --}}
                         </div>
                         <div class="modal-body mx-3">
-                            <div class="md-form mb-4">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <i style="font-size: 30px" class="fas fa-envelope prefix grey-text"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="email" id="defaultForm-email" class="form-control validate"
-                                            placeholder="Your Email">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="md-form mb-4">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i style="font-size: 30px" class="fas fa-envelope prefix grey-text"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="email" type="email" id="defaultForm-email"
+                                                class="form-control validate @error('email') is-invalid @enderror"
+                                                placeholder="Email Anda" value="{{ old('email') }}"
+                                                autocomplete="email" autofocus>
+
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="md-form mb-4">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <i style="font-size: 30px" class="fas fa-lock prefix grey-text"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="password" id="defaultForm-pass" class="form-control validate"
-                                            placeholder="Your Password">
+                                <div class="md-form mb-4">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i style="font-size: 30px" class="fas fa-lock prefix grey-text"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="password" type="password" id="defaultForm-pass"
+                                                class="form-control validate @error('password') is-invalid @enderror"
+                                                placeholder="Kata Sandi Anda" autocomplete="current-password">
+
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <a href="">Lupa Kata Sandi?</a>
-                            </div>
-                            <div class="row mb-2">
-                                <center>
-                                    <button style="border-radius:17px;" class="col-12 btn btn-primary">Login</button>
-                                </center>
-                            </div>
+                                <div class="row mb-3">
+                                    <a href="#">Lupa Kata Sandi?</a>
+                                </div>
+                                <div class="row mb-2">
+                                    <button type="submit" style="border-radius:17px;"
+                                        class="col-12 btn btn-primary">Login</button>
+                                </div>
+                            </form>
                             <div class="row">
-                                <center>
-                                    <button style="border-radius:17px;" class="col-12 btn btn-success">Daftar</button>
-                                </center>
+                                <button type="button" style="border-radius:17px;" class="col-12 btn btn-success"
+                                    data-bs-toggle="modal" data-bs-target="#daftar">Daftar</button>
                             </div>
-                            <div class="row mt-4">
-                                <center>
-                                    <p>------------------------- atau -------------------------</p>
-                                </center>
+                            <div class="row mt-4 text-center">
+                                <p>----------------------------------- atau -----------------------------------</p>
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <div class="row">
-                                <button class="col-12 myButtonFacebook"><i
-                                        class="fab fa-facebook-f"></i>&nbsp;&nbsp;Login
-                                    Dengan
-                                    Facebook</button>
-                                {{-- <a class="btn btn-outline-light btn-social" href=""><i
-                                        class="fab fa-facebook-f"></i></a> --}}
-                            </div>
                             <div class="row">
                                 <button class="col-12 myButtonGoogle"><i class="fab fa-google"></i>&nbsp;&nbsp;Login
                                     Dengan
                                     Google</button>
                             </div>
+                            <div class="row">
+                                <button class="col-12 myButtonFacebook"><i
+                                        class="fab fa-facebook-f"></i>&nbsp;&nbsp;Login
+                                    Dengan
+                                    Facebook</button>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- Modal Daftar --}}
+            <div class="modal fade" id="daftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">DAFTAR</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="md-form mb-4">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i style="font-size: 30px" class="fas fa-user prefix grey-text"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="name" type="text" id="name"
+                                                class="form-control validate @error('name') is-invalid @enderror"
+                                                placeholder="Masukkan Nama Anda ..." value="{{ old('name') }}">
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="md-form mb-4">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i style="font-size: 30px" class="fas fa-envelope prefix grey-text"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="email" type="email" id="email"
+                                                class="form-control validate @error('email') is-invalid @enderror"
+                                                placeholder="Masukkan Email Anda ..." value="{{ old('email') }}">
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="md-form mb-4">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i style="font-size: 30px" class="fas fa-lock prefix grey-text"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="password" type="password" id="defaultForm-pass"
+                                                class="form-control 5validate @error('password') is-invalid @enderror"
+                                                placeholder="Masukkan Kata Sandi Anda ...">
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="md-form mb-4">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i style="font-size: 30px" class="fas fa-lock prefix grey-text"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="password_confirmation" type="password" id="password-confirm"
+                                                class="form-control validate @error('password_confirmation') is-invalid @enderror"
+                                                placeholder="Masukkan Konfirmasi Kata Sandi Anda ...">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <div class="row mb-2">
+                                <button type="submit" style="border-radius:17px;"
+                                    class="btn btn-primary">Daftar</button>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
