@@ -33,8 +33,10 @@
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
                 <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
+                        placeholder="Your email">
+                    <button type="button"
+                        class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                 </div>
             </div>
         </div>
@@ -43,8 +45,9 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
-                    
+                    &copy; <a class="border-bottom" href="https://technocloud.id/">Technocloud.id</a>, All Right
+                    Reserved.
+
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                     Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                 </div>
@@ -68,18 +71,18 @@
 </div>
 
 </html>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src={{ asset("assets/lib/wow/wow.min.js") }}></script>
-    <script src={{ asset("assets/lib/easing/easing.min.js") }}></script>
-    <script src={{ asset("assets/lib/waypoints/waypoints.min.js") }}></script>
-    <script src={{ asset("assets/lib/counterup/counterup.min.js") }}></script>
-    <script src={{ asset("assets/lib/owlcarousel/owl.carousel.min.js") }}></script>
-    <script src={{ asset("assets/lib/tempusdominus/js/moment.min.js") }}></script>
-    <script src={{ asset("assets/lib/tempusdominus/js/moment-timezone.min.js") }}></script>
-    <script src={{ asset("assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js") }}></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src={{ asset('assets/lib/wow/wow.min.js') }}></script>
+<script src={{ asset('assets/lib/easing/easing.min.js') }}></script>
+<script src={{ asset('assets/lib/waypoints/waypoints.min.js') }}></script>
+<script src={{ asset('assets/lib/counterup/counterup.min.js') }}></script>
+<script src={{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}></script>
+<script src={{ asset('assets/lib/tempusdominus/js/moment.min.js') }}></script>
+<script src={{ asset('assets/lib/tempusdominus/js/moment-timezone.min.js') }}></script>
+<script src={{ asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}></script>
 
-    <!-- Template Javascript -->
-    <script src={{ asset("assets/js/main.js") }}></script>
+<!-- Template Javascript -->
+<script src={{ asset('assets/js/main.js') }}></script>
 </body>

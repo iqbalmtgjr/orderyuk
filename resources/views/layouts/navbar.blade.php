@@ -28,9 +28,29 @@
                         <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
                         <a href="menu.html" class="nav-item nav-link">Menu</a>
                     </div>
-                    <button type="button" class="btn btn-primary py-2 px-3" data-bs-toggle="modal"
-                        data-bs-target="#logins"><i class="fas fa-user"></i>&nbsp;&nbsp;Log-in</button>
-                </div>
+                    @guest
+                        @if (Route::has('login'))
+                            <a href="#" style="border-radius: 1cm" type="button" class="btn btn-primary py-2 px-3"
+                                data-bs-toggle="modal" data-bs-target="#logins"><i
+                                    class="fas fa-user"></i>&nbsp;&nbsp;Log-in</a>
+                        @endif
+                    @else
+                        <div class="nav-item dropdown">
+                            <a href="#" style="border-radius: 1cm" class="btn btn-primary nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"><i class="fas fa-user"></i>&nbsp;&nbsp;Akun</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{{ route('logout') }}" class="dropdown-item"
+                                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i
+                                        class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;
+                                    {{ __('Logout') }}</a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        @endguest
+                    </div>
             </nav>
 
             {{-- Modal Login --}}
