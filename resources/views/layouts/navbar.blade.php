@@ -124,9 +124,10 @@
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <div class="row">
-                                <button class="col-12 myButtonGoogle"><i class="fab fa-google"></i>&nbsp;&nbsp;Login
+                                <a href="{{ route('auth.google') }}" class="col-12 myButtonGoogle"><i
+                                        class="fab fa-google"></i>&nbsp;&nbsp;Login
                                     Dengan
-                                    Google</button>
+                                    Google</a>
                             </div>
                             <div class="row">
                                 <a href="{{ route('auth.facebook') }}" class="col-12 myButtonFacebook"><i
