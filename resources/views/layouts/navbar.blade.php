@@ -129,10 +129,10 @@
                                     Google</button>
                             </div>
                             <div class="row">
-                                <button class="col-12 myButtonFacebook"><i
+                                <a href="{{ route('auth.facebook') }}" class="col-12 myButtonFacebook"><i
                                         class="fab fa-facebook-f"></i>&nbsp;&nbsp;Login
                                     Dengan
-                                    Facebook</button>
+                                    Facebook</a>
                             </div>
                         </div>
                     </div>
