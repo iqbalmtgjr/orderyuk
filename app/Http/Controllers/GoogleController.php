@@ -28,7 +28,11 @@ class GoogleController extends Controller
             } else {
                 $newUser = User::updateOrCreate(['email' => $user->email], [
                     'name' => $user->name,
-                    'user_id' => $user->id,
+                    'google_id' => $user->id,
+                    'nickname' => $user->nickname,
+                    'alamat' => $user->raw,
+                    // 'no_hp' => $user->no_hp,
+                    // 'jenis_kelamin' => $user->jenis_kelamin,
                     'password' => Hash::make('qweasdzxc123')
                 ]);
 
