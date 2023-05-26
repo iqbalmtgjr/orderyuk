@@ -25,10 +25,10 @@ class User extends Authenticatable
         'google_id',
         'nickname',
         'avatar',
-        'raw',
         'jenis_kelamin',
         'no_hp',
-        'tgl_lahir'
+        'tgl_lahir',
+        'alamat'
     ];
 
     /**

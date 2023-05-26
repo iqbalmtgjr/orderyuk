@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::table('users', function ($table) {
             $table->string('nickname')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('raw')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('no_hp')->nullable();
+            $table->string('alamat')->nullable();
             $table->date('tgl_lahir')->nullable();
         });
     }

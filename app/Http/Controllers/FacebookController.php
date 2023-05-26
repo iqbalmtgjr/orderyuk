@@ -27,8 +27,10 @@ class FacebookController extends Controller
                 return redirect()->intended('home');
             } else {
                 $newUser = User::updateOrCreate(['email' => $user->email], [
-                    'name' => $user->name,
-                    'user_id' => $user->id,
+                    'name' => $user->getName(),
+                    'facebook_id' => $user->getId(),
+                    'nickname' => $user->getNickname(),
+                    'avatar' => $user->getAvatar(),
                     'password' => Hash::make('qweasdzxc123')
                 ]);
 

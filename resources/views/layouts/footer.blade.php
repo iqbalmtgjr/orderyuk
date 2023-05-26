@@ -85,4 +85,25 @@
 
 <!-- Template Javascript -->
 <script src={{ asset('assets/js/main.js') }}></script>
+
+{{-- Toastr --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    @if (Session::has('sukses'))
+        toastr.success("{{ Session::get('sukses') }}", "Sukses")
+    @endif
+
+    @if (Session::has('gagal'))
+        toastr.error("{{ Session::get('gagal') }}", "Gagal")
+    @endif
+
+    @if (Session::has('peringatan'))
+        toastr.warning("{{ Session::get('peringatan') }}", "Peringatan")
+    @endif
+
+    @if (Session::has('info'))
+        toastr.info("{{ Session::get('info') }}", "Info")
+    @endif
+</script>
 </body>

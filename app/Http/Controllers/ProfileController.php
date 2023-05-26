@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -27,7 +29,26 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            // 'email' => 'required|max:35|unique:users|email',
+            'no_hp' => 'numeric',
+            'tgl_lahir' => 'date',
+            'jenis_kelamin' => 'required|max:10',
+        ]);
+
+        // $newUser = User::updateOrCreate([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'no_hp' => $request->no_hp,
+        //     'tgl_lahir' => $request->tgl_lahir,
+        //     'jenis_kelamin' => $request->tgl_lahir,
+        //     'alamat' => $request->alamat,
+        // ]);
+        $newUser = User::find(Auth::user()->id)->update($request->except([$request->url_getdata]));
+        // dd($newUser);
+
+        return redirect('profile')->with('sukses', 'Data Berhasil Disimpan!');
     }
 
     /**
