@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -54,9 +56,26 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function updatePassword(Request $request)
     {
-        //
+        $request->validate([
+            'password_lama' => ['required', 'min:8'],
+            'password_baru' => ['required', 'min:8'],
+            'konfirmasi_password' => ['required', 'min:8', 'same:password_baru']
+        ]);
+
+        $currentPasswordStatus = Hash::check($request->password_lama, auth()->user()->password);
+        if ($currentPasswordStatus) {
+
+            User::findOrFail(Auth::user()->id)->update([
+                'password' => Hash::make($request->password_baru),
+            ]);
+
+            return redirect()->back()->with('sukses', 'Password Berhasil Diubah!');
+        } else {
+            return redirect()->back()->with('gagal', 'Password Tidak Sama Dengan Password Lama!');
+        }
+        // return redirect()->back()->with('sukses', 'Password Berhasil di Ubah!');
     }
 
     /**

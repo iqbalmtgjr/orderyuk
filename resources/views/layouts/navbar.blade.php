@@ -39,7 +39,8 @@
                             <a href="#" style="border-radius: 1cm" class="btn btn-primary nav-link dropdown-toggle"
                                 data-bs-toggle="dropdown"><i class="fas fa-user"></i>&nbsp;&nbsp;Akun</a>
                             <div class="dropdown-menu m-0">
-                                <a href="#" class="dropdown-item"><i class="fas fa-user"></i>&nbsp;&nbsp; Profil</a>
+                                <a href="{{ url('/profile') }}" class="dropdown-item"><i
+                                        class="fas fa-user"></i>&nbsp;&nbsp; Profil</a>
                                 <a href="{{ route('logout') }}" class="dropdown-item"
                                     onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"><i

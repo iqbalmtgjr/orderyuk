@@ -4,14 +4,14 @@
     <div class="container mb-5">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src={{ asset('assets/img/bg-hero.jpg') }} class="d-block w-100" alt="...">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img height="450px" src={{ asset('assets/img/bg-hero.jpg') }} class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src={{ asset('assets/img/bg-hero.jpg') }} class="d-block w-100" alt="...">
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img height="450px" src={{ asset('assets/img/bg-hero.jpg') }} class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src={{ asset('assets/img/bg-hero.jpg') }} class="d-block w-100" alt="...">
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img height="450px" src={{ asset('assets/img/bg-hero.jpg') }} class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

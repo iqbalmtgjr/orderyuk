@@ -28,7 +28,8 @@ class User extends Authenticatable
         'jenis_kelamin',
         'no_hp',
         'tgl_lahir',
-        'alamat'
+        'alamat',
+        'role'
     ];
 
     /**

@@ -27,7 +27,9 @@ class GoogleController extends Controller
                 return redirect()->intended('home');
             } else {
                 $newUser = User::updateOrCreate(['email' => $user->email], [
+                    'role' => 'user',
                     'name' => $user->getName(),
+                    'nickname' => $user->getNickname(),
                     'google_id' => $user->getId(),
                     'nickname' => $user->getNickname(),
                     'avatar' => $user->getAvatar(),
