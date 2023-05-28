@@ -2,6 +2,8 @@
 @include('layouts.navbar2')
 
 <body>
-    @yield('content')
+    <div class="container-xxl py-5">
+        @yield('content')
+    </div>
 </body>
 @include('layouts.footer')

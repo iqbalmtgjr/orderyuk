@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
+use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -31,26 +34,31 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|max:50',
             // 'email' => 'required|max:35|unique:users|email',
             'no_hp' => 'numeric',
-            'tgl_lahir' => 'date',
+            // 'tgl_lahir' => 'date',
             'jenis_kelamin' => 'required|max:10',
         ]);
 
-        // $newUser = User::updateOrCreate([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'no_hp' => $request->no_hp,
-        //     'tgl_lahir' => $request->tgl_lahir,
-        //     'jenis_kelamin' => $request->tgl_lahir,
-        //     'alamat' => $request->alamat,
-        // ]);
-        $newUser = User::find(Auth::user()->id)->update($request->except([$request->url_getdata]));
-        // dd($newUser);
+        if ($validator->fails()) {
+            return redirect('profile')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
+        }
 
-        return redirect('profile')->with('sukses', 'Data Berhasil Disimpan!');
+        // Retrieve the validated input...
+        $validated = $validator->validated();
+
+
+        try {
+            $newUser = User::find(Auth::user()->id)->update($request->except([$request->url_getdata]));
+            return redirect('profile')->with('sukses', 'Data Berhasil Disimpan!');
+        } catch (Exception $e) {
+            return redirect('profile')->with('gagal', $e);
+        }
     }
 
     /**

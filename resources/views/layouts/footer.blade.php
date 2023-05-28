@@ -4,40 +4,43 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">Contact Us</a>
+                {{-- <a class="btn btn-link" href="">About Us</a> --}}
+                {{-- <a class="btn btn-link" href="">Contact Us</a> --}}
                 <a class="btn btn-link" href="">Reservation</a>
                 <a class="btn btn-link" href="">Privacy Policy</a>
                 <a class="btn btn-link" href="">Terms & Condition</a>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-5 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jalan Mensiku Jaya, Sintang, Kalimantan Barat
+                </p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 899 6979079</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>orderyuk@technocloud.id</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-whatsapp"></i></a>
+                    {{-- <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a> --}}
+                    {{-- <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a> --}}
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            {{-- <div class="col-lg-4 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
                 <h5 class="text-light fw-normal">Monday - Saturday</h5>
                 <p>09AM - 09PM</p>
                 <h5 class="text-light fw-normal">Sunday</h5>
                 <p>10AM - 08PM</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
+            </div> --}}
+            <div class="col-lg-4 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
-                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
+                <p>Untuk mendaftarkan cafe atau restoran anda, silahkan kirim pesan ke email atau nomor whatsapp kami
+                </p>
+                {{-- <div class="position-relative mx-auto" style="max-width: 400px;">
                     <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
                         placeholder="Your email">
                     <button type="button"
                         class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -56,7 +59,7 @@
                         <a href="">Home</a>
                         <a href="">Cookies</a>
                         <a href="">Help</a>
-                        <a href="">FQAs</a>
+                        <a href="">FAQs</a>
                     </div>
                 </div>
             </div>

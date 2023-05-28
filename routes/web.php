@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
@@ -19,6 +20,9 @@ use App\Http\Controllers\FacebookController;
 Route::get('/', function () {
     return view('layouts.master');
 });
+// Route::get('/rumah', function () {
+//     return view('layouts.master');
+// });
 
 Auth::routes();
 
