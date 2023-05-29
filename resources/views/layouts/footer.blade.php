@@ -106,7 +106,24 @@
     @endif
 
     @if (Session::has('info'))
-        toastr.info("{{ Session::get('info') }}", "Info")
+        toastr.warning("{{ Session::get('info') }}", "Info")
+    @endif
+
+    // get message
+    @if ($message = Session::get('infoo'))
+        toastr.info("{{ $message }}", "Info")
+    @endif
+
+    @if ($message = Session::get('suksess'))
+        toastr.success("{{ $message }}", "Berhasil")
+    @endif
+
+    @if ($message = Session::get('gagall'))
+        toastr.error("{{ $message }}", "Gagal")
+    @endif
+
+    @if ($message = Session::get('peringatann'))
+        toastr.warning("{{ $message }}", "Peringatan")
     @endif
 </script>
 </body>

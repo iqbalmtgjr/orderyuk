@@ -24,7 +24,7 @@ class GoogleController extends Controller
 
             if ($finduser) {
                 Auth::login($finduser);
-                return redirect()->intended('home');
+                return redirect()->intended('home')->with('sukses', 'Selamat Anda Berhasil Login !!!');
             } else {
                 $newUser = User::updateOrCreate(['email' => $user->email], [
                     'role' => 'user',
@@ -38,7 +38,7 @@ class GoogleController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect()->intended('home');
+                return redirect()->intended('home')->with('sukses', 'Selamat Anda Berhasil Login !!!');
             }
         } catch (Exception $e) {
             dd($e->getMessage());

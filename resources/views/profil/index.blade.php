@@ -6,12 +6,18 @@
             <h1>AKUN SAYA</h1>
         </div>
         <div class="row col-12 mb-5">
-            <div class="form-floating text-center">
-                <img style="border-radius: 100%" width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
+            <div class="text-center">
+                <img id="fotoprofil"
+                    style="border-radius: 100%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                    width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
+                {{-- <button
+                    style="border-radius: 50%; position:relative; top: 70px; right: 60px; z-index: 999; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                    class="btn btn-lg btn-primary"><i class="fas fa-camera"></i></button>
+                <input id="imgs" type="file" name="user[image]" accept="image/*" style="display: none;"> --}}
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-12 col-lg-6">
                 <form action="{{ url('/profile/input') }}" method="post">
                     @csrf
                     <div class="row g-3">
@@ -100,13 +106,14 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Simpan Data</button>
+                        <div class="col-md-12">
+                            <button style="border-radius: 1cm" class="btn btn-primary w-100 py-3" type="submit">Simpan
+                                Data</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-6">
+            <div class="col-md-12 col-lg-6" id="profil">
                 <form action="{{ url('/profile/update-password') }}" method="post">
                     @csrf
                     <div class="row g-3">
@@ -147,8 +154,9 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Ubah Password</button>
+                        <div class="col-md-12">
+                            <button style="border-radius: 1cm" class="btn btn-primary w-100 py-3" type="submit">Ubah
+                                Password</button>
                         </div>
                     </div>
                 </form>
