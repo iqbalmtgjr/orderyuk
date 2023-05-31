@@ -10,6 +10,7 @@ use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Uploads;
 
 class ProfileController extends Controller
 {
@@ -90,9 +91,24 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function uploadAvatar(Request $request)
     {
-        //
+        $request->validate([
+            'avatar' => 'required',
+            'avatar.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:5000'
+        ]);
+        if ($request->hasfile('avatar')) {            
+            $avatar = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('avatar')->getClientOriginalName());
+            $request->file('avatar')->move(public_path('images'), $avatar);
+             Uploads::create(
+                    [                        
+                        'avatar' =>$avatar
+                    ]
+                );
+            return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
+        }else{
+            return redirect()->back()->with('gagal', 'Gagal Ganti Foto Profile');
+        }
     }
 
     /**

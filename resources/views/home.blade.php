@@ -35,16 +35,16 @@
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Menu Makanan & Minuman</h5>
                 <h1 class="mb-5">Makanan & Minuman Terpopuler</h1>
             </div>
-            {{-- <div class="row align-center wow fadeInUp mb-3" data-wow-delay="0.3s">
-                <div class="col-2"></div>
-                <div class="col-lg-7">
+            <div class="row align-center wow fadeInUp pb-5 mb-5" data-wow-delay="0.3s">
+                <div class="col-lg-2 col-md-4"></div>
+                <div class="col-lg-8 col-md-4">
                     <input style="border-radius: 1cm" type="text" class="form-control"
                         placeholder="Mau makan dimana hari ini?" value="">
                 </div>
-                <div class="col-lg-3">
-                    <button style="border-radius: 1cm" type="submit" class="btn btn-primary">CARI</button>
+                <div class="col-lg-2 col-md-4">
+                    <button style="border-radius: 1cm" type="submit" class="btn btn-outline-primary">CARI</button>
                 </div>
-            </div> --}}
+            </div>
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
                 <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                     <li class="nav-item">
@@ -76,23 +76,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="row align-center wow fadeInUp pb-5" data-wow-delay="0.3s">
-                    <div class="col-lg-2 col-md-4"></div>
-                    <div class="col-lg-8 col-md-4">
-                        <input style="border-radius: 1cm" type="text" class="form-control"
-                            placeholder="Mau makan dimana hari ini?" value="">
-                    </div>
-                    <div class="col-lg-2 col-md-4">
-                        <button style="border-radius: 1cm" type="submit" class="btn btn-outline-primary">CARI</button>
-                    </div>
-                    {{-- <div class="input-group">
-                        <input style="border-radius: 1cm" type="text" class="form-control"
-                            placeholder="Mau makan dimana hari ini?" aria-label="Mau makan dimana hari ini?"
-                            aria-describedby="button-addon2">
-                        <button style="border-radius: 1cm" class="btn btn-outline-primary" type="button"
-                            id="button-addon2">Cari</button>
-                    </div> --}}
-                </div>
+                
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row g-4">

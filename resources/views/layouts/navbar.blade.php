@@ -190,7 +190,7 @@
                                     <div class="col-10">
                                         <input name="name" type="text" id="name"
                                             class="form-control validate @error('name') is-invalid @enderror"
-                                            placeholder="Masukkan Nama Anda ..." value="{{ old('name') }}">
+                                            placeholder="Nama Lengkap" value="{{ old('name') }}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -208,7 +208,7 @@
                                     <div class="col-10">
                                         <input name="email" type="email" id="email"
                                             class="form-control validate @error('email') is-invalid @enderror"
-                                            placeholder="Masukkan Email Anda ..." value="{{ old('email') }}">
+                                            placeholder="Email" value="{{ old('email') }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -226,7 +226,7 @@
                                     <div class="col-10">
                                         <input name="password" type="password" id="defaultForm-pass"
                                             class="form-control 5validate @error('password') is-invalid @enderror"
-                                            placeholder="Masukkan Kata Sandi Anda ...">
+                                            placeholder="Kata Sandi">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -244,7 +244,7 @@
                                     <div class="col-10">
                                         <input name="password_confirmation" type="password" id="password-confirm"
                                             class="form-control validate @error('password_confirmation') is-invalid @enderror"
-                                            placeholder="Masukkan Konfirmasi Kata Sandi Anda ...">
+                                            placeholder="Konfirmasi Kata Sandi">
                                     </div>
                                 </div>
                             </div>
