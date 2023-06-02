@@ -91,11 +91,11 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function uploadAvatar(Request $request)
+    public function updateAvatar(Request $request)
     {
         $request->validate([
             'avatar' => 'required',
-            'avatar.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:5000'
+            'avatar.*' => 'mimes:jpg,jpeg,png|max:5000'
         ]);
         if ($request->hasfile('avatar')) {
             $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
@@ -109,6 +109,12 @@ class ProfileController extends Controller
         } else {
             return redirect()->back()->with('gagal', 'Gagal Ganti Foto Profile');
         }
+        $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
+        $request->file('avatar')->move(public_path('assets/img/'), $avatar);
+        User::findOrFail(Auth::user()->id)->update(['avatar' => $avatar]);
+
+
+        return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
     }
 
     /**
