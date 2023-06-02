@@ -91,24 +91,26 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function uploadAvatar(Request $request)
+    public function updateAvatar(Request $request)
     {
         $request->validate([
             'avatar' => 'required',
-            'avatar.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:5000'
+            'avatar.*' => 'mimes:jpg,jpeg,png|max:5000'
         ]);
-        if ($request->hasfile('avatar')) {            
-            $avatar = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('avatar')->getClientOriginalName());
-            $request->file('avatar')->move(public_path('images'), $avatar);
-             Uploads::create(
-                    [                        
-                        'avatar' =>$avatar
-                    ]
-                );
-            return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
-        }else{
-            return redirect()->back()->with('gagal', 'Gagal Ganti Foto Profile');
+
+        // Hapus Avatar Lama
+        $path = public_path('assets/img/' . Auth::user()->avatar);
+        if (file_exists($path)) {
+            @unlink($path);
+        } else {
+            return redirect()->back()->with('gagal', 'File Tidak Ditemukan');
         }
+        $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
+        $request->file('avatar')->move(public_path('assets/img/'), $avatar);
+        User::findOrFail(Auth::user()->id)->update(['avatar' => $avatar]);
+
+
+        return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
     }
 
     /**

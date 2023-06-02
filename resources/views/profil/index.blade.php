@@ -7,15 +7,31 @@
         </div>
         <div class="row col-12 mb-5">
             <div class="text-center">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#avatar">
+                <a class="hover-effect" href="#" data-bs-toggle="modal" data-bs-target="#avatar">
                     @if (Auth::user()->avatar == null)
-                    <img id="fotoprofil"
-                        style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
-                        width="15%" src="{{ asset('assets/img/user.png') }}" alt="Foto Profil">
+                        <img class="imagee" id="fotoprofil"
+                            style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                            width="15%" src="{{ asset('assets/img/user.png') }}" alt="Foto Profil">
+                        <div class="middle">
+                            <div class="text"><i class="fas fa-camera"></i></div>
+                        </div>
                     @else
-                    <img id="fotoprofil"
-                        style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
-                        width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
+                        @if (Auth::user()->google_id == null || Auth::user()->facebook_id == null)
+                            <img class="imagee" id="fotoprofil"
+                                style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                                width="200px" height="200px" src="{{ asset('assets/img/' . Auth::user()->avatar) }}"
+                                alt="Foto Profil">
+                            <div class="middle">
+                                <div class="text"><i class="fas fa-camera"></i></div>
+                            </div>
+                        @else
+                            <img class="imagee" id="fotoprofil"
+                                style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                                width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
+                            <div class="middle">
+                                <div class="text"><i class="fas fa-camera"></i></div>
+                            </div>
+                        @endif
                     @endif
                 </a>
                 {{-- <button

@@ -14,8 +14,15 @@
             {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"> --}}
             <nav class="hero-header navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="/" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>{{ config('app.name', 'Laravel') }}
-                    </h1>
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="{{ asset('assets/img/orderyuklogotr.png') }}" alt="">
+                        </div>
+                        <div class="col-9">
+                            <h1 class="text-primary m-0">
+                                OrderYuk!!! </h1>
+                        </div>
+                    </div>
                     {{-- <img src="{{ asset('/assets/img/logo.png') }}" alt="Logo"> --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

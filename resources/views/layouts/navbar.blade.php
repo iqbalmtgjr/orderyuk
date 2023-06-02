@@ -14,8 +14,15 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="/" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>{{ config('app.name', 'Laravel') }}
-                    </h1>
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="{{ asset('assets/img/orderyuklogotr.png') }}" alt="">
+                        </div>
+                        <div class="col-9">
+                            <h1 class="text-primary m-0">
+                                OrderYuk!!! </h1>
+                        </div>
+                    </div>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -72,7 +79,7 @@
                                 Restoran & Cafe Anda Sekarang</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                            <img class="img-fluid" src={{ asset('assets/img/hero.png') }} alt="">
+                            <img class="img-fluid" src={{ asset('assets/img/orderyuklogotr.png') }} alt="">
                         </div>
                     </div>
                 </div>
