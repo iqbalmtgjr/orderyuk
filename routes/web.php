@@ -20,7 +20,7 @@ use App\Http\Controllers\FacebookController;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('layouts.user.master');
 });
 // Route::get('/rumah', function () {
 //     return view('layouts.master');

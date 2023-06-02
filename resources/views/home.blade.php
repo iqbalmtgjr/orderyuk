@@ -1,4 +1,4 @@
-@extends('layouts.apps')
+@extends('layouts.user.apps')
 
 @section('content')
     <div class="container g-5">
@@ -76,7 +76,7 @@
                         </a>
                     </li>
                 </ul>
-                
+
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row g-4">

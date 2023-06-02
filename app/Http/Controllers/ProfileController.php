@@ -20,7 +20,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profil.index');
+        return view('user.profil.index');
     }
 
     /**
@@ -97,16 +97,16 @@ class ProfileController extends Controller
             'avatar' => 'required',
             'avatar.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:5000'
         ]);
-        if ($request->hasfile('avatar')) {            
-            $avatar = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('avatar')->getClientOriginalName());
+        if ($request->hasfile('avatar')) {
+            $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
             $request->file('avatar')->move(public_path('images'), $avatar);
-             Uploads::create(
-                    [                        
-                        'avatar' =>$avatar
-                    ]
-                );
+            Uploads::create(
+                [
+                    'avatar' => $avatar
+                ]
+            );
             return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
-        }else{
+        } else {
             return redirect()->back()->with('gagal', 'Gagal Ganti Foto Profile');
         }
     }
