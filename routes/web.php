@@ -22,6 +22,10 @@ use App\Http\Controllers\FacebookController;
 Route::get('/', function () {
     return view('layouts.user.master');
 });
+
+Route::get('/tes', function () {
+    return view('layouts.admin.app');
+});
 // Route::get('/rumah', function () {
 //     return view('layouts.master');
 // });

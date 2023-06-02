@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:50',
             // 'email' => 'required|max:35|unique:users|email',
-            'no_hp' => 'numeric',
+            'no_hp' => 'required',
             // 'tgl_lahir' => 'date',
             'jenis_kelamin' => 'required|max:10',
         ]);
@@ -68,11 +68,18 @@ class ProfileController extends Controller
      */
     public function updatePassword(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'password_lama' => ['required', 'min:8'],
             'password_baru' => ['required', 'min:8'],
             'konfirmasi_password' => ['required', 'min:8', 'same:password_baru']
         ]);
+
+        if ($validator->fails()) {
+            return redirect('profile')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
+        }
 
         $currentPasswordStatus = Hash::check($request->password_lama, auth()->user()->password);
         if ($currentPasswordStatus) {
@@ -85,7 +92,6 @@ class ProfileController extends Controller
         } else {
             return redirect()->back()->with('gagal', 'Password Tidak Sama Dengan Password Lama!');
         }
-        // return redirect()->back()->with('sukses', 'Password Berhasil di Ubah!');
     }
 
     /**
@@ -93,21 +99,22 @@ class ProfileController extends Controller
      */
     public function updateAvatar(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'avatar' => 'required',
             'avatar.*' => 'mimes:jpg,jpeg,png|max:5000'
         ]);
-        if ($request->hasfile('avatar')) {
-            $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
-            $request->file('avatar')->move(public_path('images'), $avatar);
-            Uploads::create(
-                [
-                    'avatar' => $avatar
-                ]
-            );
-            return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
-        } else {
-            return redirect()->back()->with('gagal', 'Gagal Ganti Foto Profile');
+
+        if ($validator->fails()) {
+            return redirect('profile')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
+        }
+
+        // Hapus Avatar Lama
+        $path = public_path('assets/img/' . Auth::user()->avatar);
+        if (file_exists($path)) {
+            @unlink($path);
         }
         $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
         $request->file('avatar')->move(public_path('assets/img/'), $avatar);
