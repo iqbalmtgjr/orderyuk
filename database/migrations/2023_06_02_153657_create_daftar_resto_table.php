@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('nama_resto');
             $table->string('alamat');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -39,7 +39,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{ asset('admin/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('admin/media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href={{ asset('assets/img/orderyuklogo.png') }} />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -51,7 +51,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
         <a href="index.html">
-            <img alt="Logo" src="assets/media/logos/logo-light.png" />
+            <img alt="Logo" src={{ asset('admin/media/logos/logo-light.png') }} />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -62,9 +62,9 @@ License: You must have a valid license purchased only from themeforest(the above
             </button>
             <!--end::Aside Mobile Toggle-->
             <!--begin::Header Menu Mobile Toggle-->
-            <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
+            {{-- <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
                 <span></span>
-            </button>
+            </button> --}}
             <!--end::Header Menu Mobile Toggle-->
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
@@ -137,17 +137,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="index.html" class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <g id="Stockholm-icons-/-Home-/-Home" stroke="none" stroke-width="1"
+                                                fill="none" fill-rule="evenodd">
+                                                <rect id="bound" x="0" y="0" width="24"
+                                                    height="24"></rect>
                                                 <path
-                                                    d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z"
-                                                    fill="#000000" fill-rule="nonzero" />
-                                                <path
-                                                    d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z"
-                                                    fill="#000000" opacity="0.3" />
+                                                    d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z"
+                                                    id="Combined-Shape" fill="#000000"></path>
                                             </g>
                                         </svg>
                                         <!--end::Svg Icon-->
@@ -156,8 +155,38 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li class="menu-section">
-                                <h4 class="menu-text">Layout</h4>
+                                <h4 class="menu-text">Menu</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                            </li>
+                            {{-- Kelola Resto.Cafe --}}
+                            <li class="menu-item" aria-haspopup="true">
+                                <a target="_blank" href="{{ url('/kelolatoko') }}" class="menu-link">
+                                    <span class="svg-icon menu-icon">
+                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path
+                                                    d="M15,3 L15.4502481,7.5024814 C15.4784917,7.78491722 15.7161555,8 16,8 C16.2838445,8 16.5215083,7.78491722 16.5497519,7.5024814 L17,3 L18,3 L18.4502481,7.5024814 C18.4784917,7.78491722 18.7161555,8 19,8 C19.2838445,8 19.5215083,7.78491722 19.5497519,7.5024814 L20,3 L21,3 L21,7.5 C21,9.43299662 19.4329966,11 17.5,11 C15.5670034,11 14,9.43299662 14,7.5 L14,3 L15,3 Z"
+                                                    fill="#000000" />
+                                                <path
+                                                    d="M17.5,13 L17.5,13 C18.0610373,13 18.5243493,13.4382868 18.55547,13.9984604 L18.916795,20.5023095 C18.9602658,21.2847837 18.3611851,21.9543445 17.5787108,21.9978153 C17.5524991,21.9992715 17.5262521,22 17.5,22 L17.5,22 C16.7163192,22 16.0810203,21.3647011 16.0810203,20.5810203 C16.0810203,20.5547682 16.0817488,20.5285212 16.083205,20.5023095 L16.44453,13.9984604 C16.4756507,13.4382868 16.9389627,13 17.5,13 Z"
+                                                    fill="#000000" opacity="0.3" />
+                                                <path
+                                                    d="M7.5,14 L7.5,14 C8.06209761,14 8.5273156,14.4370496 8.56237829,14.9980526 L8.90643257,20.5029211 C8.95497952,21.2796724 8.3646533,21.9487088 7.58790204,21.9972557 C7.55863704,21.9990848 7.52932209,22 7.5,22 L7.5,22 C6.72173313,22 6.09082317,21.36909 6.09082317,20.5908232 C6.09082317,20.5615011 6.09173837,20.5321861 6.09356743,20.5029211 L6.43762171,14.9980526 C6.4726844,14.4370496 6.93790239,14 7.5,14 Z"
+                                                    fill="#000000" opacity="0.3" />
+                                                <path
+                                                    d="M7.5,12 C5.56700338,12 4,9.43299662 4,7.5 C4,5.56700338 5.56700338,3 7.5,3 C9.43299662,3 11,5.56700338 11,7.5 C11,9.43299662 9.43299662,12 7.5,12 Z M7.5095372,4.60103244 L7.56069005,9.94758244 C8.61891495,9.8578583 9.45855912,8.97981222 9.47749614,7.8949109 C9.49728809,6.76103086 8.63275447,4.70470991 7.5095372,4.60103244 Z"
+                                                    fill="#000000" />
+                                            </g>
+                                        </svg>
+                                        {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-text">Kelola Resto/Cafe</span>
+                                </a>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -237,24 +266,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                     class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
+                                        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <g id="Stockholm-icons-/-Home-/-Home" stroke="none" stroke-width="1"
+                                                fill="none" fill-rule="evenodd">
+                                                <rect id="bound" x="0" y="0" width="24"
+                                                    height="24"></rect>
                                                 <path
-                                                    d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z"
-                                                    fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3"
-                                                    transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)"
-                                                    x="16.3255682" y="2.94551858" width="3" height="18"
-                                                    rx="1" />
+                                                    d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z"
+                                                    id="Combined-Shape" fill="#000000"></path>
                                             </g>
                                         </svg>
                                         {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Builder</span>
+                                    <span class="menu-text">Home</span>
                                 </a>
                             </li>
                         </ul>
@@ -316,10 +343,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <form>
                                         <!--begin::Header-->
                                         <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top"
-                                            style="background-image: url(assets/media/misc/bg-1.jpg)">
+                                            style="background-image: url(admin/media/misc/bg-1.jpg)">
                                             <!--begin::Title-->
                                             <h4 class="d-flex flex-center rounded-top">
-                                                <span class="text-white">User Notifications</span>
+                                                <span class="text-white">Notifikasi</span>
                                                 <span
                                                     class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2">23
                                                     new</span>
@@ -331,14 +358,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <li class="nav-item">
                                                     <a class="nav-link active show" data-toggle="tab"
                                                         href="#topbar_notifications_notifications">Alerts</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab"
-                                                        href="#topbar_notifications_events">Events</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab"
-                                                        href="#topbar_notifications_logs">Logs</a>
                                                 </li>
                                             </ul>
                                             <!--end::Tabs-->
@@ -653,223 +672,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <!--end::Action-->
                                             </div>
                                             <!--end::Tabpane-->
-                                            <!--begin::Tabpane-->
-                                            <div class="tab-pane" id="topbar_notifications_events" role="tabpanel">
-                                                <!--begin::Nav-->
-                                                <div class="navi navi-hover scroll my-4" data-scroll="true"
-                                                    data-height="300" data-mobile-height="200">
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-line-chart text-success"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New report has been
-                                                                    received</div>
-                                                                <div class="text-muted">23 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-paper-plane text-danger"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">Finance report has been
-                                                                    generated</div>
-                                                                <div class="text-muted">25 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i
-                                                                    class="flaticon2-user flaticon2-line- text-success"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New order has been
-                                                                    received</div>
-                                                                <div class="text-muted">2 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-pin text-primary"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New customer is
-                                                                    registered</div>
-                                                                <div class="text-muted">3 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-sms text-danger"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">Application has been
-                                                                    approved</div>
-                                                                <div class="text-muted">3 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-pie-chart-3 text-warning"></i>
-                                                            </div>
-                                                            <div class="navinavinavi-text">
-                                                                <div class="font-weight-bold">New file has been
-                                                                    uploaded</div>
-                                                                <div class="text-muted">5 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon-pie-chart-1 text-info"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New user feedback
-                                                                    received</div>
-                                                                <div class="text-muted">8 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-settings text-success"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">System reboot has been
-                                                                    successfully completed</div>
-                                                                <div class="text-muted">12 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i
-                                                                    class="flaticon-safe-shield-protection text-primary"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New order has been
-                                                                    placed</div>
-                                                                <div class="text-muted">15 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-notification text-primary"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">Company meeting canceled
-                                                                </div>
-                                                                <div class="text-muted">19 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-fax text-success"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New report has been
-                                                                    received</div>
-                                                                <div class="text-muted">23 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon-download-1 text-danger"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">Finance report has been
-                                                                    generated</div>
-                                                                <div class="text-muted">25 hrs ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon-security text-warning"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New customer comment
-                                                                    recieved</div>
-                                                                <div class="text-muted">2 days ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link">
-                                                            <div class="navi-icon mr-2">
-                                                                <i class="flaticon2-analytics-1 text-success"></i>
-                                                            </div>
-                                                            <div class="navi-text">
-                                                                <div class="font-weight-bold">New customer is
-                                                                    registered</div>
-                                                                <div class="text-muted">3 days ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <!--end::Item-->
-                                                </div>
-                                                <!--end::Nav-->
-                                            </div>
-                                            <!--end::Tabpane-->
-                                            <!--begin::Tabpane-->
-                                            <div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
-                                                <!--begin::Nav-->
-                                                <div class="d-flex flex-center text-center text-muted min-h-200px">All
-                                                    caught up!
-                                                    <br />No new notifications.
-                                                </div>
-                                                <!--end::Nav-->
-                                            </div>
-                                            <!--end::Tabpane-->
                                         </div>
                                         <!--end::Content-->
                                     </form>
@@ -885,6 +687,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
                                     <span
                                         class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                                    <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
+                                        <span class="symbol-label font-size-h5 font-weight-bold">S</span>
+                                    </span>
                                 </div>
                             </div>
                             <!--end::User-->
@@ -895,929 +700,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!--end::Header-->
                 <!--begin::Content-->
-                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    <!--begin::Subheader-->
-                    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-                        <div
-                            class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                            <!--begin::Info-->
-                            <div class="d-flex align-items-center flex-wrap mr-1">
-                                <!--begin::Page Heading-->
-                                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                                    <!--begin::Page Title-->
-                                    <h5 class="text-dark font-weight-bold my-1 mr-5">Basic Examples</h5>
-                                    <!--end::Page Title-->
-                                    <!--begin::Breadcrumb-->
-                                    <ul
-                                        class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                                        <li class="breadcrumb-item">
-                                            <a href="" class="text-muted">Crud</a>
-                                        </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="" class="text-muted">Datatables.net</a>
-                                        </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="" class="text-muted">Basic</a>
-                                        </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="" class="text-muted">Basic Tables</a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Breadcrumb-->
-                                </div>
-                                <!--end::Page Heading-->
-                            </div>
-                            <!--end::Info-->
-                            <!--begin::Toolbar-->
-                            <div class="d-flex align-items-center">
-                                <!--begin::Actions-->
-                                <a href="#" class="btn btn-light-primary font-weight-bolder btn-sm">Actions</a>
-                                <!--end::Actions-->
-                                <!--begin::Dropdown-->
-                                <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions"
-                                    data-placement="left">
-                                    <a href="#" class="btn btn-icon" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <span class="svg-icon svg-icon-success svg-icon-2x">
-                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Files/File-plus.svg-->
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none"
-                                                    fill-rule="evenodd">
-                                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                                    <path
-                                                        d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z"
-                                                        fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                    <path
-                                                        d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z"
-                                                        fill="#000000" />
-                                                </g>
-                                            </svg>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 m-0">
-                                        <!--begin::Navigation-->
-                                        <ul class="navi navi-hover">
-                                            <li class="navi-header font-weight-bold py-4">
-                                                <span class="font-size-lg">Choose Label:</span>
-                                                <i class="flaticon2-information icon-md text-muted"
-                                                    data-toggle="tooltip" data-placement="right"
-                                                    title="Click to learn more..."></i>
-                                            </li>
-                                            <li class="navi-separator mb-3 opacity-70"></li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-success">Customer</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-danger">Partner</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-primary">Member</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-dark">Staff</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-separator mt-3 opacity-70"></li>
-                                            <li class="navi-footer py-4">
-                                                <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                    <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                            </li>
-                                        </ul>
-                                        <!--end::Navigation-->
-                                    </div>
-                                </div>
-                                <!--end::Dropdown-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                    </div>
-                    <!--end::Subheader-->
-                    <!--begin::Entry-->
-                    <div class="d-flex flex-column-fluid">
-                        <!--begin::Container-->
-                        <div class="container">
-                            <!--begin::Card-->
-                            <div class="card card-custom gutter-b">
-                                <div class="card-header flex-wrap py-3">
-                                    <div class="card-title">
-                                        <h3 class="card-label">Basic Demo
-                                            <span class="d-block text-muted pt-2 font-size-sm">sorting &amp;
-                                                pagination remote datasource</span>
-                                        </h3>
-                                    </div>
-                                    <div class="card-toolbar">
-                                        <!--begin::Dropdown-->
-                                        <div class="dropdown dropdown-inline mr-2">
-                                            <button type="button"
-                                                class="btn btn-light-primary font-weight-bolder dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="svg-icon svg-icon-md">
-                                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/PenAndRuller.svg-->
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                        height="24px" viewBox="0 0 24 24" version="1.1">
-                                                        <g stroke="none" stroke-width="1" fill="none"
-                                                            fill-rule="evenodd">
-                                                            <rect x="0" y="0" width="24"
-                                                                height="24" />
-                                                            {{-- <img src="admin/media/svg/icons/Design/PenAndRuller.svg"
-                                                                alt=""> --}}
-                                                            <path
-                                                                d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
-                                                                fill="#000000" opacity="0.3" />
-                                                            <path
-                                                                d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
-                                                                fill="#000000" />
-                                                        </g>
-                                                    </svg>
-                                                    <!--end::Svg Icon-->
-                                                </span>Export</button>
-                                            <!--begin::Dropdown Menu-->
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                <!--begin::Navigation-->
-                                                <ul class="navi flex-column navi-hover py-2">
-                                                    <li
-                                                        class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
-                                                        Choose an option:</li>
-                                                    <li class="navi-item">
-                                                        <a href="#" class="navi-link">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-print"></i>
-                                                            </span>
-                                                            <span class="navi-text">Print</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="navi-item">
-                                                        <a href="#" class="navi-link">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-copy"></i>
-                                                            </span>
-                                                            <span class="navi-text">Copy</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="navi-item">
-                                                        <a href="#" class="navi-link">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-file-excel-o"></i>
-                                                            </span>
-                                                            <span class="navi-text">Excel</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="navi-item">
-                                                        <a href="#" class="navi-link">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-file-text-o"></i>
-                                                            </span>
-                                                            <span class="navi-text">CSV</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="navi-item">
-                                                        <a href="#" class="navi-link">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-file-pdf-o"></i>
-                                                            </span>
-                                                            <span class="navi-text">PDF</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <!--end::Navigation-->
-                                            </div>
-                                            <!--end::Dropdown Menu-->
-                                        </div>
-                                        <!--end::Dropdown-->
-                                        <!--begin::Button-->
-                                        <a href="#" class="btn btn-primary font-weight-bolder">
-                                            <span class="svg-icon svg-icon-md">
-                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                    height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                        fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24"
-                                                            height="24" />
-                                                        <circle fill="#000000" cx="9" cy="15"
-                                                            r="6" />
-                                                        <path
-                                                            d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
-                                                            fill="#000000" opacity="0.3" />
-                                                    </g>
-                                                </svg>
-                                                <!--end::Svg Icon-->
-                                            </span>New Record</a>
-                                        <!--end::Button-->
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <!--begin: Datatable-->
-                                    <table class="table table-bordered table-checkable" id="kt_datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>Record ID</th>
-                                                <th>Order ID</th>
-                                                <th>Country</th>
-                                                <th>Ship City</th>
-                                                <th>Ship Address</th>
-                                                <th>Company Agent</th>
-                                                <th>Company Name</th>
-                                                <th>Ship Date</th>
-                                                <th>Status</th>
-                                                <th>Type</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>64616-103</td>
-                                                <td>Brazil</td>
-                                                <td>São Félix do Xingu</td>
-                                                <td>698 Oriole Pass</td>
-                                                <td>Hayes Boule</td>
-                                                <td>Casper-Kerluke</td>
-                                                <td>10/15/2017</td>
-                                                <td>5</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>54868-3377</td>
-                                                <td>Vietnam</td>
-                                                <td>Bình Minh</td>
-                                                <td>8998 Delaware Court</td>
-                                                <td>Humbert Bresnen</td>
-                                                <td>Hodkiewicz and Sons</td>
-                                                <td>4/24/2016</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>0998-0355</td>
-                                                <td>Philippines</td>
-                                                <td>Palagao Norte</td>
-                                                <td>91796 Sutteridge Road</td>
-                                                <td>Jareb Labro</td>
-                                                <td>Kuhlman Inc</td>
-                                                <td>7/11/2017</td>
-                                                <td>6</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>55154-6876</td>
-                                                <td>China</td>
-                                                <td>Jiannan</td>
-                                                <td>8 Muir Drive</td>
-                                                <td>Krishnah Tosspell</td>
-                                                <td>Prosacco-Kessler</td>
-                                                <td>2/5/2016</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>49349-069</td>
-                                                <td>United States</td>
-                                                <td>Shawnee Mission</td>
-                                                <td>782 Mallory Lane</td>
-                                                <td>Dale Kernan</td>
-                                                <td>Bernier and Sons</td>
-                                                <td>7/23/2017</td>
-                                                <td>5</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>53499-0393</td>
-                                                <td>Ukraine</td>
-                                                <td>Kozel’shchyna</td>
-                                                <td>02 Briar Crest Parkway</td>
-                                                <td>Halley Bentham</td>
-                                                <td>Schoen-Metz</td>
-                                                <td>2/21/2016</td>
-                                                <td>1</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>43074-105</td>
-                                                <td>Philippines</td>
-                                                <td>De la Paz</td>
-                                                <td>643 Mayer Road</td>
-                                                <td>Burgess Penddreth</td>
-                                                <td>DuBuque, Stanton and Stanton</td>
-                                                <td>10/25/2016</td>
-                                                <td>5</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>76328-333</td>
-                                                <td>Portugal</td>
-                                                <td>Sobreira</td>
-                                                <td>6715 Dakota Parkway</td>
-                                                <td>Cob Sedwick</td>
-                                                <td>Homenick-Nolan</td>
-                                                <td>2/18/2016</td>
-                                                <td>3</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>21130-054</td>
-                                                <td>France</td>
-                                                <td>Roissy Charles-de-Gaulle</td>
-                                                <td>4942 Darwin Hill</td>
-                                                <td>Tabby Callaghan</td>
-                                                <td>Daugherty-Considine</td>
-                                                <td>3/26/2016</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>68788-9890</td>
-                                                <td>Dominican Republic</td>
-                                                <td>Cristóbal</td>
-                                                <td>854 Dapin Terrace</td>
-                                                <td>Broddy Jarry</td>
-                                                <td>Walter Group</td>
-                                                <td>8/10/2016</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>11</td>
-                                                <td>68428-740</td>
-                                                <td>Morocco</td>
-                                                <td>Tidili Mesfioua</td>
-                                                <td>67 Talisman Drive</td>
-                                                <td>Marjorie McGougan</td>
-                                                <td>Littel and Sons</td>
-                                                <td>2/8/2016</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>12</td>
-                                                <td>43269-779</td>
-                                                <td>Yemen</td>
-                                                <td>Az Zāhir</td>
-                                                <td>5583 Walton Hill</td>
-                                                <td>Edsel Sprigging</td>
-                                                <td>Kulas, Huels and Strosin</td>
-                                                <td>11/13/2017</td>
-                                                <td>6</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>13</td>
-                                                <td>0573-0174</td>
-                                                <td>Armenia</td>
-                                                <td>Doghs</td>
-                                                <td>7024 Eagan Court</td>
-                                                <td>Jess Gouldeby</td>
-                                                <td>Moen Group</td>
-                                                <td>9/10/2017</td>
-                                                <td>5</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>14</td>
-                                                <td>67868-117</td>
-                                                <td>Indonesia</td>
-                                                <td>Pakemitan</td>
-                                                <td>141 Spaight Avenue</td>
-                                                <td>Marys Matzl</td>
-                                                <td>Emard-Gerhold</td>
-                                                <td>3/5/2016</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>15</td>
-                                                <td>0641-6114</td>
-                                                <td>Kazakhstan</td>
-                                                <td>Shu</td>
-                                                <td>601 Chinook Street</td>
-                                                <td>Gabrila Franscioni</td>
-                                                <td>Gusikowski LLC</td>
-                                                <td>6/21/2016</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>16</td>
-                                                <td>63629-4970</td>
-                                                <td>Thailand</td>
-                                                <td>Chang Klang</td>
-                                                <td>7109 Ilene Place</td>
-                                                <td>Cozmo Booker</td>
-                                                <td>Dickinson-Klein</td>
-                                                <td>2/29/2016</td>
-                                                <td>1</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>17</td>
-                                                <td>59528-4456</td>
-                                                <td>Canada</td>
-                                                <td>Melfort</td>
-                                                <td>141 Aberg Pass</td>
-                                                <td>Arlie Larking</td>
-                                                <td>Rosenbaum Group</td>
-                                                <td>7/7/2017</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>18</td>
-                                                <td>0054-0080</td>
-                                                <td>Iceland</td>
-                                                <td>Sandgerði</td>
-                                                <td>4 Derek Alley</td>
-                                                <td>Yorker Scogings</td>
-                                                <td>Gorczany LLC</td>
-                                                <td>7/6/2017</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>19</td>
-                                                <td>28475-810</td>
-                                                <td>Indonesia</td>
-                                                <td>Keleng</td>
-                                                <td>49 Swallow Court</td>
-                                                <td>Dominick Muscott</td>
-                                                <td>Swaniawski-Sipes</td>
-                                                <td>5/15/2016</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>20</td>
-                                                <td>53645-1070</td>
-                                                <td>Russia</td>
-                                                <td>Tugulym</td>
-                                                <td>611 Hintze Place</td>
-                                                <td>Laurette Kynforth</td>
-                                                <td>Torp-Satterfield</td>
-                                                <td>10/18/2017</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>21</td>
-                                                <td>66869-137</td>
-                                                <td>Indonesia</td>
-                                                <td>Binangun</td>
-                                                <td>535 Delladonna Trail</td>
-                                                <td>Beryl Lycett</td>
-                                                <td>Schoen Inc</td>
-                                                <td>6/28/2017</td>
-                                                <td>3</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>22</td>
-                                                <td>0069-0181</td>
-                                                <td>Czech Republic</td>
-                                                <td>Tlumačov</td>
-                                                <td>8 Hauk Street</td>
-                                                <td>Carny Boggas</td>
-                                                <td>Kuphal LLC</td>
-                                                <td>6/24/2016</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>23</td>
-                                                <td>50580-449</td>
-                                                <td>United States</td>
-                                                <td>Saint Augustine</td>
-                                                <td>9050 High Crossing Pass</td>
-                                                <td>Dyana Axelby</td>
-                                                <td>Runolfsdottir-Hayes</td>
-                                                <td>3/16/2017</td>
-                                                <td>2</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>24</td>
-                                                <td>55714-2247</td>
-                                                <td>Netherlands</td>
-                                                <td>Nijmegen</td>
-                                                <td>2 Laurel Avenue</td>
-                                                <td>Orelle Duffy</td>
-                                                <td>Roberts and Sons</td>
-                                                <td>4/5/2016</td>
-                                                <td>5</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>25</td>
-                                                <td>48951-1208</td>
-                                                <td>Russia</td>
-                                                <td>Ryazhsk</td>
-                                                <td>131 Lerdahl Park</td>
-                                                <td>Taylor Kinder</td>
-                                                <td>Terry-Howell</td>
-                                                <td>4/19/2017</td>
-                                                <td>3</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>26</td>
-                                                <td>30142-179</td>
-                                                <td>Russia</td>
-                                                <td>Kazan</td>
-                                                <td>7 Erie Pass</td>
-                                                <td>Emanuele Aylesbury</td>
-                                                <td>Torp LLC</td>
-                                                <td>7/6/2017</td>
-                                                <td>3</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>27</td>
-                                                <td>49349-025</td>
-                                                <td>Thailand</td>
-                                                <td>Bang Racham</td>
-                                                <td>98943 Schiller Pass</td>
-                                                <td>Dorie Gibke</td>
-                                                <td>Tremblay and Sons</td>
-                                                <td>7/17/2017</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>28</td>
-                                                <td>55154-4989</td>
-                                                <td>Russia</td>
-                                                <td>Solnechnyy</td>
-                                                <td>485 Mockingbird Road</td>
-                                                <td>Melisandra Harragin</td>
-                                                <td>Turner-Cartwright</td>
-                                                <td>12/3/2016</td>
-                                                <td>5</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>29</td>
-                                                <td>13537-426</td>
-                                                <td>Lebanon</td>
-                                                <td>Marjayoûn</td>
-                                                <td>9141 Cascade Street</td>
-                                                <td>Berenice Lampett</td>
-                                                <td>Johnston-Fritsch</td>
-                                                <td>12/27/2017</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>30</td>
-                                                <td>52565-009</td>
-                                                <td>Jamaica</td>
-                                                <td>Manchioneal</td>
-                                                <td>88503 Shopko Center</td>
-                                                <td>Tammie McMurthy</td>
-                                                <td>Sipes, Conn and Stiedemann</td>
-                                                <td>10/11/2017</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>31</td>
-                                                <td>0264-5535</td>
-                                                <td>United Kingdom</td>
-                                                <td>Glasgow</td>
-                                                <td>6 Lakeland Center</td>
-                                                <td>Dinnie Joyes</td>
-                                                <td>Keebler Group</td>
-                                                <td>6/5/2016</td>
-                                                <td>5</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>32</td>
-                                                <td>15370-110</td>
-                                                <td>China</td>
-                                                <td>Caijiang</td>
-                                                <td>2 Mariners Cove Way</td>
-                                                <td>Kerianne Axelbey</td>
-                                                <td>Wolff, Sporer and Bechtelar</td>
-                                                <td>2/20/2016</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>33</td>
-                                                <td>67046-271</td>
-                                                <td>China</td>
-                                                <td>Sanhe</td>
-                                                <td>537 Graceland Park</td>
-                                                <td>Kiley MacTerlagh</td>
-                                                <td>Hauck Inc</td>
-                                                <td>6/9/2017</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>34</td>
-                                                <td>49288-0356</td>
-                                                <td>Indonesia</td>
-                                                <td>Rupe</td>
-                                                <td>88 Blackbird Alley</td>
-                                                <td>Trula Shuttle</td>
-                                                <td>Will-Morissette</td>
-                                                <td>2/28/2016</td>
-                                                <td>5</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>35</td>
-                                                <td>41163-332</td>
-                                                <td>Poland</td>
-                                                <td>Borowno</td>
-                                                <td>72 Iowa Drive</td>
-                                                <td>Hollis Brislen</td>
-                                                <td>Lowe, Jaskolski and Gulgowski</td>
-                                                <td>7/7/2016</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>36</td>
-                                                <td>68428-088</td>
-                                                <td>Greece</td>
-                                                <td>Néa Péramos</td>
-                                                <td>76 Haas Alley</td>
-                                                <td>Marsh Battin</td>
-                                                <td>Fay LLC</td>
-                                                <td>6/3/2017</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>37</td>
-                                                <td>52686-288</td>
-                                                <td>Chile</td>
-                                                <td>San Carlos</td>
-                                                <td>6915 Mifflin Terrace</td>
-                                                <td>Patrizio Pinnion</td>
-                                                <td>Haag-Stokes</td>
-                                                <td>10/7/2016</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>38</td>
-                                                <td>68084-534</td>
-                                                <td>Ukraine</td>
-                                                <td>Ukrainka</td>
-                                                <td>77 Charing Cross Trail</td>
-                                                <td>Ilario Daouse</td>
-                                                <td>Nitzsche, Davis and Romaguera</td>
-                                                <td>4/10/2016</td>
-                                                <td>3</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>39</td>
-                                                <td>60681-2104</td>
-                                                <td>China</td>
-                                                <td>Shangdu</td>
-                                                <td>61653 Welch Trail</td>
-                                                <td>Blisse Coleborn</td>
-                                                <td>Bailey, Windler and Marquardt</td>
-                                                <td>5/15/2017</td>
-                                                <td>6</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>40</td>
-                                                <td>63402-193</td>
-                                                <td>China</td>
-                                                <td>Xibin</td>
-                                                <td>9 Duke Point</td>
-                                                <td>Augustin Jouannisson</td>
-                                                <td>Witting, Reilly and Morar</td>
-                                                <td>7/3/2016</td>
-                                                <td>3</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>41</td>
-                                                <td>0078-0614</td>
-                                                <td>Russia</td>
-                                                <td>Skolkovo</td>
-                                                <td>5 Bay Center</td>
-                                                <td>Kaleena Jennison</td>
-                                                <td>Johnston Inc</td>
-                                                <td>11/26/2016</td>
-                                                <td>5</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>42</td>
-                                                <td>60660-7787</td>
-                                                <td>Dominican Republic</td>
-                                                <td>Pimentel</td>
-                                                <td>5 Northwestern Drive</td>
-                                                <td>Mariel Petronis</td>
-                                                <td>Mitchell, Bashirian and Schroeder</td>
-                                                <td>1/28/2016</td>
-                                                <td>5</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>43</td>
-                                                <td>51079-345</td>
-                                                <td>Malaysia</td>
-                                                <td>Kuala Lumpur</td>
-                                                <td>11 Melvin Hill</td>
-                                                <td>Adamo Scroggie</td>
-                                                <td>Cartwright Group</td>
-                                                <td>6/9/2016</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>44</td>
-                                                <td>29033-021</td>
-                                                <td>Portugal</td>
-                                                <td>Serzedelo</td>
-                                                <td>380 Wayridge Street</td>
-                                                <td>Lewiss Kilmartin</td>
-                                                <td>Stroman-Orn</td>
-                                                <td>5/9/2017</td>
-                                                <td>3</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>45</td>
-                                                <td>12830-816</td>
-                                                <td>France</td>
-                                                <td>Fos-sur-Mer</td>
-                                                <td>9924 Mariners Cove Circle</td>
-                                                <td>Claretta Sachno</td>
-                                                <td>Zemlak-Cruickshank</td>
-                                                <td>9/4/2016</td>
-                                                <td>4</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>46</td>
-                                                <td>0781-5555</td>
-                                                <td>Indonesia</td>
-                                                <td>Kotaagung</td>
-                                                <td>9 Calypso Road</td>
-                                                <td>Bryn Van Castele</td>
-                                                <td>Beier-Mante</td>
-                                                <td>3/17/2017</td>
-                                                <td>5</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>47</td>
-                                                <td>0378-7004</td>
-                                                <td>Sweden</td>
-                                                <td>Karlstad</td>
-                                                <td>12000 Burrows Street</td>
-                                                <td>Tades Gatch</td>
-                                                <td>Klocko, Koelpin and Nikolaus</td>
-                                                <td>7/10/2016</td>
-                                                <td>5</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>48</td>
-                                                <td>49483-052</td>
-                                                <td>Indonesia</td>
-                                                <td>Kebonjaya</td>
-                                                <td>2 Oakridge Crossing</td>
-                                                <td>Reinold Jolland</td>
-                                                <td>Zieme-Funk</td>
-                                                <td>5/24/2016</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>49</td>
-                                                <td>10812-357</td>
-                                                <td>Serbia</td>
-                                                <td>Ruma</td>
-                                                <td>7 Wayridge Plaza</td>
-                                                <td>Ky Brainsby</td>
-                                                <td>Towne Inc</td>
-                                                <td>11/1/2016</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>50</td>
-                                                <td>49349-222</td>
-                                                <td>China</td>
-                                                <td>Zhulan</td>
-                                                <td>55385 Stoughton Trail</td>
-                                                <td>Sheryl Giddings</td>
-                                                <td>Grimes, Ryan and Larkin</td>
-                                                <td>9/15/2017</td>
-                                                <td>3</td>
-                                                <td>1</td>
-                                                <td nowrap="nowrap"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <!--end: Datatable-->
-                                </div>
-                            </div>
-                            <!--end::Card-->
-                        </div>
-                        <!--end::Container-->
-                    </div>
-                    <!--end::Entry-->
-                </div>
+                @yield('content')
                 <!--end::Content-->
                 <!--begin::Footer-->
                 <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
@@ -1980,7 +863,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <a href="#" class="symbol symbol-70 flex-shrink-0">
-                        <img src="assets/media/stock-600x400/img-1.jpg" title="" alt="" />
+                        <img src="admin/media/stock-600x400/img-1.jpg" title="" alt="" />
                     </a>
                 </div>
                 <!--end::Item-->
@@ -2006,7 +889,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <a href="#" class="symbol symbol-70 flex-shrink-0">
-                        <img src="assets/media/stock-600x400/img-2.jpg" title="" alt="" />
+                        <img src="admin/media/stock-600x400/img-2.jpg" title="" alt="" />
                     </a>
                 </div>
                 <!--end::Item-->
@@ -2032,7 +915,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <a href="#" class="symbol symbol-70 flex-shrink-0">
-                        <img src="assets/media/stock-600x400/img-3.jpg" title="" alt="" />
+                        <img src="admin/media/stock-600x400/img-3.jpg" title="" alt="" />
                     </a>
                 </div>
                 <!--end::Item-->
@@ -2057,7 +940,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <a href="#" class="symbol symbol-70 flex-shrink-0">
-                        <img src="assets/media/stock-600x400/img-4.jpg" title="" alt="" />
+                        <img src="admin/media/stock-600x400/img-4.jpg" title="" alt="" />
                     </a>
                 </div>
                 <!--end::Item-->
@@ -2082,7 +965,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <a href="#" class="symbol symbol-70 flex-shrink-0">
-                        <img src="assets/media/stock-600x400/img-8.jpg" title="" alt="" />
+                        <img src="admin/media/stock-600x400/img-8.jpg" title="" alt="" />
                     </a>
                 </div>
                 <!--end::Item-->
@@ -2124,8 +1007,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </li>
             </ul>
             <div class="offcanvas-close mt-n1 pr-5">
-                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary"
-                    id="kt_quick_panel_close">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
                     <i class="ki ki-close icon-xs text-muted"></i>
                 </a>
             </div>
@@ -2143,7 +1025,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="d-flex align-items-center flex-wrap mb-5">
                             <div class="symbol symbol-50 symbol-light mr-5">
                                 <span class="symbol-label">
-                                    <img src="assets/media/svg/misc/006-plurk.svg" class="h-50 align-self-center"
+                                    <img src="admin/media/svg/misc/006-plurk.svg" class="h-50 align-self-center"
                                         alt="" />
                                 </span>
                             </div>
@@ -2161,7 +1043,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="d-flex align-items-center flex-wrap mb-5">
                             <div class="symbol symbol-50 symbol-light mr-5">
                                 <span class="symbol-label">
-                                    <img src="assets/media/svg/misc/015-telegram.svg" class="h-50 align-self-center"
+                                    <img src="admin/media/svg/misc/015-telegram.svg" class="h-50 align-self-center"
                                         alt="" />
                                 </span>
                             </div>
@@ -2179,7 +1061,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="d-flex align-items-center flex-wrap mb-5">
                             <div class="symbol symbol-50 symbol-light mr-5">
                                 <span class="symbol-label">
-                                    <img src="assets/media/svg/misc/003-puzzle.svg" class="h-50 align-self-center"
+                                    <img src="admin/media/svg/misc/003-puzzle.svg" class="h-50 align-self-center"
                                         alt="" />
                                 </span>
                             </div>
@@ -2197,7 +1079,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="d-flex align-items-center flex-wrap mb-5">
                             <div class="symbol symbol-50 symbol-light mr-5">
                                 <span class="symbol-label">
-                                    <img src="assets/media/svg/misc/005-bebo.svg" class="h-50 align-self-center"
+                                    <img src="admin/media/svg/misc/005-bebo.svg" class="h-50 align-self-center"
                                         alt="" />
                                 </span>
                             </div>
@@ -2215,8 +1097,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="d-flex align-items-center flex-wrap">
                             <div class="symbol symbol-50 symbol-light mr-5">
                                 <span class="symbol-label">
-                                    <img src="assets/media/svg/misc/014-kickstarter.svg"
-                                        class="h-50 align-self-center" alt="" />
+                                    <img src="admin/media/svg/misc/014-kickstarter.svg" class="h-50 align-self-center"
+                                        alt="" />
                                 </span>
                             </div>
                             <div class="d-flex flex-column flex-grow-1 mr-2">
@@ -2239,9 +1121,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <span class="svg-icon svg-icon-warning mr-5">
                                 <span class="svg-icon svg-icon-lg">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                        viewBox="0 0 24 24" version="1.1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
                                             <path
@@ -2270,9 +1151,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <span class="svg-icon svg-icon-success mr-5">
                                 <span class="svg-icon svg-icon-lg">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                        viewBox="0 0 24 24" version="1.1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
                                             <path
@@ -2301,9 +1181,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <span class="svg-icon svg-icon-danger mr-5">
                                 <span class="svg-icon svg-icon-lg">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg-->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                        viewBox="0 0 24 24" version="1.1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
                                             <path
@@ -2331,9 +1210,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <span class="svg-icon svg-icon-info mr-5">
                                 <span class="svg-icon svg-icon-lg">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/General/Attachment2.svg-->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                        viewBox="0 0 24 24" version="1.1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
                                             <path
@@ -2832,7 +1710,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="d-flex flex-column mb-5 align-items-start">
                                     <div class="d-flex align-items-center">
                                         <div class="symbol symbol-circle symbol-40 mr-3">
-                                            <img alt="Pic" src="assets/media/users/300_12.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_12.jpg" />
                                         </div>
                                         <div>
                                             <a href="#"
@@ -2855,7 +1733,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">You</a>
                                         </div>
                                         <div class="symbol symbol-circle symbol-40 ml-3">
-                                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_21.jpg" />
                                         </div>
                                     </div>
                                     <div
@@ -2868,7 +1746,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="d-flex flex-column mb-5 align-items-start">
                                     <div class="d-flex align-items-center">
                                         <div class="symbol symbol-circle symbol-40 mr-3">
-                                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_21.jpg" />
                                         </div>
                                         <div>
                                             <a href="#"
@@ -2891,7 +1769,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">You</a>
                                         </div>
                                         <div class="symbol symbol-circle symbol-40 ml-3">
-                                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_21.jpg" />
                                         </div>
                                     </div>
                                     <div
@@ -2903,7 +1781,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="d-flex flex-column mb-5 align-items-start">
                                     <div class="d-flex align-items-center">
                                         <div class="symbol symbol-circle symbol-40 mr-3">
-                                            <img alt="Pic" src="assets/media/users/300_12.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_12.jpg" />
                                         </div>
                                         <div>
                                             <a href="#"
@@ -2928,7 +1806,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">You</a>
                                         </div>
                                         <div class="symbol symbol-circle symbol-40 ml-3">
-                                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_21.jpg" />
                                         </div>
                                     </div>
                                     <div
@@ -2941,7 +1819,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="d-flex flex-column mb-5 align-items-start">
                                     <div class="d-flex align-items-center">
                                         <div class="symbol symbol-circle symbol-40 mr-3">
-                                            <img alt="Pic" src="assets/media/users/300_12.jpg" />
+                                            <img alt="Pic" src="admin/media/users/300_12.jpg" />
                                         </div>
                                         <div>
                                             <a href="#"
@@ -2964,7 +1842,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">You</a>
                                         </div>
                                         <div class="symbol symbol-circle symbol-40 ml-3">
-                                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
+                                            <img alt="Pic" src={{ asset('admin/media/users/300_21.jpg') }} />
                                         </div>
                                     </div>
                                     <div
@@ -3087,18 +1965,10 @@ License: You must have a valid license purchased only from themeforest(the above
         };
     </script>
     <!--end::Global Config-->
-    <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ asset('admin/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('admin/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
-    <script src="{{ asset('admin/js/scripts.bundle.js') }}"></script>
-    <!--end::Global Theme Bundle-->
-    <!--begin::Page Vendors(used by this page)-->
-    <script src="{{ asset('admin/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <!--end::Page Vendors-->
-    <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('admin/js/pages/crud/datatables/basic/basic.js') }}"></script>
-    <!--end::Page Scripts-->
 </body>
 <!--end::Body-->
+
+{{-- Footer --}}
+@yield('footer')
 
 </html>

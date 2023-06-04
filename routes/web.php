@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/tes', function () {
-    return view('layouts.admin.app');
+    return view('admin.toko.index');
 });
 // Route::get('/rumah', function () {
 //     return view('layouts.master');
