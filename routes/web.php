@@ -53,7 +53,7 @@ Route::group(['middleware' => ['isLogin']], function () {
     Route::post('/profile/update-password', [ProfileController::class, 'updatePassword']);
     Route::post('/upload/avatar', [ProfileController::class, 'updateAvatar'])->name('upload.avatar');
     // Akses Admin
-    Route::group(['middleware' => ['checkRole:admin']], function () {
-        // Masih Kosong
-    });
+    // Route::group(['middleware' => ['checkRole:admin']], function () {
+    Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
+    // });
 });
