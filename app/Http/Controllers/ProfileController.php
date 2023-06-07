@@ -101,12 +101,12 @@ class ProfileController extends Controller
     public function updateAvatar(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'avatar' => 'required',
-            'avatar.*' => 'mimes:jpg,jpeg,png|max:5000'
+            'avatar' => 'required|mimes:jpg,jpeg,png|max:5000'
         ]);
 
         if ($validator->fails()) {
-            return redirect('profile')
+            return redirect()
+                ->back()
                 ->withErrors($validator)
                 ->withInput()
                 ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
