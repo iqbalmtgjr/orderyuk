@@ -96,7 +96,8 @@ class RestoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Resto::findOrFail($id)->delete();
+        return redirect()->back()->with('sukses', 'Data Resto/Cafe Berhasil Dihapus!!!');
     }
 
     public function getdata($id)

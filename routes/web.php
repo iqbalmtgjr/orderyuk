@@ -54,6 +54,7 @@ Route::group(['middleware' => ['isLogin']], function () {
         Route::get('/resto/getdata/{id}', [RestoController::class, 'getdata'])->name('getdata');
         Route::post('/resto/input', [RestoController::class, 'store'])->name('resto-input');
         Route::post('/resto/update', [RestoController::class, 'update'])->name('update-resto');
+        Route::get('/resto/hapus/{id}', [RestoController::class, 'destroy'])->name('hapus-resto');
     });
     // Akses User
     Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -198,10 +198,10 @@
     <script>
         $('.delete').click(function() {
             var Id = $(this).attr('id');
-            var Judul = $(this).attr('judul');
+            var Nama = $(this).attr('resto');
             Swal.fire({
                     title: 'Yakin?',
-                    text: "Mau Hapus Film " + Judul + "?",
+                    text: "Mau Hapus Resto/Cafe " + Nama + "?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
