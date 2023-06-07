@@ -51,7 +51,7 @@ class RestoController extends Controller
         $user->email = $request->email;
         $user->no_hp = $request->no_hp;
         $user->alamat = $request->alamat;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make('passwordku');
         $user->save();
 
         $resto = Resto::create([

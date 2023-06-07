@@ -28,8 +28,9 @@
                                     <label for="message-text" class="col-form-label">Status</label>
                                     <select class="form-control" name="status" id="status">
                                         <option value="">-- Pilih Status --</option>
-                                        <option value="Aktif">Aktif</option>
-                                        <option value="Tidak Aktif">Tidak Aktif</option>
+                                        <option value="Aktif" {{ old('status') ? 'selected' : '' }}>Aktif</option>
+                                        <option value="Tidak Aktif" {{ old('status') ? 'selected' : '' }}>Tidak Aktif
+                                        </option>
                                     </select>
                                     @error('status')
                                         <div class="text-danger ml-3 mt-2">
@@ -40,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Alamat Resto/Cafe</label>
                                     <textarea class="form-control" name="alamat_resto" id="alamat_resto" cols="30" rows="5"
-                                        placeholder="Alamat ..."></textarea>
+                                        placeholder="Alamat ...">{{ old('alamat_resto') }}</textarea>
                                     @error('alamat_resto')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}

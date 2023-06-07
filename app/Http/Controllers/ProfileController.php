@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Uploads;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
-use App\Uploads;
 
 class ProfileController extends Controller
 {
