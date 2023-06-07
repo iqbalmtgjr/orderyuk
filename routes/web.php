@@ -51,7 +51,9 @@ Route::group(['middleware' => ['isLogin']], function () {
     Route::group(['middleware' => ['checkRole:super_admin']], function () {
         Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
         Route::get('/kelola_resto', [RestoController::class, 'index'])->name('kelola-resto');
+        Route::get('/resto/getdata/{id}', [RestoController::class, 'getdata'])->name('getdata');
         Route::post('/resto/input', [RestoController::class, 'store'])->name('resto-input');
+        Route::post('/resto/update', [RestoController::class, 'update'])->name('update-resto');
     });
     // Akses User
     Route::get('/home', [HomeController::class, 'index'])->name('home');

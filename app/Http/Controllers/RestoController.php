@@ -16,15 +16,7 @@ class RestoController extends Controller
     public function index()
     {
         $data = Resto::all();
-        return view('admin.toko.index', compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('super_admin.toko.index', compact('data'));
     }
 
     /**
@@ -53,15 +45,6 @@ class RestoController extends Controller
                 ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
         }
 
-        // $user = User::updateOrInsert([
-        //     'name' => $request->name,
-        //     'nickname' => $request->nickname,
-        //     'email' => $request->email,
-        //     'no_hp' => $request->no_hp,
-        //     'alamat' => $request->alamat,
-        //     'password' => Hash::make('qweasdzxc123')
-        // ]);
-
         $user = new User;
         $user->name = $request->name;
         $user->nickname = $request->nickname;
@@ -82,27 +65,30 @@ class RestoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            //resto
+            'nama_resto' => 'required',
+            'status' => 'required',
+            'alamat_resto' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
+        }
+
+        $data = Resto::findOrFail($request->id);
+        $data->update($request->except([$request->url_getdata]));
+        $data->save();
+
+        return redirect()->back()->with('sukses', 'Anda Berhasil Update Resto/Cafe!!!');
     }
 
     /**
@@ -111,5 +97,11 @@ class RestoController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getdata($id)
+    {
+        $data = Resto::find($id);
+        return $data;
     }
 }

@@ -129,7 +129,7 @@
                                     </svg>
                                     <!--end::Svg Icon-->
                                 </span>Tambah Resto/Cafe</button>
-                            @include('admin/toko/modaltambah')
+                            @include('super_admin/toko/modaltambah')
                             <!--end::Button-->
                         </div>
                     </div>
@@ -155,11 +155,21 @@
                                         <td>{{ $item->alamat }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td nowrap="nowrap">
-                                            <button class="btn btn-success btn-md">Edit</button>
-                                            <button class="btn btn-danger btn-md">Hapus</button>
+                                            <button onclick="getdata({{ $item->id }})" id="{{ $item->id }}"
+                                                class="btn btn-success font-weight-bold mr-2" data-toggle="modal"
+                                                data-target="#edit">
+                                                <i class="flaticon-edit-1"></i>
+                                                Edit
+                                            </button>
+                                            <button class="btn btn-danger font-weight-bold mr-2 delete"
+                                                resto="{{ $item->nama_resto }}" id="{{ $item->id }}">
+                                                <i class="flaticon2-trash"></i>
+                                                Hapus
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
+                                @include('super_admin/toko/modaledit')
                             </tbody>
                         </table>
                         <!--end: Datatable-->
@@ -184,4 +194,26 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src={{ asset('admin/js/pages/crud/datatables/basic/basic.js') }}></script>
     <!--end::Page Scripts-->
+
+    <script>
+        $('.delete').click(function() {
+            var Id = $(this).attr('id');
+            var Judul = $(this).attr('judul');
+            Swal.fire({
+                    title: 'Yakin?',
+                    text: "Mau Hapus Film " + Judul + "?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                })
+                .then((result) => {
+                    console.log(result);
+                    if (result.value) {
+                        window.location = "/resto/hapus/" + Id + "";
+                    }
+                });
+        });
+    </script>
 @endsection
