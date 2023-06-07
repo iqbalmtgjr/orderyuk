@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\RestoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,14 +47,16 @@ Route::controller(GoogleController::class)->group(function () {
 });
 
 Route::group(['middleware' => ['isLogin']], function () {
+    // Akses Super Admin
+    Route::group(['middleware' => ['checkRole:super_admin']], function () {
+        Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
+        Route::get('/kelola_resto', [RestoController::class, 'index'])->name('kelola-resto');
+        Route::post('/resto/input', [RestoController::class, 'store'])->name('resto-input');
+    });
     // Akses User
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile/input', [ProfileController::class, 'store']);
     Route::post('/profile/update-password', [ProfileController::class, 'updatePassword']);
     Route::post('/upload/avatar', [ProfileController::class, 'updateAvatar'])->name('upload.avatar');
-    // Akses Admin
-    // Route::group(['middleware' => ['checkRole:admin']], function () {
-    Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
-    // });
 });

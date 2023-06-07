@@ -40,6 +40,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{ asset('admin/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href={{ asset('assets/img/orderyuklogo.png') }} />
+    {{-- Toastr --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -161,7 +163,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             {{-- Kelola Resto.Cafe --}}
                             <li class="menu-item" aria-haspopup="true">
                                 {{-- <a href="{{ url('/kelolatoko') }}" class="menu-link"> --}}
-                                <a href="/tes" class="menu-link">
+                                <a href={{ url('/kelola_resto') }} class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -261,29 +263,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a target="_blank" href="https://preview.keenthemes.com/metronic/demo1/builder.html"
-                                    class="menu-link">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
-                                        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="Stockholm-icons-/-Home-/-Home" stroke="none" stroke-width="1"
-                                                fill="none" fill-rule="evenodd">
-                                                <rect id="bound" x="0" y="0" width="24"
-                                                    height="24"></rect>
-                                                <path
-                                                    d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z"
-                                                    id="Combined-Shape" fill="#000000"></path>
-                                            </g>
-                                        </svg>
-                                        {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Home</span>
-                                </a>
                             </li>
                         </ul>
                         <!--end::Menu Nav-->
@@ -754,9 +733,14 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
                     {{-- <div class="symbol-label" style="background-image:url('admin/media/users/300_21.jpg')"></div> --}}
-                    <div class="symbol-label"
-                        style="background-image:url('assets/img/{{ Auth()->user()->avatar }}')">
-                    </div>
+                    @if (!empty(Auth()->user()->google_id) || !empty(Auth()->user()->facebook_id))
+                        <div class="symbol-label"style="background-image:url('{{ Auth()->user()->avatar }}')">
+                        </div>
+                    @else
+                        <div
+                            class="symbol-label"style="background-image:url('assets/img/{{ Auth()->user()->avatar }}')">
+                        </div>
+                    @endif
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
@@ -924,10 +908,47 @@ License: You must have a valid license purchased only from themeforest(the above
         };
     </script>
     <!--end::Global Config-->
-</body>
-<!--end::Body-->
+    <!--end::Body-->
 
-{{-- Footer --}}
-@yield('footer')
+    {{-- Footer --}}
+    @yield('footer')
+    {{-- Toastr --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if (Session::has('sukses'))
+            toastr.success("{{ Session::get('sukses') }}", "Sukses")
+        @endif
+
+        @if (Session::has('gagal'))
+            toastr.error("{{ Session::get('gagal') }}", "Gagal")
+        @endif
+
+        @if (Session::has('peringatan'))
+            toastr.warning("{{ Session::get('peringatan') }}", "Peringatan")
+        @endif
+
+        @if (Session::has('info'))
+            toastr.warning("{{ Session::get('info') }}", "Info")
+        @endif
+
+        // get message
+        @if ($message = Session::get('infoo'))
+            toastr.info("{{ $message }}", "Info")
+        @endif
+
+        @if ($message = Session::get('suksess'))
+            toastr.success("{{ $message }}", "Berhasil")
+        @endif
+
+        @if ($message = Session::get('gagall'))
+            toastr.error("{{ $message }}", "Gagal")
+        @endif
+
+        @if ($message = Session::get('peringatann'))
+            toastr.warning("{{ $message }}", "Peringatan")
+        @endif
+    </script>
+</body>
 
 </html>

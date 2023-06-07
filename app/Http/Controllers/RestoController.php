@@ -1,0 +1,115 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Resto;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
+class RestoController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $data = Resto::all();
+        return view('admin.toko.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            //user
+            'name' => 'required|max:50',
+            'nickname' => 'required|max:50',
+            'email' => 'required|max:35|unique:users|email',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            //resto
+            'nama_resto' => 'required',
+            'status' => 'required',
+            'alamat_resto' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
+        }
+
+        // $user = User::updateOrInsert([
+        //     'name' => $request->name,
+        //     'nickname' => $request->nickname,
+        //     'email' => $request->email,
+        //     'no_hp' => $request->no_hp,
+        //     'alamat' => $request->alamat,
+        //     'password' => Hash::make('qweasdzxc123')
+        // ]);
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->nickname = $request->nickname;
+        $user->email = $request->email;
+        $user->no_hp = $request->no_hp;
+        $user->alamat = $request->alamat;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        $resto = Resto::create([
+            'user_id' => $user->id,
+            'nama_resto' => $request->nama_resto,
+            'status' => $request->status,
+            'alamat' => $request->alamat_resto
+        ]);
+
+        return redirect()->back()->with('sukses', 'Resto/Cafe Berhasil Diinput!!!');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}
