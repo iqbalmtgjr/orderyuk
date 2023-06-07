@@ -34,19 +34,39 @@
                                 </div>
                             @endif
                         @elseif (!empty(Auth::user()->facebook_id && Auth::user()->google_id))
-                            <img class="imagee" id="fotoprofil"
-                                style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
-                                width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
-                            <div class="middle">
-                                <div class="text"><i class="fas fa-camera"></i></div>
-                            </div>
+                            @if (file_exists('assets/img/' . Auth::user()->avatar))
+                                <img class="imagee" id="fotoprofil"
+                                    style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                                    width="15%" src="{{ asset('assets/img/' . Auth::user()->avatar) }}"
+                                    alt="Foto Profil">
+                                <div class="middle">
+                                    <div class="text"><i class="fas fa-camera"></i></div>
+                                </div>
+                            @else
+                                <img class="imagee" id="fotoprofil"
+                                    style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                                    width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
+                                <div class="middle">
+                                    <div class="text"><i class="fas fa-camera"></i></div>
+                                </div>
+                            @endif
                         @else
-                            <img class="imagee" id="fotoprofil"
-                                style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
-                                width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
-                            <div class="middle">
-                                <div class="text"><i class="fas fa-camera"></i></div>
-                            </div>
+                            @if (file_exists('assets/img/' . Auth::user()->avatar))
+                                <img class="imagee" id="fotoprofil"
+                                    style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                                    width="15%" src="{{ asset('assets/img/' . Auth::user()->avatar) }}"
+                                    alt="Foto Profil">
+                                <div class="middle">
+                                    <div class="text"><i class="fas fa-camera"></i></div>
+                                </div>
+                            @else
+                                <img class="imagee" id="fotoprofil"
+                                    style="border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
+                                    width="15%" src="{{ Auth::user()->avatar }}" alt="Foto Profil">
+                                <div class="middle">
+                                    <div class="text"><i class="fas fa-camera"></i></div>
+                                </div>
+                            @endif
                         @endif
                     @endif
                 </a>
