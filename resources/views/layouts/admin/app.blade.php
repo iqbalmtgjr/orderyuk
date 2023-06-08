@@ -734,11 +734,25 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="symbol symbol-100 mr-5">
                     {{-- <div class="symbol-label" style="background-image:url('admin/media/users/300_21.jpg')"></div> --}}
                     @if (!empty(Auth()->user()->google_id) || !empty(Auth()->user()->facebook_id))
-                        <div class="symbol-label"style="background-image:url('{{ Auth()->user()->avatar }}')">
-                        </div>
+                        @if (file_exists('assets/img/' . Auth::user()->avatar))
+                            <div class="symbol-label"
+                                style="background-image:url('assets/img/{{ Auth()->user()->avatar }}')">
+                            </div>
+                        @else
+                            <div class="symbol-label" style="background-image:url('{{ Auth()->user()->avatar }}')">
+                            </div>
+                        @endif
+                    @elseif (!empty(Auth()->user()->google_id) && !empty(Auth()->user()->facebook_id))
+                        @if (file_exists('assets/img/' . Auth::user()->avatar))
+                            <div class="symbol-label"
+                                style="background-image:url('assets/img/{{ Auth()->user()->avatar }}')">
+                            </div>
+                        @else
+                            <div class="symbol-label" style="background-image:url('{{ Auth()->user()->avatar }}')">
+                            </div>
+                        @endif
                     @else
-                        <div
-                            class="symbol-label"style="background-image:url('assets/img/{{ Auth()->user()->avatar }}')">
+                        <div class="symbol-label" style="background-image:url('assets/img/user.png')">
                         </div>
                     @endif
                     <i class="symbol-badge bg-success"></i>

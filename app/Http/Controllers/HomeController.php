@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     public function index2()
     {
-        return view('super.admin.dashboard');
+        return view('super_admin.dashboard');
     }
 }

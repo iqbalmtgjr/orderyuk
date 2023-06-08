@@ -201,7 +201,7 @@
             var Nama = $(this).attr('resto');
             Swal.fire({
                     title: 'Yakin?',
-                    text: "Mau Hapus Resto/Cafe " + Nama + "?",
+                    text: "Mau Hapus " + Nama + "?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

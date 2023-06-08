@@ -70,10 +70,6 @@
                         @endif
                     @endif
                 </a>
-                {{-- <button
-                    style="border-radius: 50%; position:relative; top: 70px; right: 60px; z-index: 999; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;"
-                    class="btn btn-lg btn-primary"><i class="fas fa-camera"></i></button>
-                <input id="imgs" type="file" name="user[image]" accept="image/*" style="display: none;"> --}}
             </div>
         </div>
         <div class="row">
