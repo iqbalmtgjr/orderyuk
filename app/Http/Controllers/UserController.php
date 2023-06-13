@@ -3,21 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Resto;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RestoController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Resto::all();
-        return view('super_admin.toko.index', compact('data'));
+        $data = User::where('role', '!=', 'super_admin')->get();
+        return view('super_admin.user.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -26,16 +33,13 @@ class RestoController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            //user
             'name' => 'required|max:50',
             'nickname' => 'required|max:50',
             'email' => 'required|max:35|unique:users|email',
             'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
             'alamat' => 'required',
-            //resto
-            'nama_resto' => 'required',
-            'status' => 'required',
-            'alamat_resto' => 'required',
+            'role' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -55,18 +59,9 @@ class RestoController extends Controller
         $user->alamat = $request->alamat;
         $make_password = Str::random(8);
         $user->password = Hash::make($make_password);
-        dd($make_password);
         $user->save();
 
-
-        $resto = Resto::create([
-            'user_id' => $user->id,
-            'nama_resto' => $request->nama_resto,
-            'status' => $request->status,
-            'alamat' => $request->alamat_resto
-        ]);
-
-        return redirect()->back()->with('sukses', 'Resto/Cafe Berhasil Diinput!!!');
+        return redirect()->back()->with('sukses', 'User Berhasil Diinput!!!');
     }
 
     /**
@@ -75,10 +70,13 @@ class RestoController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            //resto
-            'nama_resto' => 'required',
-            'status' => 'required',
-            'alamat_resto' => 'required',
+            'name' => 'required|max:50',
+            'nickname' => 'required|max:50',
+            // 'email' => 'required|max:35|unique:users|email',
+            'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'role' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -89,11 +87,11 @@ class RestoController extends Controller
                 ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
         }
 
-        $data = Resto::findOrFail($request->id);
+        $data = User::findOrFail($request->id);
         $data->update($request->except([$request->url_getdata]));
         $data->save();
 
-        return redirect()->back()->with('sukses', 'Anda Berhasil Update Resto/Cafe!!!');
+        return redirect()->back()->with('sukses', 'User Berhasil Diedit!!!');
     }
 
     /**
@@ -101,13 +99,13 @@ class RestoController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = Resto::findOrFail($id)->delete();
-        return redirect()->back()->with('sukses', 'Data Resto/Cafe Berhasil Dihapus!!!');
+        $data = User::findOrFail($id)->delete();
+        return redirect()->back()->with('sukses', 'Data User Berhasil Dihapus!!!');
     }
 
     public function getdata($id)
     {
-        $data = Resto::find($id);
+        $data = User::find($id);
         return $data;
     }
 }

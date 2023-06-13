@@ -117,10 +117,10 @@ class ProfileController extends Controller
         if (file_exists($path)) {
             @unlink($path);
         }
+
         $avatar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('avatar')->getClientOriginalName());
         $request->file('avatar')->move(public_path('assets/img/'), $avatar);
         User::findOrFail(Auth::user()->id)->update(['avatar' => $avatar]);
-
 
         return redirect()->back()->with('sukses', 'Berhasil Ganti Foto Profile');
     }
