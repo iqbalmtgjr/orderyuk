@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotifPendaftaranAkun;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -60,6 +62,8 @@ class UserController extends Controller
         $make_password = Str::random(8);
         $user->password = Hash::make($make_password);
         $user->save();
+
+        Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
 
         return redirect()->back()->with('sukses', 'User Berhasil Diinput!!!');
     }

@@ -141,7 +141,6 @@
                                     <th>Nama Pengguna</th>
                                     <th>Email</th>
                                     <th>Alamat</th>
-                                    <th>Jenis Kelamin</th>
                                     <th>No Hp</th>
                                     <th>Actions</th>
                                 </tr>
@@ -153,7 +152,6 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->alamat }}</td>
-                                        <td>{{ $item->jenis_kelamin }}</td>
                                         <td>{{ $item->no_hp }}</td>
                                         <td nowrap="nowrap">
                                             <button onclick="getdata({{ $item->id }})" id="{{ $item->id }}"

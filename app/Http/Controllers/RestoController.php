@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Resto;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\NotifPendaftaranAkun;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RestoController extends Controller
@@ -55,9 +57,9 @@ class RestoController extends Controller
         $user->alamat = $request->alamat;
         $make_password = Str::random(8);
         $user->password = Hash::make($make_password);
-        dd($make_password);
         $user->save();
 
+        Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
 
         $resto = Resto::create([
             'user_id' => $user->id,
