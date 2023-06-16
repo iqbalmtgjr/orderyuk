@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelanggan;
 use Exception;
 use App\Uploads;
 use App\Models\User;
@@ -41,8 +42,9 @@ class ProfileController extends Controller
             'name' => 'required|max:50',
             // 'email' => 'required|max:35|unique:users|email',
             'no_hp' => 'required',
-            // 'tgl_lahir' => 'date',
+            'tgl_lahir' => 'date',
             'jenis_kelamin' => 'required|max:10',
+            'alamat' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -57,7 +59,18 @@ class ProfileController extends Controller
 
 
         try {
-            $newUser = User::find(Auth::user()->id)->update($request->except([$request->url_getdata]));
+            $updateUser = User::find(Auth::user()->id)->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+
+            $updatePelanggan = Pelanggan::where('user_id', Auth::user()->id)->update([
+                'username' => $request->username,
+                'no_hp' => $request->no_hp,
+                'tgl_lahir' => $request->tgl_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'alamat' => $request->alamat,
+            ]);
             return redirect('profile')->with('sukses', 'Data Berhasil Disimpan!');
         } catch (Exception $e) {
             return redirect('profile')->with('gagal', $e);

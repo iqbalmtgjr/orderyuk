@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\User;
+use App\Models\Pelanggan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\NotifPendaftaranAkun;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
@@ -19,24 +23,26 @@ class GoogleController extends Controller
     public function handleGoogleCallback()
     {
         try {
-            $user = Socialite::driver('google')->user();
-            $finduser = User::where('google_id', $user->id)->first();
+            $userGoogle = Socialite::driver('google')->user();
+            $finduser = User::where('google_id', $userGoogle->id)->first();
 
             if ($finduser) {
                 Auth::login($finduser);
                 return redirect()->intended('home')->with('sukses', 'Selamat Anda Berhasil Login !!!');
             } else {
-                $newUser = User::updateOrCreate(['email' => $user->email], [
+                $make_password = Str::random(8);
+                $user = User::updateOrCreate(['email' => $userGoogle->email], [
                     'role' => 'user',
-                    'name' => $user->getName(),
-                    'nickname' => $user->getNickname(),
-                    'google_id' => $user->getId(),
-                    'nickname' => $user->getNickname(),
-                    'avatar' => $user->getAvatar(),
-                    'password' => Hash::make('qweasdzxc123')
+                    'name' => $userGoogle->getName(),
+                    'google_id' => $userGoogle->getId(),
+                    'avatar' => $userGoogle->getAvatar(),
+                    'password' => Hash::make($make_password)
                 ]);
 
-                Auth::login($newUser);
+                $newPelanggan = Pelanggan::create(['user_id' => $user->id]);
+
+                Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
+                Auth::login($user);
 
                 return redirect()->intended('home')->with('sukses', 'Selamat Anda Berhasil Login !!!');
             }

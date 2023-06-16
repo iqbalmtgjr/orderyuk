@@ -49,21 +49,26 @@ Route::controller(GoogleController::class)->group(function () {
 
 Route::group(['middleware' => ['isLogin']], function () {
     // Akses Super Admin
-    Route::group(['middleware' => ['checkRole:super_admin']], function () {
-        Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
-        //Kelola_resto
-        Route::get('/kelola_resto', [RestoController::class, 'index'])->name('kelola-resto');
-        Route::get('/resto/getdata/{id}', [RestoController::class, 'getdata'])->name('getdataresto');
-        Route::post('/resto/input', [RestoController::class, 'store'])->name('resto-input');
-        Route::post('/resto/update', [RestoController::class, 'update'])->name('update-resto');
-        Route::get('/resto/hapus/{id}', [RestoController::class, 'destroy'])->name('hapus-resto');
-        //Kelola_user
-        Route::get('/kelola_user', [UserController::class, 'index'])->name('kelola-user');
-        Route::get('/user/getdata/{id}', [UserController::class, 'getdata'])->name('getdatauser');
-        Route::post('/user/input', [UserController::class, 'store'])->name('user-input');
-        Route::post('/user/update', [UserController::class, 'update'])->name('update-user');
-        Route::get('/user/hapus/{id}', [UserController::class, 'destroy'])->name('hapus-user');
-    });
+    // Route::group(['middleware' => ['checkRole:super_admin']], function () {
+    Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
+    //Kelola_resto
+    Route::get('/kelola_resto', [RestoController::class, 'index'])->name('kelola-resto');
+    Route::get('/resto/getdata/{id}', [RestoController::class, 'getdata'])->name('getdataresto');
+    Route::post('/resto/input', [RestoController::class, 'store'])->name('resto-input');
+    Route::post('/resto/update', [RestoController::class, 'update'])->name('update-resto');
+    Route::get('/resto/hapus/{id}', [RestoController::class, 'destroy'])->name('hapus-resto');
+    //Kelola_user
+    Route::get('/kelola_user', [UserController::class, 'index'])->name('kelola-user');
+    Route::get('/user/getdata/{id}', [UserController::class, 'getdata'])->name('getdatauser');
+    Route::post('/user/input', [UserController::class, 'store'])->name('user-input');
+    Route::post('/user/update', [UserController::class, 'update'])->name('update-user');
+    Route::get('/user/hapus/{id}', [UserController::class, 'destroy'])->name('hapus-user');
+    // });
+
+    // Route::group(['middleware' => ['checkRole:admin']], function () {
+    // masih kosong
+    // });
+
     // Akses User
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

@@ -1,9 +1,9 @@
 <x-mail::message>
     # Registrasi Akun OrderYuk!!!
 
-    Hai {{ $user->nickname }}
+    Hai {{ $user->name }}
     Selamat anda telah terdaftar di Aplikasi OrderYuk!!!.
-    Untuk Password silahkan gunakan {{ $make_password }}
+    Password akun anda adalah {{ $make_password }}.
 
     Terima Kasih,
     {{ config('app.name') }}

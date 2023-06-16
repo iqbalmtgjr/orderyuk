@@ -92,8 +92,20 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="email" id="email" placeholder="Email"
-                                    value="{{ Auth::user()->email }}">
+                                <input type="text" class="form-control" name="username" id="username"
+                                    placeholder="Username" value="{{ Auth::user()->pelanggan->username }}">
+                                <label for="username">Username</label>
+                                @error('username')
+                                    <div class="text-danger ml-3 mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="email" id="email"
+                                    placeholder="Email" value="{{ Auth::user()->email }}">
                                 <label for="name">Email</label>
                                 @error('email')
                                     <div class="text-danger ml-3 mt-2">
@@ -105,7 +117,7 @@
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="number" class="form-control" name="no_hp" id="no_hp"
-                                    placeholder="No Handphone" value="{{ Auth::user()->no_hp }}">
+                                    placeholder="No Handphone" value="{{ Auth::user()->pelanggan->no_hp }}">
                                 <label for="name">No Handphone</label>
                                 @error('no_hp')
                                     <div class="text-danger ml-3 mt-2">
@@ -117,7 +129,7 @@
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir"
-                                    placeholder="No Handphone" value="{{ Auth::user()->tgl_lahir }}">
+                                    placeholder="No Handphone" value="{{ Auth::user()->pelanggan->tgl_lahir }}">
                                 <label for="tgl_lahir">Tanggal Lahir</label>
                                 @error('tgl_lahir')
                                     <div class="text-danger ml-3 mt-2">
@@ -129,11 +141,11 @@
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <select class="form-select" name="jenis_kelamin" id="jenis_kelamin">
-                                    @if (Auth::user()->jenis_kelamin == 'L')
+                                    @if (Auth::user()->pelanggan->jenis_kelamin == 'L')
                                         <option value="">--Pilih Jenis Kelamin--</option>
                                         <option value="L" selected>Laki-laki</option>
                                         <option value="P">Perempuan</option>
-                                    @elseif(Auth::user()->jenis_kelamin == 'P')
+                                    @elseif(Auth::user()->pelanggan->jenis_kelamin == 'P')
                                         <option value="">--Pilih Jenis Kelamin--</option>
                                         <option value="L">Laki-laki</option>
                                         <option value="P" selected>Perempuan</option>
@@ -153,7 +165,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea name="alamat" class="form-control" placeholder="Special Request" id="message" style="height: 100px">{{ Auth::user()->alamat }}</textarea>
+                                <textarea name="alamat" class="form-control" placeholder="Special Request" id="message" style="height: 100px">{{ Auth::user()->pelanggan->alamat }}</textarea>
                                 <label for="alamat">Alamat</label>
                                 @error('alamat')
                                     <div class="text-danger ml-3 mt-2">

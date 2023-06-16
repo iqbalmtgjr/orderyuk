@@ -79,8 +79,8 @@
                                     <label for="message-text" class="col-form-label">Status</label>
                                     <select class="form-control" name="status">
                                         <option value="">-- Pilih Status --</option>
-                                        <option value="Aktif" {{ old('status') ? 'selected' : '' }}>Aktif</option>
-                                        <option value="Tidak Aktif" {{ old('status') ? 'selected' : '' }}>Tidak Aktif
+                                        <option value="Aktif" @selected(old('status') == 'Aktif')>Aktif</option>
+                                        <option value="Tidak Aktif" @selected(old('status') == 'Tidak Aktif')>Tidak Aktif
                                         </option>
                                     </select>
                                     @error('status')

@@ -46,10 +46,10 @@
                                     <label for="message-text" class="col-form-label">Jenis Kelamin</label>
                                     <select class="form-control" name="jenis_kelamin">
                                         <option value="">-- Pilih Jenis Kelamin --</option>
-                                        <option value="L">Laki-laki</option>
-                                        <option value="P">Perempuan</option>
+                                        <option value="L" @selected(old('jenis_kelamin') == 'L')>Laki-laki</option>
+                                        <option value="P" @selected(old('jenis_kelamin') == 'P')>Perempuan</option>
                                     </select>
-                                    @error('role')
+                                    @error('jenis_kelamin')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}
                                         </div>
@@ -59,8 +59,8 @@
                                     <label for="message-text" class="col-form-label">Role</label>
                                     <select class="form-control" name="role">
                                         <option value="">-- Pilih Role --</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                        <option value="admin" @selected(old('role') == 'admin')>Admin</option>
+                                        <option value="user" @selected(old('role') == 'user')>User</option>
                                     </select>
                                     @error('role')
                                         <div class="text-danger ml-3 mt-2">

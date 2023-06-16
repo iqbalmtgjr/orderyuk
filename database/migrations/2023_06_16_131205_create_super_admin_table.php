@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function ($table) {
-            $table->string('role')->nullable();
-            $table->string('nickname')->nullable();
-            $table->string('avatar')->nullable();
+        Schema::create('super_admin', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->string('username')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('alamat')->nullable();
             $table->date('tgl_lahir')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('super_admin');
     }
 };

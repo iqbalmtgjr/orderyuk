@@ -23,12 +23,7 @@ class User extends Authenticatable
         'password',
         'facebook_id',
         'google_id',
-        'nickname',
         'avatar',
-        'jenis_kelamin',
-        'no_hp',
-        'tgl_lahir',
-        'alamat',
         'role'
     ];
 
@@ -51,4 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    function pelanggan()
+    {
+        return $this->hasOne(Pelanggan::class);
+    }
 }
