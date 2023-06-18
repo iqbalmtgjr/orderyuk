@@ -6,7 +6,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/user/input') }}" method="POST">
+                <form action="{{ url('/user_dapur_kasir/input') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">
@@ -23,9 +23,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Nama Pengguna</label>
+                                    <label for="message-text" class="col-form-label">Nama Panggilan</label>
                                     <input type="text" class="form-control" name="username"
-                                        value="{{ old('username') }}" placeholder="Nama Pengguna ...">
+                                        value="{{ old('username') }}" placeholder="Nama Panggilan ...">
                                     @error('username')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}
@@ -59,10 +59,8 @@
                                     <label for="message-text" class="col-form-label">Role</label>
                                     <select class="form-control" name="role">
                                         <option value="">-- Pilih Role --</option>
-                                        <option value="admin" @selected(old('role') == 'admin')>Admin</option>
-                                        <option value="kasir" @selected(old('role') == 'kasir')>Kasir</option>
                                         <option value="dapur" @selected(old('role') == 'dapur')>Dapur</option>
-                                        <option value="user" @selected(old('role') == 'user')>User</option>
+                                        <option value="kasir" @selected(old('role') == 'kasir')>Kasir</option>
                                     </select>
                                     @error('role')
                                         <div class="text-danger ml-3 mt-2">

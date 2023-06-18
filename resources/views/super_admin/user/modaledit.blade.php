@@ -25,10 +25,10 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Nama Panggilan</label>
-                                    <input type="text" class="form-control" name="nickname" id="nickname"
-                                        value="{{ old('nickname') }}" placeholder="Nama Panggilan ...">
-                                    @error('nickname')
+                                    <label for="message-text" class="col-form-label">Nama Pengguna</label>
+                                    <input type="text" class="form-control" name="username" id="username"
+                                        value="{{ old('username') }}" placeholder="Nama Pengguna ...">
+                                    @error('username')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}
                                         </div>
@@ -48,8 +48,10 @@
                                     <label for="message-text" class="col-form-label">Role</label>
                                     <select class="form-control" name="role" id="rolee">
                                         <option value="">-- Pilih Role --</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                        <option value="admin" @selected(old('role') == 'admin')>Admin</option>
+                                        <option value="kasir" @selected(old('role') == 'kasir')>Kasir</option>
+                                        <option value="dapur" @selected(old('role') == 'dapur')>Dapur</option>
+                                        <option value="user" @selected(old('role') == 'user')>User</option>
                                     </select>
                                     @error('role')
                                         <div class="text-danger ml-3 mt-2">
@@ -104,9 +106,23 @@
                 $('#id').val(response.id);
                 $('#name').val(response.name);
                 $('#email').val(response.email);
-                $('#alamat').val(response.alamat);
-                $('#nickname').val(response.nickname);
-                $('#no_hp').val(response.no_hp);
+                if (response.role == 'admin') {
+                    $('#username').val(response.admin.username);
+                    $('#alamat').val(response.admin.alamat);
+                    $('#no_hp').val(response.admin.no_hp);
+                } else if (response.role == 'user') {
+                    $('#username').val(response.pelanggan.username);
+                    $('#alamat').val(response.pelanggan.alamat);
+                    $('#no_hp').val(response.pelanggan.no_hp);
+                } else if (response.role == 'kasir') {
+                    $('#username').val(response.kasir.username);
+                    $('#alamat').val(response.kasir.alamat);
+                    $('#no_hp').val(response.kasir.no_hp);
+                } else {
+                    $('#username').val(response.dapur.username);
+                    $('#alamat').val(response.dapur.alamat);
+                    $('#no_hp').val(response.dapur.no_hp);
+                }
                 $('#rolee').val(response.role);
             }
         });

@@ -9,6 +9,7 @@ use App\Http\Controllers\RestoController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\DapurkasirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,11 @@ Route::group(['middleware' => ['isLogin']], function () {
     // });
 
     // Route::group(['middleware' => ['checkRole:admin']], function () {
-    // masih kosong
+    Route::get('/kelola_user_dapur_kasir', [DapurkasirController::class, 'index']);
+    Route::get('/user_dapur_kasir/getdata/{id}', [DapurkasirController::class, 'getdata']);
+    Route::post('/user_dapur_kasir/input', [DapurkasirController::class, 'store']);
+    Route::post('/user_dapur_kasir/update', [DapurkasirController::class, 'update']);
+    Route::get('/user_dapur_kasir/hapus/{id}', [DapurkasirController::class, 'destroy']);
     // });
 
     // Akses User

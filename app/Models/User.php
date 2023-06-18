@@ -51,4 +51,19 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pelanggan::class);
     }
+
+    function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
+    function dapur()
+    {
+        return $this->hasOne(Dapur::class);
+    }
+
+    function kasir()
+    {
+        return $this->hasOne(Kasir::class);
+    }
 }

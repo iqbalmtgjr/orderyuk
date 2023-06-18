@@ -138,7 +138,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Lengkap</th>
+                                    <th>Nama Pengguna</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Alamat</th>
@@ -153,13 +153,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->role }}</td>
-                                        @if ($item->role == 'admin')
-                                            <td>{{ $item->admin->alamat }}</td>
-                                            <td>{{ $item->admin->no_hp }}</td>
-                                        @elseif ($item->role == 'user')
-                                            <td>{{ $item->pelanggan->alamat }}</td>
-                                            <td>{{ $item->pelanggan->no_hp }}</td>
-                                        @elseif ($item->role == 'kasir')
+                                        @if ($item->role == 'kasir')
                                             <td>{{ $item->kasir->alamat }}</td>
                                             <td>{{ $item->kasir->no_hp }}</td>
                                         @else
@@ -192,8 +186,8 @@
         </div>
         <!--end::Entry-->
     </div>
-    @include('super_admin/user/modaltambah')
-    @include('super_admin/user/modaledit')
+    @include('admin/dapurkasir/modaltambah')
+    @include('admin/dapurkasir/modaledit')
 @endsection
 @section('footer')
     <!--begin::Global Theme Bundle(used by all pages)-->
@@ -224,7 +218,7 @@
                 .then((result) => {
                     console.log(result);
                     if (result.value) {
-                        window.location = "/user/hapus/" + Id + "";
+                        window.location = "/user_dapur_kasir/hapus/" + Id + "";
                     }
                 });
         });
