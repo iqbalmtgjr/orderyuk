@@ -92,7 +92,7 @@ class DapurkasirController extends Controller
             $dapur->save();
         }
 
-        // Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
+        Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
 
         return redirect()->back()->with('sukses', 'User Berhasil Diinput!!!');
     }
