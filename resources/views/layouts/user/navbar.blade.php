@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-9">
                             <h1 class="text-primary m-0">
-                                OrderYuk!!! </h1>
+                                OrderKuy!!! </h1>
                         </div>
                     </div>
                     <!-- <img src="img/logo.png" alt="Logo"> -->

@@ -25,9 +25,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Nama Panggilan</label>
-                                    <input type="text" class="form-control" name="nickname"
-                                        value="{{ old('nickname') }}" placeholder="Nama Panggilan ...">
-                                    @error('nickname')
+                                    <input type="text" class="form-control" name="username"
+                                        value="{{ old('username') }}" placeholder="Nama Panggilan ...">
+                                    @error('username')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}
                                         </div>

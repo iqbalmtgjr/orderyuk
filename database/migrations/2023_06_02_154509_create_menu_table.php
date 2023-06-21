@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('kategori');
             $table->string('harga');
+            $table->string('estimasi');
             $table->timestamps();
         });
     }

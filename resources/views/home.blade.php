@@ -26,24 +26,74 @@
             </button>
         </div>
     </div>
-    {{-- <div class="container mt-5">
-        
-    </div> --}}
+    <div class="container mt-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="mb-5">Daftar Restoran</h1>
+        </div>
+        <div class="row align-center wow fadeInUp pb-5 mb-5" data-wow-delay="0.3s">
+            <div class="col-lg-2 col-md-4"></div>
+            <div class="col-lg-8 col-md-4">
+                <input style="border-radius: 1cm" type="text" class="form-control"
+                    placeholder="Mau makan dimana hari ini?" value="">
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <button style="border-radius: 1cm" type="submit" class="btn btn-outline-primary">CARI</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </div>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Menu Makanan & Minuman</h5>
                 <h1 class="mb-5">Makanan & Minuman Terpopuler</h1>
-            </div>
-            <div class="row align-center wow fadeInUp pb-5 mb-5" data-wow-delay="0.3s">
-                <div class="col-lg-2 col-md-4"></div>
-                <div class="col-lg-8 col-md-4">
-                    <input style="border-radius: 1cm" type="text" class="form-control"
-                        placeholder="Mau makan dimana hari ini?" value="">
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <button style="border-radius: 1cm" type="submit" class="btn btn-outline-primary">CARI</button>
-                </div>
             </div>
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
                 <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
@@ -67,7 +117,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
+                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
+                            href="#tab-3">
                             <i class="fa fa-utensils fa-2x text-primary"></i>
                             <div class="ps-3">
                                 <small class="text-body">Lovely</small>
@@ -408,7 +459,7 @@
     </div>
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
@@ -432,7 +483,6 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    {{-- <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5> --}}
                     <h1 class="mb-4">Selamat Datang di <i class="fa fa-utensils text-primary me-2"></i>OrderYuk!!!</h1>
                     <p class="mb-4">Order makanan dan minuman dicafe &
                         resto tidak perlu kekasir dan tidak perlu khawatir ditunggu pelayan. Anda hanya perlu
@@ -460,10 +510,9 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a> --}}
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- About End -->
 @endsection
