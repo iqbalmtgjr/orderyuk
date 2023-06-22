@@ -6,13 +6,13 @@
     <base href="../../../">
     <meta charset="utf-8" />
     @if (Auth::user()->role == 'super_admin')
-        <title>Super Admin | OrderYuk!!!</title>
+        <title>Super Admin | OrderKuy!!!</title>
     @elseif (Auth::user()->role == 'admin')
-        <title>Admin Toko | OrderYuk!!!</title>
+        <title>Admin Toko | OrderKuy!!!</title>
     @elseif(Auth::user()->role == 'kasir')
-        <title>Kasir Toko | OrderYuk!!!</title>
+        <title>Kasir Toko | OrderKuy!!!</title>
     @else
-        <title>Dapur Toko | OrderYuk!!!</title>
+        <title>Dapur Toko | OrderKuy!!!</title>
     @endif
     <meta name="description" content="Basic datatables examples" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -35,6 +35,7 @@
     <link href="{{ asset('admin/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
+    @yield('header')
     <link rel="shortcut icon" href={{ asset('assets/img/orderyuklogo.png') }} />
     {{-- Toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />

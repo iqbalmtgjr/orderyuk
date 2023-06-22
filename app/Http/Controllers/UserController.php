@@ -13,16 +13,33 @@ use App\Mail\NotifPendaftaranAkun;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\Datatables;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::where('role', '!=', 'super_admin')->get();
-        return view('super_admin.user.index', compact('data'));
+        if ($request->ajax()) {
+            $data = User::where('role', '!=', 'super_admin')->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('alamat', function ($row) {
+                    return $row->pelanggan->alamat;
+                })
+                ->addColumn('no_hp', function ($row) {
+                    return $row->pelanggan->no_hp;
+                })
+                ->addColumn('aksi', function ($row) {
+                    $actionBtn = '<button onclick="getdata(id)" id="id" class="btn btn-sm btn-success font-weight-bold mr-2" data-toggle="modal" data-target="#edit"> <i class="flaticon-edit-1"></i></button> <a href="javascript:void(0)" class="btn btn-sm btn-danger font-weight-bold mr-2 delete" nama="name" id="id"><i class="flaticon2-trash"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['no_hp', 'alamat', 'aksi'])
+                ->make(true);
+        }
+        return view('super_admin.user.index');
     }
 
     /**
@@ -212,8 +229,8 @@ class UserController extends Controller
     public function getdata($id)
     {
         $data = User::find($id);
-        $data->admin;
         $data->pelanggan;
+        $data->admin;
         $data->kasir;
         $data->dapur;
         return $data;

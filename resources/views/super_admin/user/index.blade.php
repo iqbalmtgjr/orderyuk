@@ -1,4 +1,8 @@
 @extends('layouts.admin.app')
+@section('header')
+    {{-- Datatables --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" type="text/css">
+@endsection
 @section('content')
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Subheader-->
@@ -9,7 +13,7 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">OrderYuk!!!</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">OrderKuy!!!</h5>
                         <!--end::Page Title-->
                         <!--begin::Breadcrumb-->
                         {{-- <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -134,7 +138,7 @@
                     </div>
                     <div class="card-body">
                         <!--begin: Datatable-->
-                        <table class="table table-bordered">
+                        <table class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -143,17 +147,19 @@
                                     <th>Role</th>
                                     <th>Alamat</th>
                                     <th>No Hp</th>
-                                    <th>Actions</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $item)
+                                {{-- @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->role }}</td>
-                                        @if ($item->role == 'admin')
+                                        <td>Kosong</td>
+                                        <td>Kosong</td> --}}
+                                {{-- @if ($item->role == 'admin')
                                             <td>{{ $item->admin->alamat }}</td>
                                             <td>{{ $item->admin->no_hp }}</td>
                                         @elseif ($item->role == 'user')
@@ -165,22 +171,22 @@
                                         @else
                                             <td>{{ $item->dapur->alamat }}</td>
                                             <td>{{ $item->dapur->no_hp }}</td>
-                                        @endif
-                                        <td nowrap="nowrap">
-                                            <button onclick="getdata({{ $item->id }})" id="{{ $item->id }}"
+                                        @endif --}}
+                                {{-- <td nowrap="nowrap">
+                                            <a href="javascript:void(0)" onclick="getdata({{ $item->id }})" id="{{ $item->id }}"
                                                 class="btn btn-success font-weight-bold mr-2" data-toggle="modal"
                                                 data-target="#edit">
                                                 <i class="flaticon-edit-1"></i>
                                                 Edit
-                                            </button>
-                                            <button class="btn btn-danger font-weight-bold mr-2 delete"
+                                            </a>
+                                            <a href="javascript:void(0)" class="btn btn-danger font-weight-bold mr-2 delete"
                                                 nama="{{ $item->name }}" id="{{ $item->id }}">
                                                 <i class="flaticon2-trash"></i>
                                                 Hapus
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                         <!--end: Datatable-->
@@ -207,8 +213,49 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src={{ asset('admin/js/pages/crud/datatables/basic/basic.js') }}></script>
     <!--end::Page Scripts-->
+    {{-- Datatables --}}
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
-    <script>
+    <script type="text/javascript">
+        $(function() {
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ url('/kelola_user') }}",
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'role',
+                        name: 'role'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'no_hp',
+                        name: 'no_hp'
+                    },
+                    {
+                        data: 'aksi',
+                        name: 'aksi',
+                        orderable: false,
+                        searchable: false,
+                    }
+                ]
+            });
+        });
+
         $('.delete').click(function() {
             var Id = $(this).attr('id');
             var Nama = $(this).attr('nama');
