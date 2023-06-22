@@ -79,7 +79,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Alamat Pemilik</label>
+                                    <label for="message-text" class="col-form-label">Alamat</label>
                                     <textarea class="form-control" name="alamat" cols="30" rows="5" placeholder="Alamat Pemilik ...">{{ old('alamat') }}</textarea>
                                     @error('alamat')
                                         <div class="text-danger ml-3 mt-2">

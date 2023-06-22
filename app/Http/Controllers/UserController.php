@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 use App\Mail\NotifPendaftaranAkun;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\Datatables;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -22,24 +22,47 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $data = User::where('role', '!=', 'super_admin')->get();
         if ($request->ajax()) {
-            $data = User::where('role', '!=', 'super_admin')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('alamat', function ($row) {
-                    return $row->pelanggan->alamat;
+                    if ($row->role == 'user') {
+                        return $row->pelanggan->alamat;
+                    } elseif ($row->role == 'admin') {
+                        return $row->admin->alamat;
+                    } elseif ($row->role == 'dapur') {
+                        return $row->dapur->alamat;
+                    } else {
+                        return $row->kasir->alamat;
+                    }
                 })
                 ->addColumn('no_hp', function ($row) {
-                    return $row->pelanggan->no_hp;
+                    if ($row->role == 'user') {
+                        return $row->pelanggan->no_hp;
+                    } elseif ($row->role == 'admin') {
+                        return $row->admin->no_hp;
+                    } elseif ($row->role == 'dapur') {
+                        return $row->dapur->no_hp;
+                    } else {
+                        return $row->kasir->no_hp;
+                    }
                 })
                 ->addColumn('aksi', function ($row) {
-                    $actionBtn = '<button onclick="getdata(id)" id="id" class="btn btn-sm btn-success font-weight-bold mr-2" data-toggle="modal" data-target="#edit"> <i class="flaticon-edit-1"></i></button> <a href="javascript:void(0)" class="btn btn-sm btn-danger font-weight-bold mr-2 delete" nama="name" id="id"><i class="flaticon2-trash"></i></a>';
+                    $actionBtn = '<button onclick="getdata(' . $row->id . ')" id="' . $row->id . '" class="btn btn-sm btn-success font-weight-bold mr-2" data-toggle="modal" data-target="#edit"> <i class="flaticon-edit-1"></i></button>';
+                    $actionBtn .= '<button class="btn btn-sm btn-danger font-weight-bold mr-2 delete" data-nama="' . $row->name . '" data-id="' . $row->id . '"><i class="flaticon2-trash"></i></button>';
                     return $actionBtn;
                 })
                 ->rawColumns(['no_hp', 'alamat', 'aksi'])
                 ->make(true);
         }
         return view('super_admin.user.index');
+    }
+
+    function indexx()
+    {
+        $data = User::where('role', '!=', 'super_admin')->get();
+        return view('super_admin.user.index', compact('data'));
     }
 
     /**
@@ -171,7 +194,123 @@ class UserController extends Controller
         }
 
         //update_user
-        $user = User::findOrFail($request->id)->update([
+        $user = User::findOrFail($request->id);
+
+        //kalau role nya ganti
+        // if ($request->role != $user->role) {
+        //     $update_user = $user->update([
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'role' => $request->role,
+        //     ]);
+
+
+        //     if ($request->role == 'kasir' || $user->role == 'admin') {
+        //         $admin = Admin::where('user_id', $request->id)->delete();
+        //         $kasir = Kasir::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'dapur' || $user->role == 'admin') {
+        //         $admin = Admin::where('user_id', $request->id)->delete();
+        //         $dapur = Dapur::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'user' || $user->role == 'admin') {
+        //         $admin = Admin::where('user_id', $request->id)->delete();
+        //         $pelanggan = Pelanggan::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     }
+        //     //batas_admin
+        //     elseif ($request->role == 'admin' || $user->role == 'kasir') {
+        //         $kasir = Kasir::where('user_id', $request->id)->delete();
+        //         $admin = Admin::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'dapur' || $user->role == 'kasir') {
+        //         $kasir = Kasir::where('user_id', $request->id)->delete();
+        //         $dapur = Dapur::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'user' || $user->role == 'kasir') {
+        //         $kasir = Kasir::where('user_id', $request->id)->delete();
+        //         $pelanggan = Pelanggan::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     }
+        //     //batas_kasir
+        //     elseif ($request->role == 'admin' || $user->role == 'kasir') {
+        //         $kasir = Kasir::where('user_id', $request->id)->delete();
+        //         $admin = Admin::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'dapur' || $user->role == 'kasir') {
+        //         $kasir = Kasir::where('user_id', $request->id)->delete();
+        //         $dapur = Dapur::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'user' || $user->role == 'kasir') {
+        //         $kasir = Kasir::where('user_id', $request->id)->delete();
+        //         $pelanggan = Pelanggan::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     }
+        //     //batas_dapur
+        //     elseif ($request->role == 'admin' || $user->role == 'dapur') {
+        //         $dapur = Dapur::where('user_id', $request->id)->delete();
+        //         $kasir = Kasir::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } elseif ($request->role == 'kasir' || $user->role == 'dapur') {
+        //         $dapur = Dapur::where('user_id', $request->id)->delete();
+        //         $kasir = Kasir::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     } else {
+        //         $dapur = Dapur::where('user_id', $request->id)->delete();
+        //         $kasir = Kasir::create([
+        //             'user_id' => $request->id,
+        //             'username' => $request->username,
+        //             'no_hp' => $request->no_hp,
+        //             'alamat' => $request->alamat,
+        //         ]);
+        //     }
+        // }
+
+        $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,

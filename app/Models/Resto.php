@@ -10,7 +10,7 @@ class Resto extends Model
     use HasFactory;
 
     protected $table = 'daftar_resto';
-    protected $fillable = ['user_id', 'nama_resto', 'alamat', 'status'];
+    protected $fillable = ['user_id', 'nama_resto', 'alamat', 'status', 'operasional'];
     protected $guarded = [];
 
     public function user()

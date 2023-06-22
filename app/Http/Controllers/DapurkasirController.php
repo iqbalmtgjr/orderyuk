@@ -11,17 +11,43 @@ use App\Mail\NotifPendaftaranAkun;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\Datatables;
 
 class DapurkasirController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = User::where('role', 'dapur')->orWhere('role', 'kasir')->get();
+        if ($request->ajax()) {
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('alamat', function ($row) {
+                    if ($row->role == 'kasir') {
+                        return $row->kasir->alamat;
+                    } else {
+                        return $row->dapur->alamat;
+                    }
+                })
+                ->addColumn('no_hp', function ($row) {
+                    if ($row->role == 'kasir') {
+                        return $row->kasir->no_hp;
+                    } else {
+                        return $row->dapur->no_hp;
+                    }
+                })
+                ->addColumn('aksi', function ($row) {
+                    $actionBtn = '<button onclick="getdata(' . $row->id . ')" id="' . $row->id . '" class="btn btn-sm btn-success font-weight-bold mr-2" data-toggle="modal" data-target="#edit"> <i class="flaticon-edit-1"></i></button>';
+                    $actionBtn .= '<button class="btn btn-sm btn-danger font-weight-bold mr-2 delete" data-nama="' . $row->name . '" data-id="' . $row->id . '"><i class="flaticon2-trash"></i></button>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['alamat', 'no_hp', 'aksi'])
+                ->make(true);
+        }
 
-        return view('admin.dapurkasir.index', compact('data'));
+        return view('admin.dapurkasir.index');
     }
 
     /**
@@ -116,7 +142,36 @@ class DapurkasirController extends Controller
         }
 
         //update_user
-        $user = User::findOrFail($request->id)->update([
+        $user = User::findOrFail($request->id);
+
+        //kalau role nya ganti
+        if ($request->role != $user->role) {
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'role' => $request->role,
+            ]);
+
+            if ($request->role == 'kasir') {
+                $dapur = Dapur::where('user_id', $request->id)->delete();
+                $kasir = Kasir::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } else {
+                $kasir = Kasir::where('user_id', $request->id)->delete();
+                $dapur = Dapur::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            }
+        }
+
+        $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,

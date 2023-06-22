@@ -1,4 +1,8 @@
 @extends('layouts.admin.app')
+@section('header')
+    {{-- Datatables --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" type="text/css">
+@endsection
 @section('content')
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Subheader-->
@@ -135,7 +139,7 @@
                     </div>
                     <div class="card-body">
                         <!--begin: Datatable-->
-                        <table class="table table-bordered">
+                        <table class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -147,7 +151,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $item)
+                                {{-- @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama_resto }}</td>
@@ -168,7 +172,7 @@
                                             </button>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
                                 @include('super_admin/toko/modaledit')
                             </tbody>
                         </table>
@@ -194,11 +198,15 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src={{ asset('admin/js/pages/crud/datatables/basic/basic.js') }}></script>
     <!--end::Page Scripts-->
+    {{-- Datatables --}}
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
-    <script>
-        $('.delete').click(function() {
-            var Id = $(this).attr('id');
-            var Nama = $(this).attr('resto');
+    <script type="text/javascript">
+        $('.data-table').on('click', '.delete', function() {
+            let data = $(this).data()
+            let Id = data.id
+            let Nama = data.nama
+            // console.log(Id);
             Swal.fire({
                     title: 'Yakin?',
                     text: "Mau Hapus " + Nama + "?",
@@ -211,9 +219,50 @@
                 .then((result) => {
                     console.log(result);
                     if (result.value) {
-                        window.location = "/resto/hapus/" + Id + "";
+                        window.location = `{{ url('/resto/hapus/') }}/${Id}`;
                     }
                 });
+        })
+
+        $(function() {
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ url('/kelola_resto') }}",
+                columns: [{
+                        data: 'id',
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
+                        data: 'nama_resto',
+                        name: 'nama_resto'
+                    },
+                    {
+                        data: 'pemilik',
+                        name: 'pemilik'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'aksi',
+                        name: 'aksi',
+                        orderable: false,
+                        searchable: false,
+                    }
+                ],
+                order: [
+                    [0, "desc"]
+                ]
+            });
         });
     </script>
 @endsection

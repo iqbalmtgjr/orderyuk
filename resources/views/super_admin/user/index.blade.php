@@ -151,42 +151,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->role }}</td>
-                                        <td>Kosong</td>
-                                        <td>Kosong</td> --}}
-                                {{-- @if ($item->role == 'admin')
-                                            <td>{{ $item->admin->alamat }}</td>
-                                            <td>{{ $item->admin->no_hp }}</td>
-                                        @elseif ($item->role == 'user')
-                                            <td>{{ $item->pelanggan->alamat }}</td>
-                                            <td>{{ $item->pelanggan->no_hp }}</td>
-                                        @elseif ($item->role == 'kasir')
-                                            <td>{{ $item->kasir->alamat }}</td>
-                                            <td>{{ $item->kasir->no_hp }}</td>
-                                        @else
-                                            <td>{{ $item->dapur->alamat }}</td>
-                                            <td>{{ $item->dapur->no_hp }}</td>
-                                        @endif --}}
-                                {{-- <td nowrap="nowrap">
-                                            <a href="javascript:void(0)" onclick="getdata({{ $item->id }})" id="{{ $item->id }}"
-                                                class="btn btn-success font-weight-bold mr-2" data-toggle="modal"
-                                                data-target="#edit">
-                                                <i class="flaticon-edit-1"></i>
-                                                Edit
-                                            </a>
-                                            <a href="javascript:void(0)" class="btn btn-danger font-weight-bold mr-2 delete"
-                                                nama="{{ $item->name }}" id="{{ $item->id }}">
-                                                <i class="flaticon2-trash"></i>
-                                                Hapus
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
                             </tbody>
                         </table>
                         <!--end: Datatable-->
@@ -217,6 +181,28 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
+        $('.data-table').on('click', '.delete', function() {
+            let data = $(this).data()
+            let Id = data.id
+            let Nama = data.nama
+            // console.log(Id);
+            Swal.fire({
+                    title: 'Yakin?',
+                    text: "Mau Hapus " + Nama + "?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                })
+                .then((result) => {
+                    console.log(result);
+                    if (result.value) {
+                        window.location = `{{ url('/user/hapus/') }}/${Id}`;
+                    }
+                });
+        })
+
         $(function() {
             var table = $('.data-table').DataTable({
                 processing: true,
@@ -224,7 +210,10 @@
                 ajax: "{{ url('/kelola_user') }}",
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
                     },
                     {
                         data: 'name',
@@ -252,28 +241,11 @@
                         orderable: false,
                         searchable: false,
                     }
+                ],
+                order: [
+                    [0, "desc"]
                 ]
             });
-        });
-
-        $('.delete').click(function() {
-            var Id = $(this).attr('id');
-            var Nama = $(this).attr('nama');
-            Swal.fire({
-                    title: 'Yakin?',
-                    text: "Mau Hapus " + Nama + "?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                })
-                .then((result) => {
-                    console.log(result);
-                    if (result.value) {
-                        window.location = "/user/hapus/" + Id + "";
-                    }
-                });
         });
     </script>
 @endsection

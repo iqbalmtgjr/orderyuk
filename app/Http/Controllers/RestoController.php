@@ -11,16 +11,31 @@ use App\Mail\NotifPendaftaranAkun;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\Datatables;
 
 class RestoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = Resto::all();
-        return view('super_admin.toko.index', compact('data'));
+        if ($request->ajax()) {
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('pemilik', function ($row) {
+                    return $row->user->name;
+                })
+                ->addColumn('aksi', function ($row) {
+                    $actionBtn = '<button onclick="getdata(' . $row->id . ')" id="' . $row->id . '" class="btn btn-sm btn-success font-weight-bold mr-2" data-toggle="modal" data-target="#edit"> <i class="flaticon-edit-1"></i></button>';
+                    $actionBtn .= '<button class="btn btn-sm btn-danger font-weight-bold mr-2 delete" data-nama="' . $row->nama_resto . '" data-id="' . $row->id . '"><i class="flaticon2-trash"></i></button>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['pemilik', 'aksi'])
+                ->make(true);
+        }
+        return view('super_admin.toko.index');
     }
 
     /**
@@ -32,7 +47,7 @@ class RestoController extends Controller
             //user
             'name' => 'required|max:50',
             'username' => 'required|max:50',
-            'email' => 'required|max:35|unique:users|email',
+            // 'email' => 'required|max:35|unique:users|email',
             'no_hp' => 'required',
             'alamat' => 'required',
             //resto
@@ -49,21 +64,46 @@ class RestoController extends Controller
                 ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
         }
 
-        $user = new User;
-        $user->role = 'admin';
-        $user->name = $request->name;
-        $user->email = $request->email;
-        // $make_password = Str::random(8);
+        //create_user
+        $data_user = User::all();
+        foreach ($data_user as $d) {
+            if ($request->email == $d->email) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->with('peringatan', 'Data dengan email ini sudah ada!!!')
+                    ->with('gagal', 'Wahh');
+            }
+        }
         $make_password = 'qweasdzxc123';
-        $user->password = Hash::make($make_password);
-        $user->save();
+        $user = User::updateOrCreate([
+            'role' => 'admin',
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($make_password)
+        ]);
+        // $user = new User;
+        // $user->role = 'admin';
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // // $make_password = Str::random(8);
+        // $make_password = 'qweasdzxc123';
+        // $user->password = Hash::make($make_password);
+        // $user->save();
+
         //create_admin
-        $admin = new Admin;
-        $admin->user_id = $user->id;
-        $admin->no_hp = $request->no_hp;
-        $admin->alamat = $request->alamat;
-        $admin->username = $request->username;
-        $admin->save();
+        $admin = Admin::updateOrCreate([
+            'user_id' => $user->id,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'username' => $request->username,
+        ]);
+        // $admin = new Admin;
+        // $admin->user_id = $user->id;
+        // $admin->no_hp = $request->no_hp;
+        // $admin->alamat = $request->alamat;
+        // $admin->username = $request->username;
+        // $admin->save();
 
         Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
 
@@ -71,7 +111,8 @@ class RestoController extends Controller
             'user_id' => $user->id,
             'nama_resto' => $request->nama_resto,
             'status' => $request->status,
-            'alamat' => $request->alamat_resto
+            'alamat' => $request->alamat_resto,
+            'operasional' => 'tutup'
         ]);
 
         return redirect()->back()->with('sukses', 'Resto/Cafe Berhasil Diinput!!!');
