@@ -195,120 +195,131 @@ class UserController extends Controller
 
         //update_user
         $user = User::findOrFail($request->id);
-
         //kalau role nya ganti
-        // if ($request->role != $user->role) {
-        //     $update_user = $user->update([
-        //         'name' => $request->name,
-        //         'email' => $request->email,
-        //         'role' => $request->role,
-        //     ]);
+        if ($request->role != $user->role) {
+            // $update_user = $user->update([
+            //     'name' => $request->name,
+            //     'email' => $request->email,
+            //     'role' => $request->role,
+            // ]);
 
+            if ($request->role == 'kasir' && $user->role == 'admin') {
+                // dd('Role Sekarang Ini Adalah admin dan request rolenya kasir');
+                $admin = Admin::where('user_id', $request->id)->delete();
+                $kasir = Kasir::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'dapur' && $user->role == 'admin') {
+                // dd('Role Sekarang Ini Adalah admin dan request rolenya dapur');
+                $admin = Admin::where('user_id', $request->id)->delete();
+                $dapur = Dapur::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'user' && $user->role == 'admin') {
+                // dd('Role Sekarang Ini Adalah admin dan request rolenya user');
+                $admin = Admin::where('user_id', $request->id)->delete();
+                $pelanggan = Pelanggan::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            }
+            //batas_admin
+            elseif ($request->role == 'admin' && $user->role == 'kasir') {
+                // dd('Role Sekarang Ini Adalah kasir dan request rolenya admin');
+                $kasir = Kasir::where('user_id', $request->id)->delete();
+                $admin = Admin::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'dapur' && $user->role == 'kasir') {
+                // dd('Role Sekarang Ini Adalah kasir dan request rolenya dapur');
+                $kasir = Kasir::where('user_id', $request->id)->delete();
+                $dapur = Dapur::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'user' && $user->role == 'kasir') {
+                // dd('Role Sekarang Ini Adalah kasir dan request rolenya user');
+                $kasir = Kasir::where('user_id', $request->id)->delete();
+                $pelanggan = Pelanggan::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            }
+            //batas_kasir
+            elseif ($request->role == 'admin' && $user->role == 'dapur') {
+                // dd('Role Sekarang Ini Adalah dapur dan request rolenya admin');
+                $dapur = Dapur::where('user_id', $request->id)->delete();
+                $admin = Admin::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'kasir' && $user->role == 'dapur') {
+                // dd('Role Sekarang Ini Adalah dapur dan request rolenya kasir');
+                $dapur = Dapur::where('user_id', $request->id)->delete();
+                $kasir = Kasir::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'user' && $user->role == 'dapur') {
+                // dd('Role Sekarang Ini Adalah dapur dan request rolenya user');
+                $dapur = Dapur::where('user_id', $request->id)->delete();
+                $pelanggan = Pelanggan::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            }
+            //batas_dapur
+            elseif ($request->role == 'admin' && $user->role == 'user') {
+                // dd('Role Sekarang Ini Adalah user dan request rolenya admin');
+                $pelanggan = Pelanggan::where('user_id', $request->id)->delete();
+                $admin = Admin::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } elseif ($request->role == 'kasir' && $user->role == 'user') {
+                // dd('Role Sekarang Ini Adalah user dan request rolenya kasir');
+                $pelanggan = Pelanggan::where('user_id', $request->id)->delete();
+                $kasir = Kasir::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            } else {
+                // dd('Role Sekarang Ini Adalah user dan request rolenya dapur');
+                $pelanggan = Pelanggan::where('user_id', $request->id)->delete();
+                $dapur = Dapur::create([
+                    'user_id' => $request->id,
+                    'username' => $request->username,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                ]);
+            }
+        }
 
-        //     if ($request->role == 'kasir' || $user->role == 'admin') {
-        //         $admin = Admin::where('user_id', $request->id)->delete();
-        //         $kasir = Kasir::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'dapur' || $user->role == 'admin') {
-        //         $admin = Admin::where('user_id', $request->id)->delete();
-        //         $dapur = Dapur::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'user' || $user->role == 'admin') {
-        //         $admin = Admin::where('user_id', $request->id)->delete();
-        //         $pelanggan = Pelanggan::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     }
-        //     //batas_admin
-        //     elseif ($request->role == 'admin' || $user->role == 'kasir') {
-        //         $kasir = Kasir::where('user_id', $request->id)->delete();
-        //         $admin = Admin::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'dapur' || $user->role == 'kasir') {
-        //         $kasir = Kasir::where('user_id', $request->id)->delete();
-        //         $dapur = Dapur::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'user' || $user->role == 'kasir') {
-        //         $kasir = Kasir::where('user_id', $request->id)->delete();
-        //         $pelanggan = Pelanggan::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     }
-        //     //batas_kasir
-        //     elseif ($request->role == 'admin' || $user->role == 'kasir') {
-        //         $kasir = Kasir::where('user_id', $request->id)->delete();
-        //         $admin = Admin::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'dapur' || $user->role == 'kasir') {
-        //         $kasir = Kasir::where('user_id', $request->id)->delete();
-        //         $dapur = Dapur::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'user' || $user->role == 'kasir') {
-        //         $kasir = Kasir::where('user_id', $request->id)->delete();
-        //         $pelanggan = Pelanggan::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     }
-        //     //batas_dapur
-        //     elseif ($request->role == 'admin' || $user->role == 'dapur') {
-        //         $dapur = Dapur::where('user_id', $request->id)->delete();
-        //         $kasir = Kasir::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } elseif ($request->role == 'kasir' || $user->role == 'dapur') {
-        //         $dapur = Dapur::where('user_id', $request->id)->delete();
-        //         $kasir = Kasir::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     } else {
-        //         $dapur = Dapur::where('user_id', $request->id)->delete();
-        //         $kasir = Kasir::create([
-        //             'user_id' => $request->id,
-        //             'username' => $request->username,
-        //             'no_hp' => $request->no_hp,
-        //             'alamat' => $request->alamat,
-        //         ]);
-        //     }
-        // }
 
         $user->update([
             'name' => $request->name,
