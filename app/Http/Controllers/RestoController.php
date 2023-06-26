@@ -28,8 +28,8 @@ class RestoController extends Controller
                     return $row->user->name;
                 })
                 ->addColumn('aksi', function ($row) {
-                    $actionBtn = '<button onclick="getdata(' . $row->id . ')" id="' . $row->id . '" class="btn btn-sm btn-success font-weight-bold mr-2" data-toggle="modal" data-target="#edit"> <i class="flaticon-edit-1"></i></button>';
-                    $actionBtn .= '<button class="btn btn-sm btn-danger font-weight-bold mr-2 delete" data-nama="' . $row->nama_resto . '" data-id="' . $row->id . '"><i class="flaticon2-trash"></i></button>';
+                    $actionBtn = '<button onclick="getdata(' . $row->id . ')" id="' . $row->id . '" class="btn btn-sm btn-clean btn-icon" title="Edit" data-toggle="modal" data-target="#edit"><i class="la la-edit"></i></button>';
+                    $actionBtn .= '<button class="btn btn-sm btn-clean btn-icon delete" title="Hapus" data-nama="' . $row->nama_resto . '" data-id="' . $row->id . '"><i class="la la-trash"></i></button>';
                     return $actionBtn;
                 })
                 ->rawColumns(['pemilik', 'aksi'])

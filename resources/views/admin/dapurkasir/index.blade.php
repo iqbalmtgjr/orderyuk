@@ -142,7 +142,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Pengguna</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Alamat</th>
@@ -233,12 +233,13 @@
 
         $(function() {
             var table = $('.data-table').DataTable({
+                // responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: "{{ url('/kelola_user_dapur_kasir') }}",
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        // data: 'id',
+                        // name: 'id',
                         render: function(data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1;
                         }
