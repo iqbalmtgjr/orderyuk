@@ -408,7 +408,8 @@
                         <h5 class="text-dark font-weight-bold my-1 mr-5">{{ config('app.name') }}</h5>
                         <!--end::Page Title-->
                         <!--begin::Breadcrumb-->
-                        {{-- <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        {{-- <ul
+                            class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                             <li class="breadcrumb-item">
                                 <a href="" class="text-muted">Kelola Resto/Cafe</a>
                             </li>
@@ -417,6 +418,21 @@
                     </div>
                     <!--end::Page Heading-->
                 </div>
+                @if (auth()->user()->role == 'admin')
+                    <div class="d-flex align-items-center">
+                        <label class="col-form-label col-8 text-lg-right text-left">Toko Buka</label>
+                        <div class="col-3">
+                            <span class="switch">
+                                <label>
+                                    <form action="" method="post">
+                                        <input type="checkbox" checked="checked" name="select">
+                                    </form>
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                @endif
                 <!--end::Info-->
             </div>
         </div>
