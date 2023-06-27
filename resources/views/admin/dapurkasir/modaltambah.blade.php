@@ -11,7 +11,6 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 ms-auto">
-                                <input type="hidden" id="role" name="role" value="admin">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="name"

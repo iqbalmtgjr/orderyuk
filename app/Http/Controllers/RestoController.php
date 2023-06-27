@@ -140,7 +140,6 @@ class RestoController extends Controller
 
         $data = Resto::findOrFail($request->id);
         $data->update($request->except([$request->url_getdata]));
-        $data->save();
 
         return redirect()->back()->with('sukses', 'Anda Berhasil Update Resto/Cafe!!!');
     }

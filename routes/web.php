@@ -10,6 +10,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\DapurkasirController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::controller(GoogleController::class)->group(function () {
 Route::group(['middleware' => ['isLogin']], function () {
     // Akses Super Admin
     // Route::group(['middleware' => ['checkRole:super_admin']], function () {
-    Route::get('/dashboard', [HomeController::class, 'index2'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index2']);
     //Kelola_resto
     Route::get('/kelola_resto', [RestoController::class, 'index'])->name('kelola-resto');
     Route::get('/resto/getdata/{id}', [RestoController::class, 'getdata'])->name('getdataresto');
@@ -72,6 +73,14 @@ Route::group(['middleware' => ['isLogin']], function () {
     Route::post('/user_dapur_kasir/input', [DapurkasirController::class, 'store']);
     Route::post('/user_dapur_kasir/update', [DapurkasirController::class, 'update']);
     Route::get('/user_dapur_kasir/hapus/{id}', [DapurkasirController::class, 'destroy']);
+    // });
+
+    // Route::group(['middleware' => ['checkRole:dapur']], function () {
+    Route::get('/kelola_menu', [MenuController::class, 'index']);
+    Route::get('/menu/getdata/{id}', [MenuController::class, 'getdata']);
+    Route::post('/menu/input', [MenuController::class, 'store']);
+    Route::post('/menu/update', [MenuController::class, 'update']);
+    Route::get('/menu/hapus/{id}', [MenuController::class, 'destroy']);
     // });
 
     // Akses User

@@ -6,13 +6,13 @@
     <base href="../../../">
     <meta charset="utf-8" />
     @if (Auth::user()->role == 'super_admin')
-        <title>Super Admin | OrderKuy!!!</title>
+        <title>Super Admin | {{ config('app.name') }}</title>
     @elseif (Auth::user()->role == 'admin')
-        <title>Admin Toko | OrderKuy!!!</title>
+        <title>Admin Toko | {{ config('app.name') }}</title>
     @elseif(Auth::user()->role == 'kasir')
-        <title>Kasir Toko | OrderKuy!!!</title>
+        <title>Kasir Toko | {{ config('app.name') }}</title>
     @else
-        <title>Dapur Toko | OrderKuy!!!</title>
+        <title>Dapur Toko | {{ config('app.name') }}</title>
     @endif
     <meta name="description" content="Basic datatables examples" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

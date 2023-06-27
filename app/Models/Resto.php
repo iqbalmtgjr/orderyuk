@@ -17,4 +17,9 @@ class Resto extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    function menu()
+    {
+        return $this->hasOne(Menu::class);
+    }
 }

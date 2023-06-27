@@ -47,23 +47,28 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    function pelanggan()
+    public function pelanggan()
     {
         return $this->hasOne(Pelanggan::class);
     }
 
-    function admin()
+    public function admin()
     {
         return $this->hasOne(Admin::class);
     }
 
-    function dapur()
+    public function dapur()
     {
         return $this->hasOne(Dapur::class);
     }
 
-    function kasir()
+    public function kasir()
     {
         return $this->hasOne(Kasir::class);
+    }
+
+    public function resto()
+    {
+        return $this->hasOne(Resto::class);
     }
 }

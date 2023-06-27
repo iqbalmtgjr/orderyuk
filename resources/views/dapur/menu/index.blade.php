@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" type="text/css">
 @endsection
 @section('content')
-    <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class="container">
@@ -12,7 +11,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">Data Pengguna
+                        <h3 class="card-label">Data Menu {{ auth()->user()->resto->nama_resto }}
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -107,7 +106,7 @@
                                     </g>
                                 </svg>
                                 <!--end::Svg Icon-->
-                            </span>Tambah Pengguna</button>
+                            </span>Tambah Menu</button>
                         <!--end::Button-->
                     </div>
                 </div>
@@ -117,43 +116,14 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Alamat</th>
-                                <th>No Hp</th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Qty</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->role }}</td>
-                                        @if ($item->role == 'kasir')
-                                            <td>{{ $item->kasir->alamat }}</td>
-                                            <td>{{ $item->kasir->no_hp }}</td>
-                                        @else
-                                            <td>{{ $item->dapur->alamat }}</td>
-                                            <td>{{ $item->dapur->no_hp }}</td>
-                                        @endif
-                                        <td nowrap="nowrap">
-                                            <button onclick="getdata({{ $item->id }})" id="{{ $item->id }}"
-                                                class="btn btn-success font-weight-bold mr-2" data-toggle="modal"
-                                                data-target="#edit">
-                                                <i class="flaticon-edit-1"></i>
-                                                Edit
-                                            </button>
-                                            <button class="btn btn-danger font-weight-bold mr-2 delete"
-                                                nama="{{ $item->name }}" id="{{ $item->id }}">
-                                                <i class="flaticon2-trash"></i>
-                                                Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
                         </tbody>
                     </table>
                     <!--end: Datatable-->
@@ -164,8 +134,8 @@
         <!--end::Container-->
     </div>
     <!--end::Entry-->
-    @include('admin/dapurkasir/modaltambah')
-    @include('admin/dapurkasir/modaledit')
+    @include('dapur/menu/modaltambah')
+    @include('dapur/menu/modaledit')
 @endsection
 @section('footer')
     <!--begin::Global Theme Bundle(used by all pages)-->
@@ -190,7 +160,7 @@
             // console.log(Id);
             Swal.fire({
                     title: 'Yakin?',
-                    text: "Mau Hapus " + Nama + "?",
+                    text: "Mau Hapus Menu " + Nama + "?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -200,7 +170,7 @@
                 .then((result) => {
                     console.log(result);
                     if (result.value) {
-                        window.location = `{{ url('/user_dapur_kasir/hapus/') }}/${Id}`;
+                        window.location = `{{ url('/menu/hapus/') }}/${Id}`;
                     }
                 });
         })
@@ -210,7 +180,7 @@
                 // responsive: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('/kelola_user_dapur_kasir') }}",
+                ajax: "{{ url('/kelola_menu') }}",
                 columns: [{
                         // data: 'id',
                         // name: 'id',
@@ -219,24 +189,20 @@
                         }
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'nama_produk',
+                        name: 'nama_produk'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'kategori',
+                        name: 'kategori'
                     },
                     {
-                        data: 'role',
-                        name: 'role'
+                        data: 'harga',
+                        name: 'harga'
                     },
                     {
-                        data: 'alamat',
-                        name: 'alamat'
-                    },
-                    {
-                        data: 'no_hp',
-                        name: 'no_hp'
+                        data: 'qty',
+                        name: 'qty'
                     },
                     {
                         data: 'aksi',
