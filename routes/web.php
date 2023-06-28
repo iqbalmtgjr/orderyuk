@@ -59,6 +59,7 @@ Route::group(['middleware' => ['isLogin']], function () {
     Route::post('/resto/input', [RestoController::class, 'store'])->name('resto-input');
     Route::post('/resto/update', [RestoController::class, 'update'])->name('update-resto');
     Route::get('/resto/hapus/{id}', [RestoController::class, 'destroy'])->name('hapus-resto');
+    Route::get('/changeOperasional', [RestoController::class, 'changeOperasional'])->name('changeOperasional');
     //Kelola_user
     Route::get('/kelola_user', [UserController::class, 'index'])->name('kelola-user');
     Route::get('/user/getdata/{id}', [UserController::class, 'getdata'])->name('getdatauser');

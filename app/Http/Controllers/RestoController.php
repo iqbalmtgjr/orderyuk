@@ -144,6 +144,13 @@ class RestoController extends Controller
         return redirect()->back()->with('sukses', 'Anda Berhasil Update Resto/Cafe!!!');
     }
 
+    function changeOperasional(Request $request)
+    {
+        $data = Resto::find($request->resto_id);
+        $data->operasional = $request->operasional;
+        $data->save();
+    }
+
     /**
      * Remove the specified resource from storage.
      */

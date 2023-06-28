@@ -4,18 +4,28 @@
 <script src={{ asset('admin/plugins/custom/prismjs/prismjs.bundle.js') }}></script>
 <script src={{ asset('admin/js/scripts.bundle.js') }}></script>
 <!--end::Global Theme Bundle-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"
-    integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src={{ asset('admin/js/pages/crud/forms/widgets/bootstrap-switch.js') }}></script>
 <script>
     $(function() {
-        $('.toggle-class').change(function() {
-            var operasional = $(this).prop('checked') == true ? 'buka' : 'tutup';
-            var resto_id = $(this).data('id');
-        })
+        $('.berubah').change(function() {
+            console.log('woi');
+            let data = $(this).data()
+            var operasional = $(this).prop('checked') == true ? 1 : 0;
+            var resto_id = data.id;
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/changeOperasional',
+                data: {
+                    'operasional': operasional,
+                    'resto_id': resto_id
+                },
+                success: function(data) {
+                    console.log('Success');
+                }
+            });
+        });
     });
-
 
     var KTAppSettings = {
         "breakpoints": {
@@ -98,23 +108,6 @@
 
     @if (Session::has('info'))
         toastr.warning("{{ Session::get('info') }}", "Info")
-    @endif
-
-    // get message
-    @if ($message = Session::get('infoo'))
-        toastr.info("{{ $message }}", "Info")
-    @endif
-
-    @if ($message = Session::get('suksess'))
-        toastr.success("{{ $message }}", "Berhasil")
-    @endif
-
-    @if ($message = Session::get('gagall'))
-        toastr.error("{{ $message }}", "Gagal")
-    @endif
-
-    @if ($message = Session::get('peringatann'))
-        toastr.warning("{{ $message }}", "Peringatan")
     @endif
 </script>
 </body>

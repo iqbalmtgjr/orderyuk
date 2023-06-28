@@ -424,10 +424,10 @@
                             <label for="">Status Toko</label>
                         </div>
                         <div class="col-3">
-                            <input data-id="{{ auth()->user()->resto->id }}" data-switch="true" type="checkbox"
-                                data-on-text="Buka" data-handle-width="50" data-off-text="Tutup"
-                                data-on-color="success"
-                                {{ auth()->user()->resto->operasional ? 'checked="checked"' : '' }}>
+                            <input {{ auth()->user()->resto->operasional ? 'checked' : '' }} data-switch="true"
+                                data-id="{{ auth()->user()->resto->id }}" class="berubah" type="checkbox"
+                                data-on-text="Buka" data-off-text="Tutup" data-on-color="success"
+                                data-off-color="danger">
                         </div>
                     </div>
                 @endif
