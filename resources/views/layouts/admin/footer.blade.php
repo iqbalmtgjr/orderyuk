@@ -1,5 +1,22 @@
 <!--begin::Global Config(global config for global JS scripts)-->
+<!--begin::Global Theme Bundle(used by all pages)-->
+<script src={{ asset('admin/plugins/global/plugins.bundle.js') }}></script>
+<script src={{ asset('admin/plugins/custom/prismjs/prismjs.bundle.js') }}></script>
+<script src={{ asset('admin/js/scripts.bundle.js') }}></script>
+<!--end::Global Theme Bundle-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"
+    integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src={{ asset('admin/js/pages/crud/forms/widgets/bootstrap-switch.js') }}></script>
 <script>
+    $(function() {
+        $('.toggle-class').change(function() {
+            var operasional = $(this).prop('checked') == true ? 'buka' : 'tutup';
+            var resto_id = $(this).data('id');
+        })
+    });
+
+
     var KTAppSettings = {
         "breakpoints": {
             "sm": 576,

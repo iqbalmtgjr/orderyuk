@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_resto');
             $table->string('alamat');
             $table->string('status');
-            $table->string('operasional');
+            $table->integer('operasional');
             $table->timestamps();
         });
     }

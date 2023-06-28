@@ -112,7 +112,7 @@ class RestoController extends Controller
             'nama_resto' => $request->nama_resto,
             'status' => $request->status,
             'alamat' => $request->alamat_resto,
-            'operasional' => 'tutup'
+            'operasional' => 0
         ]);
 
         return redirect()->back()->with('sukses', 'Resto/Cafe Berhasil Diinput!!!');

@@ -420,16 +420,14 @@
                 </div>
                 @if (auth()->user()->role == 'admin')
                     <div class="d-flex align-items-center">
-                        <label class="col-form-label col-8 text-lg-right text-left">Toko Buka</label>
+                        <div class="col-6">
+                            <label for="">Status Toko</label>
+                        </div>
                         <div class="col-3">
-                            <span class="switch">
-                                <label>
-                                    <form action="" method="post">
-                                        <input type="checkbox" checked="checked" name="select">
-                                    </form>
-                                    <span></span>
-                                </label>
-                            </span>
+                            <input data-id="{{ auth()->user()->resto->id }}" data-switch="true" type="checkbox"
+                                data-on-text="Buka" data-handle-width="50" data-off-text="Tutup"
+                                data-on-color="success"
+                                {{ auth()->user()->resto->operasional ? 'checked="checked"' : '' }}>
                         </div>
                     </div>
                 @endif
