@@ -39,6 +39,5 @@
     <link rel="shortcut icon" href={{ asset('assets/img/orderyuklogo.png') }} />
     {{-- Toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-
 </head>
 <!--end::Head-->

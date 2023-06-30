@@ -5,27 +5,54 @@
 <script src={{ asset('admin/js/scripts.bundle.js') }}></script>
 <!--end::Global Theme Bundle-->
 <script src={{ asset('admin/js/pages/crud/forms/widgets/bootstrap-switch.js') }}></script>
-<script>
-    $(function() {
-        $('.berubah').change(function() {
-            console.log('woi');
-            let data = $(this).data()
-            var operasional = $(this).prop('checked') == true ? 1 : 0;
-            var resto_id = data.id;
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '/changeOperasional',
-                data: {
-                    'operasional': operasional,
-                    'resto_id': resto_id
-                },
-                success: function(data) {
-                    console.log('Success');
-                }
-            });
+<script type="text/javascript">
+    function operasional(value, id) {
+        // alert(id);
+        console.log(id);
+
+        // $('.toggle-class').change(function() {
+        //     var operasional = $(this).prop('checked') == true ? 1 : 0;
+        if (value == 1) {
+            document.getElementById("qwe").style.backgroundColor = "#1BC5BD";
+        } else {
+            document.getElementById("qwe").style.backgroundColor = "#F64E60";
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '/changeOperasional',
+            data: {
+                'operasional': value,
+                'resto_id': id
+            },
+            success: function(result) {
+                console.log('Success');
+            }
         });
-    });
+        //     });
+    }
+</script>
+<script>
+    // $(function() {
+    //     $('.toggle-class').change(function() {
+    //         // let data = $(this).data()
+    //         var operasional = $(this).prop('selected') == true ? 1 : 0;
+    //         console.log(operasional);
+    //         var resto_id = $(this).data('id');
+    //         $.ajax({
+    //             type: "GET",
+    //             dataType: "json",
+    //             url: '/changeOperasional',
+    //             data: {
+    //                 'operasional': operasional,
+    //                 'resto_id': resto_id
+    //             },
+    //             success: function(data) {
+    //                 console.log('Success');
+    //             }
+    //         });
+    //     });
+    // });
 
     var KTAppSettings = {
         "breakpoints": {
