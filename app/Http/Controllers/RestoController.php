@@ -147,7 +147,11 @@ class RestoController extends Controller
     function changeOperasional(Request $request)
     {
         $data = Resto::find($request->resto_id);
-        $data->operasional = $request->operasional;
+        if ($data->operasional == 1) {
+            $data->operasional = 0;
+        } else {
+            $data->operasional = 1;
+        }
         $data->save();
     }
 

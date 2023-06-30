@@ -421,36 +421,14 @@
                 @if (auth()->user()->role == 'admin')
                     <div class="d-flex align-items-center">
                         <div class="col-6">
-                            <label for="">Operasional</label>
+                            <label for="">Status Toko</label>
                         </div>
-                        <div class="col-7 omg">
-                            {{-- <input onclick="operasional({{ auth()->user()->resto->id }})" class="toggle-class"
-                                data-id="{{ auth()->user()->resto->id }}" data-switch="true" type="checkbox"
+                        <div class="col-6">
+                            <input onchange="operasional({{ auth()->user()->resto->id }})" class="toggle-class"
+                                data-switch="true" type="checkbox"
                                 {{ auth()->user()->resto->operasional ? 'checked' : '' }} data-on-text="Buka"
-                                data-handle-width="50" data-off-text="Tutup" data-on-color="success"> --}}
-                            @if (auth()->user()->resto->operasional == 1)
-                                <select style="background-color: #1BC5BD"
-                                    onchange="operasional(this.options[this.selectedIndex].value, {{ auth()->user()->resto->id }})"
-                                    class="form-control" id="qwe" name="operasional">
-                                    <option value="1" @if (auth()->user()->resto->operasional == 1) selected @endif>
-                                        Buka
-                                    </option>
-                                    <option value="0" @if (auth()->user()->resto->operasional == 0) selected @endif>
-                                        Tutup
-                                    </option>
-                                </select>
-                            @else
-                                <select style="background-color: #F64E60"
-                                    onchange="operasional(this.options[this.selectedIndex].value, {{ auth()->user()->resto->id }})"
-                                    class="form-control" id="qwe" name="operasional">
-                                    <option value="1" @if (auth()->user()->resto->operasional == 1) selected @endif>
-                                        Buka
-                                    </option>
-                                    <option value="0" @if (auth()->user()->resto->operasional == 0) selected @endif>
-                                        Tutup
-                                    </option>
-                                </select>
-                            @endif
+                                data-handle-width="50" data-off-text="Tutup" data-on-color="success"
+                                data-off-color="danger">
                         </div>
                     </div>
                 @endif

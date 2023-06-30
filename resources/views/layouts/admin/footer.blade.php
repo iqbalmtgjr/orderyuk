@@ -5,54 +5,28 @@
 <script src={{ asset('admin/js/scripts.bundle.js') }}></script>
 <!--end::Global Theme Bundle-->
 <script src={{ asset('admin/js/pages/crud/forms/widgets/bootstrap-switch.js') }}></script>
-<script type="text/javascript">
-    function operasional(value, id) {
+<script>
+    function operasional(id) {
         // alert(id);
-        console.log(id);
+        // console.log(id);
 
-        // $('.toggle-class').change(function() {
-        //     var operasional = $(this).prop('checked') == true ? 1 : 0;
-        if (value == 1) {
-            document.getElementById("qwe").style.backgroundColor = "#1BC5BD";
-        } else {
-            document.getElementById("qwe").style.backgroundColor = "#F64E60";
-        }
         $.ajax({
             type: "GET",
             dataType: "json",
             url: '/changeOperasional',
             data: {
-                'operasional': value,
                 'resto_id': id
             },
             success: function(result) {
-                console.log('Success');
+                console.log(data);
+                if (response == 1) {
+                    toastr.success("Toko Buka Hari ini", "Yeeeeyyy!!!");
+                } else {
+                    toastr.warning("Toko Tutup Hari ini", "Istirahat!!!");
+                }
             }
         });
-        //     });
     }
-</script>
-<script>
-    // $(function() {
-    //     $('.toggle-class').change(function() {
-    //         // let data = $(this).data()
-    //         var operasional = $(this).prop('selected') == true ? 1 : 0;
-    //         console.log(operasional);
-    //         var resto_id = $(this).data('id');
-    //         $.ajax({
-    //             type: "GET",
-    //             dataType: "json",
-    //             url: '/changeOperasional',
-    //             data: {
-    //                 'operasional': operasional,
-    //                 'resto_id': resto_id
-    //             },
-    //             success: function(data) {
-    //                 console.log('Success');
-    //             }
-    //         });
-    //     });
-    // });
 
     var KTAppSettings = {
         "breakpoints": {
@@ -136,6 +110,7 @@
     @if (Session::has('info'))
         toastr.warning("{{ Session::get('info') }}", "Info")
     @endif
+    // toastr.warning("Huf", "Info")
 </script>
 </body>
 
