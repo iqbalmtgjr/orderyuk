@@ -6,7 +6,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/menu/input') }}" method="POST">
+                <form action="{{ url('/menu/input') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">
@@ -51,6 +51,16 @@
                                     <input type="number" class="form-control" name="qty"
                                         value="{{ old('qty') }}" placeholder="Banyaknya Menu ...">
                                     @error('qty')
+                                        <div class="text-danger ml-3 mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Foto Produk</label>
+                                    <input type="file" class="form-control" name="foto"
+                                        value="{{ old('foto') }}">
+                                    @error('foto')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}
                                         </div>

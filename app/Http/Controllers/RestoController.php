@@ -24,6 +24,12 @@ class RestoController extends Controller
         if ($request->ajax()) {
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('foto', function ($row) {
+                    if ($row->foto == null) {
+                        return '<p style="color:red">Foto Toko Belum Ada</p>';
+                    }
+                    return '<img class="card-img-top" style="height: 120px; width: 180px; object-fit: cover; object-position: center;" src="assets/img/resto/' . $row->foto . '" alt="foto-toko">';
+                })
                 ->addColumn('pemilik', function ($row) {
                     return $row->user->name;
                 })
@@ -32,7 +38,7 @@ class RestoController extends Controller
                     $actionBtn .= '<button class="btn btn-sm btn-clean btn-icon delete" title="Hapus" data-nama="' . $row->nama_resto . '" data-id="' . $row->id . '"><i class="la la-trash"></i></button>';
                     return $actionBtn;
                 })
-                ->rawColumns(['pemilik', 'aksi'])
+                ->rawColumns(['foto', 'pemilik', 'aksi'])
                 ->make(true);
         }
         return view('super_admin.toko.index');
@@ -76,20 +82,13 @@ class RestoController extends Controller
             }
         }
         $make_password = 'qweasdzxc123';
+        // $make_password = Str::random(8);
         $user = User::updateOrCreate([
             'role' => 'admin',
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($make_password)
         ]);
-        // $user = new User;
-        // $user->role = 'admin';
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // // $make_password = Str::random(8);
-        // $make_password = 'qweasdzxc123';
-        // $user->password = Hash::make($make_password);
-        // $user->save();
 
         //create_admin
         $admin = Admin::updateOrCreate([
@@ -98,22 +97,29 @@ class RestoController extends Controller
             'alamat' => $request->alamat,
             'username' => $request->username,
         ]);
-        // $admin = new Admin;
-        // $admin->user_id = $user->id;
-        // $admin->no_hp = $request->no_hp;
-        // $admin->alamat = $request->alamat;
-        // $admin->username = $request->username;
-        // $admin->save();
 
-        Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
+        // Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
 
-        $resto = Resto::create([
-            'user_id' => $user->id,
-            'nama_resto' => $request->nama_resto,
-            'status' => $request->status,
-            'alamat' => $request->alamat_resto,
-            'operasional' => 0
-        ]);
+        if ($request->file('foto')) {
+            $nama_foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            $request->file('foto')->move(public_path('assets/img/resto/'), $nama_foto);
+            $resto = Resto::create([
+                'user_id' => $user->id,
+                'nama_resto' => $request->nama_resto,
+                'alamat' => $request->alamat_resto,
+                'status' => $request->status,
+                'foto' => $nama_foto,
+                'operasional' => 0
+            ]);
+        } else {
+            $resto = Resto::create([
+                'user_id' => $user->id,
+                'nama_resto' => $request->nama_resto,
+                'status' => $request->status,
+                'alamat' => $request->alamat_resto,
+                'operasional' => 0
+            ]);
+        }
 
         return redirect()->back()->with('sukses', 'Resto/Cafe Berhasil Diinput!!!');
     }
@@ -123,11 +129,13 @@ class RestoController extends Controller
      */
     public function update(Request $request)
     {
+        // dd($request->foto);
         $validator = Validator::make($request->all(), [
             //resto
             'nama_resto' => 'required',
             'status' => 'required',
             'alamat_resto' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,png|max:5000'
         ]);
 
         if ($validator->fails()) {
@@ -139,7 +147,28 @@ class RestoController extends Controller
         }
 
         $data = Resto::findOrFail($request->id);
-        $data->update($request->except([$request->url_getdata]));
+
+        if ($request->file('foto')) {
+            // Hapus Foto Lama
+            $path = public_path('assets/img/resto/' . $data->foto);
+            if (file_exists($path)) {
+                @unlink($path);
+            }
+
+            $nama_foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            // dd($foto);
+            $request->file('foto')->move(public_path('assets/img/resto/'), $nama_foto);
+            $data->update([
+                'nama_resto' => $request->nama_resto,
+                'alamat' => $request->alamat_resto,
+                'status' => $request->status,
+                'foto' => $nama_foto,
+            ]);
+        } else {
+            $data->update($request->except([$request->url_getdata]));
+        }
+
+
 
         return redirect()->back()->with('sukses', 'Anda Berhasil Update Resto/Cafe!!!');
     }

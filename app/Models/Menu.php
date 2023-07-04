@@ -10,7 +10,7 @@ class Menu extends Model
     use HasFactory;
 
     protected $table = 'menu';
-    protected $fillable = ['daftar_resto_id', 'qty', 'nama_produk', 'kategori', 'harga', 'estimasi'];
+    protected $fillable = ['daftar_resto_id', 'qty', 'nama_produk', 'kategori', 'harga', 'estimasi', 'foto'];
     protected $guarded = [];
 
     public function resto()

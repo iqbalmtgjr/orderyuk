@@ -2,11 +2,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Resto/Cafe</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Toko</h5>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/resto/update') }}" method="POST">
+                <form action="{{ url('/resto/update') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">
@@ -15,7 +15,7 @@
                                 <input type="hidden" id="url_getdata" name="url_getdata"
                                     value="{{ url('/resto/getdata/') }}">
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">Nama Resto/Cafe</label>
+                                    <label for="recipient-name" class="col-form-label">Nama Toko</label>
                                     <input type="text" class="form-control" id="nama_resto" name="nama_resto"
                                         value="{{ old('nama_resto') }}" placeholder="Nama Resto ...">
                                     @error('nama_resto')
@@ -39,10 +39,20 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Alamat Resto/Cafe</label>
+                                    <label for="message-text" class="col-form-label">Alamat Toko</label>
                                     <textarea class="form-control" name="alamat_resto" id="alamat_resto" cols="30" rows="5"
                                         placeholder="Alamat ...">{{ old('alamat_resto') }}</textarea>
                                     @error('alamat_resto')
+                                        <div class="text-danger ml-3 mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Foto Toko</label>
+                                    <input type="file" class="form-control" name="foto"
+                                        value="{{ old('foto') }}">
+                                    @error('foto')
                                         <div class="text-danger ml-3 mt-2">
                                             {{ $message }}
                                         </div>

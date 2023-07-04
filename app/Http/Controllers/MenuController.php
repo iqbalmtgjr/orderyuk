@@ -18,15 +18,18 @@ class MenuController extends Controller
         if ($request->ajax()) {
             return Datatables::of($data)
                 ->addIndexColumn()
-                // ->addColumn('pemilik', function ($row) {
-                //     return $row->user->name;
-                // })
+                ->addColumn('foto', function ($row) {
+                    if ($row->foto == null) {
+                        return '<p style="color:red">Foto Menu Belum Ada</p>';
+                    }
+                    return '<img class="card-img-top" style="height: 120px; width: 180px; object-fit: cover; object-position: center;" src="assets/img/menu/' . $row->foto . '" alt="foto-menu">';
+                })
                 ->addColumn('aksi', function ($row) {
                     $actionBtn = '<button onclick="getdata(' . $row->id . ')" id="' . $row->id . '" class="btn btn-sm btn-clean btn-icon" title="Edit" data-toggle="modal" data-target="#edit"><i class="la la-edit"></i></button>';
                     $actionBtn .= '<button class="btn btn-sm btn-clean btn-icon delete" title="Hapus" data-nama="' . $row->nama_produk . '" data-id="' . $row->id . '"><i class="la la-trash"></i></button>';
                     return $actionBtn;
                 })
-                ->rawColumns(['aksi'])
+                ->rawColumns(['foto', 'aksi'])
                 ->make(true);
         }
         return view('dapur.menu.index');
@@ -52,13 +55,26 @@ class MenuController extends Controller
                 ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
         }
 
-        Menu::create([
-            'daftar_resto_id' => $request->daftar_resto_id,
-            'nama_produk' => $request->nama_produk,
-            'kategori' => $request->kategori,
-            'harga' => $request->harga,
-            'qty' => $request->qty,
-        ]);
+        if ($request->file('foto')) {
+            $nama_foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            $request->file('foto')->move(public_path('assets/img/menu/'), $nama_foto);
+            Menu::create([
+                'daftar_resto_id' => $request->daftar_resto_id,
+                'nama_produk' => $request->nama_produk,
+                'kategori' => $request->kategori,
+                'harga' => $request->harga,
+                'qty' => $request->qty,
+                'foto' => $nama_foto,
+            ]);
+        } else {
+            Menu::create([
+                'daftar_resto_id' => $request->daftar_resto_id,
+                'nama_produk' => $request->nama_produk,
+                'kategori' => $request->kategori,
+                'harga' => $request->harga,
+                'qty' => $request->qty,
+            ]);
+        }
 
         return redirect()->back()->with('sukses', 'Input menu berhasil!!!');
     }
@@ -83,7 +99,20 @@ class MenuController extends Controller
                 ->with('gagal', 'Ada Kesalahan Saat Penginputan!');
         }
 
-        $update = Menu::findOrFail($request->id)->update($request->except([$request->url_getdata]));
+        $data = Menu::findOrFail($request->id);
+        if ($request->file('foto')) {
+            $nama_foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            $request->file('foto')->move(public_path('assets/img/menu/'), $nama_foto);
+            $data->update([
+                'nama_produk' => $request->nama_produk,
+                'kategori' => $request->kategori,
+                'harga' => $request->harga,
+                'qty' => $request->qty,
+                'foto' => $nama_foto,
+            ]);
+        } else {
+            $data->update($request->except([$request->url_getdata]));
+        }
 
         return redirect()->back()->with('sukses', 'Data menu berhasil diupdate!!!');
     }
