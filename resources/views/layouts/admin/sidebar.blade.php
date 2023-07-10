@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">Menu</h4>
+                    <h4 class="menu-text">Menu Super Admin</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 {{-- Kelola User --}}
@@ -115,6 +115,10 @@
                         <span class="menu-text">Kelola Resto/Cafe</span>
                     </a>
                 </li>
+                <li class="menu-section">
+                    <h4 class="menu-text">Menu Admin</h4>
+                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                </li>
                 {{-- Kelola Dapur/Kasir --}}
                 <li class="menu-item {{ request()->is('kelola_user_dapur_kasir') ? 'menu-item-active' : '' }}"
                     aria-haspopup="true">
@@ -138,6 +142,36 @@
                         <span class="menu-text">Kelola User Dapur/Kasir</span>
                     </a>
                 </li>
+                {{-- Kelola Pelaporan --}}
+                <li class="menu-item {{ request()->is('pelaporan') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                    <a href={{ url('/pelaporan') }} class="menu-link">
+                        <span class="svg-icon menu-icon">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="4"
+                                        width="3" height="13" rx="1.5" />
+                                    <rect fill="#000000" opacity="0.3" x="12" y="9"
+                                        width="3" height="8" rx="1.5" />
+                                    <path
+                                        d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z"
+                                        fill="#000000" fill-rule="nonzero" />
+                                    <rect fill="#000000" opacity="0.3" x="17" y="11"
+                                        width="3" height="6" rx="1.5" />
+                                </g>
+                            </svg>
+                            {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-text">Pelaporan</span>
+                    </a>
+                </li>
+                <li class="menu-section">
+                    <h4 class="menu-text">Menu Pengguna Dapur</h4>
+                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                </li>
                 {{-- Kelola_Menu --}}
                 <li class="menu-item {{ request()->is('kelola_menu') ? 'menu-item-active' : '' }}"
                     aria-haspopup="true">
@@ -149,18 +183,93 @@
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24" />
                                     <path
-                                        d="M7,17 C9.28100068,17 11,15.9686004 11,15 C11,14.0313996 9.28100068,13 7,13 C4.71899932,13 3,14.0313996 3,15 C3,15.9686004 4.71899932,17 7,17 Z M11.5,21.3092376 C10.6896396,22.3100893 8.97910086,23 7,23 C4.23857625,23 2,21.6568542 2,20 C2,17.2642141 2,15.5975474 2,15 C2,13.3431458 4.23857625,12 7,12 C8.97910086,12 10.6896396,12.6899107 11.5,13.6907624 C12.3103604,12.6899107 14.0208991,12 16,12 C18.7614237,12 21,13.3431458 21,15 C21,15.3356863 21,17.0023529 21,20 C21,21.6568542 18.7614237,23 16,23 C14.0208991,23 12.3103604,22.3100893 11.5,21.3092376 Z M16,17 C18.2810007,17 20,15.9686004 20,15 C20,14.0313996 18.2810007,13 16,13 C13.7189993,13 12,14.0313996 12,15 C12,15.9686004 13.7189993,17 16,17 Z"
-                                        fill="#000000" fill-rule="nonzero" />
+                                        d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z"
+                                        fill="#000000" />
                                     <path
-                                        d="M19.6608485,2.02106698 C19.8359854,2.52970126 19.5656323,3.08400728 19.056998,3.25914411 C19.0489211,3.2619252 19.040808,3.26459992 19.0326607,3.26716758 L2.33565766,8.52933019 C2.07027996,8.61296559 1.78658327,8.46994761 1.6959956,8.20686191 C1.60540793,7.94377622 1.74091331,7.65641538 2.00152489,7.55893815 L18.3986537,1.42587734 C18.9025046,1.23742064 19.4637309,1.49309823 19.6521876,1.99694922 C19.6551802,2.00495015 19.6580674,2.01299009 19.6608485,2.02106698 Z M20.9715106,6.55164469 C21.0649233,7.08141428 20.7111861,7.58660332 20.1814165,7.68001599 C20.173004,7.68149934 20.1645723,7.68287196 20.1561237,7.68413349 L2.84150489,10.2695234 C2.56631096,10.3106149 2.30848,10.1249778 2.26016328,9.85096006 C2.21184657,9.57694235 2.39063678,9.31431712 2.6632886,9.25880863 L19.8179636,5.76633204 C20.3450925,5.65901521 20.8594123,5.99934012 20.9667291,6.52646899 C20.9684333,6.53483956 20.9700272,6.54323218 20.9715106,6.55164469 Z M16,16 C15.1715729,16 14.5,15.5522847 14.5,15 C14.5,14.4477153 15.1715729,14 16,14 C16.8284271,14 17.5,14.4477153 17.5,15 C17.5,15.5522847 16.8284271,16 16,16 Z M7,16 C6.17157288,16 5.5,15.5522847 5.5,15 C5.5,14.4477153 6.17157288,14 7,14 C7.82842712,14 8.5,14.4477153 8.5,15 C8.5,15.5522847 7.82842712,16 7,16 Z"
+                                        d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z"
                                         fill="#000000" opacity="0.3" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+
+                        <span class="menu-text">Kelola Menu</span>
+                    </a>
+                </li>
+                {{-- Pesanan --}}
+                <li class="menu-item {{ request()->is('pesanan') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                    <a href={{ url('/pesanan') }} class="menu-link active">
+                        <span class="svg-icon menu-icon">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path
+                                        d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z"
+                                        fill="#000000" opacity="0.3" />
+                                    <path
+                                        d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
+                                        fill="#000000" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="9"
+                                        width="7" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="9"
+                                        width="2" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="13"
+                                        width="2" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="13"
+                                        width="7" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="17"
+                                        width="2" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="17"
+                                        width="7" height="2" rx="1" />
                                 </g>
                             </svg>
                             {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
                             <!--end::Svg Icon-->
                         </span>
 
-                        <span class="menu-text">Kelola Menu</span>
+                        <span class="menu-text">Pesanan</span>
+                    </a>
+                </li>
+                <li class="menu-section">
+                    <h4 class="menu-text">Menu Pengguna Kasir</h4>
+                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                </li>
+                {{-- Pesanan --}}
+                <li class="menu-item {{ request()->is('pesanan') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                    <a href={{ url('/pesanan') }} class="menu-link active">
+                        <span class="svg-icon menu-icon">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path
+                                        d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z"
+                                        fill="#000000" opacity="0.3" />
+                                    <path
+                                        d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
+                                        fill="#000000" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="9"
+                                        width="7" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="9"
+                                        width="2" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="13"
+                                        width="2" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="13"
+                                        width="7" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="17"
+                                        width="2" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="17"
+                                        width="7" height="2" rx="1" />
+                                </g>
+                            </svg>
+                            {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
+                            <!--end::Svg Icon-->
+                        </span>
+
+                        <span class="menu-text">Pesanan</span>
                     </a>
                 </li>
                 {{-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
