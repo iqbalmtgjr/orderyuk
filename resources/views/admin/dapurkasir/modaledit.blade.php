@@ -6,14 +6,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/user_dapur_kasir/update') }}" method="POST">
+                <form action="{{ url('/karyawan_toko/update') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 ms-auto">
                                 <input type="hidden" id="id" name="id" value="">
                                 <input type="hidden" id="url_getdata" name="url_getdata"
-                                    value="{{ url('/user_dapur_kasir/getdata/') }}">
+                                    value="{{ url('/karyawan_toko/getdata/') }}">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="name" id="name"

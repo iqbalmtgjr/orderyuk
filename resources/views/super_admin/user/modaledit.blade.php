@@ -1,5 +1,5 @@
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Pengguna</h5>
@@ -10,7 +10,7 @@
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12 ms-auto">
+                            <div class="col-md-6 ms-auto">
                                 <input type="hidden" id="id" name="id" value="">
                                 <input type="hidden" id="url_getdata" name="url_getdata"
                                     value="{{ url('/user/getdata/') }}">
@@ -44,6 +44,23 @@
                                         </div>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Toko</label>
+                                    <select class="form-control" name="toko" id="tokoo">
+                                        <option value="">-- Pilih Toko --</option>
+                                        @foreach ($toko as $item)
+                                            <option value="{{ $item->id }}" @selected(old('toko'))>
+                                                {{ $item->nama_toko }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('role')
+                                        <div class="text-danger ml-3 mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 ms-auto">
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Role</label>
                                     <select class="form-control" name="role" id="rolee">
@@ -110,18 +127,22 @@
                     $('#username').val(response.admin.username);
                     $('#alamat').val(response.admin.alamat);
                     $('#no_hp').val(response.admin.no_hp);
+                    $('#tokoo').val(response.admin.toko_id);
                 } else if (response.role == 'user') {
                     $('#username').val(response.pelanggan.username);
                     $('#alamat').val(response.pelanggan.alamat);
                     $('#no_hp').val(response.pelanggan.no_hp);
+                    $('#tokoo').val(response.pelanggan.toko_id);
                 } else if (response.role == 'kasir') {
                     $('#username').val(response.kasir.username);
                     $('#alamat').val(response.kasir.alamat);
                     $('#no_hp').val(response.kasir.no_hp);
+                    $('#tokoo').val(response.kasir.toko_id);
                 } else {
                     $('#username').val(response.dapur.username);
                     $('#alamat').val(response.dapur.alamat);
                     $('#no_hp').val(response.dapur.no_hp);
+                    $('#tokoo').val(response.dapur.toko_id);
                 }
                 $('#rolee').val(response.role);
             }

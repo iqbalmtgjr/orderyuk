@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Resto extends Model
+class Toko extends Model
 {
     use HasFactory;
 
-    protected $table = 'daftar_resto';
-    protected $fillable = ['user_id', 'nama_resto', 'alamat', 'status', 'operasional', 'foto'];
+    protected $table = 'toko';
+    protected $fillable = ['user_id', 'nama_toko', 'alamat', 'status', 'operasional', 'foto'];
     protected $guarded = [];
 
     public function user()

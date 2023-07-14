@@ -10,11 +10,16 @@ class Dapur extends Model
     use HasFactory;
 
     protected $table = 'dapur';
-    protected $fillable = ['user_id', 'username', 'jenis_kelamin', 'no_hp', 'tgl_lahir', 'alamat'];
+    protected $fillable = ['user_id', 'toko_id', 'username', 'jenis_kelamin', 'no_hp', 'tgl_lahir', 'alamat'];
     protected $guarded = [];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function toko()
+    {
+        return $this->belongsTo(Toko::class);
     }
 }

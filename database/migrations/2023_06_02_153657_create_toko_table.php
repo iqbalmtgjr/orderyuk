@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daftar_resto', function (Blueprint $table) {
+        Schema::create('toko', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('nama_resto');
+            $table->string('nama_toko');
             $table->string('alamat');
             $table->string('status');
             $table->integer('operasional');
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('daftar_resto');
+        Schema::dropIfExists('toko');
     }
 };

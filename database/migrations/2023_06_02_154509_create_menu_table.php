@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('daftar_resto_id');
+            $table->foreignId('toko_id');
             $table->string('qty');
             $table->string('nama_produk');
             $table->string('kategori');

@@ -85,10 +85,9 @@
                         <span class="menu-text">Kelola User</span>
                     </a>
                 </li>
-                {{-- Kelola Resto.Cafe --}}
-                <li class="menu-item {{ request()->is('kelola_resto') ? 'menu-item-active' : '' }}"
-                    aria-haspopup="true">
-                    <a href={{ url('/kelola_resto') }} class="menu-link">
+                {{-- Kelola Toko --}}
+                <li class="menu-item {{ request()->is('kelola_toko') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                    <a href={{ url('/kelola_toko') }} class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -112,7 +111,7 @@
                             {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Kelola Resto/Cafe</span>
+                        <span class="menu-text">Kelola Toko</span>
                     </a>
                 </li>
                 <li class="menu-section">
@@ -120,9 +119,9 @@
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 {{-- Kelola Dapur/Kasir --}}
-                <li class="menu-item {{ request()->is('kelola_user_dapur_kasir') ? 'menu-item-active' : '' }}"
+                <li class="menu-item {{ request()->is('kelola_karyawan_toko') ? 'menu-item-active' : '' }}"
                     aria-haspopup="true">
-                    <a href={{ url('/kelola_user_dapur_kasir') }} class="menu-link">
+                    <a href={{ url('/kelola_karyawan_toko') }} class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -139,7 +138,7 @@
                             {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Kelola User Dapur/Kasir</span>
+                        <span class="menu-text">Kelola Karyawan Toko</span>
                     </a>
                 </li>
                 {{-- Kelola Pelaporan --}}

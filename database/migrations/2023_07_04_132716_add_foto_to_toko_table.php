@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('daftar_resto', function (Blueprint $table) {
+        Schema::table('toko', function (Blueprint $table) {
             $table->string('foto')->nullable()->after('operasional');
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('daftar_resto', function (Blueprint $table) {
+        Schema::table('toko', function (Blueprint $table) {
             $table->dropColumn('foto');
         });
     }

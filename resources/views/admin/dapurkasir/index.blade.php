@@ -12,7 +12,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">Data Pengguna
+                        <h3 class="card-label">Data Karyawan Toko
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -97,7 +97,7 @@
                 .then((result) => {
                     console.log(result);
                     if (result.value) {
-                        window.location = `{{ url('/user_dapur_kasir/hapus/') }}/${Id}`;
+                        window.location = `{{ url('/karyawan_toko/hapus/') }}/${Id}`;
                     }
                 });
         })
@@ -107,7 +107,7 @@
                 // responsive: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('/kelola_user_dapur_kasir') }}",
+                ajax: "{{ url('/kelola_karyawan_toko') }}",
                 columns: [{
                         // data: 'id',
                         // name: 'id',

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\Datatables;
 
-class DapurkasirController extends Controller
+class KaryawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -120,7 +120,7 @@ class DapurkasirController extends Controller
 
         Mail::to($user->email)->send(new NotifPendaftaranAkun($user, $make_password));
 
-        return redirect()->back()->with('sukses', 'User Berhasil Diinput!!!');
+        return redirect()->back()->with('sukses', 'Karyawan Berhasil Diinput!!!');
     }
 
     public function update(Request $request)
@@ -192,7 +192,7 @@ class DapurkasirController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('sukses', 'User Berhasil Diedit!!!');
+        return redirect()->back()->with('sukses', 'Karyawan Berhasil Diedit!!!');
     }
 
     /**
@@ -207,7 +207,7 @@ class DapurkasirController extends Controller
         } else {
             $dapur = Dapur::where('user_id', $id)->delete();
         }
-        return redirect()->back()->with('sukses', 'Data User Berhasil Dihapus!!!');
+        return redirect()->back()->with('sukses', 'Data Karyawan Berhasil Dihapus!!!');
     }
 
     public function getdata($id)

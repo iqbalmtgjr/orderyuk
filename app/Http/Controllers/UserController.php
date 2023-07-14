@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Toko;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Dapur;
@@ -23,6 +24,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = User::where('role', '!=', 'super_admin')->get();
+        $toko = Toko::all();
         if ($request->ajax()) {
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -56,7 +58,7 @@ class UserController extends Controller
                 ->rawColumns(['no_hp', 'alamat', 'aksi'])
                 ->make(true);
         }
-        return view('super_admin.user.index');
+        return view('super_admin.user.index', compact('toko'));
     }
 
     function indexx()
@@ -70,15 +72,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:50',
-            'username' => 'required|max:50',
-            'email' => 'required|max:35|unique:users|email',
-            'no_hp' => 'required',
-            'jenis_kelamin' => 'required',
-            'alamat' => 'required',
-            'role' => 'required',
-        ]);
+        if ($request->role == 'user') {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|max:50',
+                'username' => 'required|max:50',
+                'email' => 'required|max:35|unique:users|email',
+                'no_hp' => 'required',
+                'jenis_kelamin' => 'required',
+                'alamat' => 'required',
+                'role' => 'required',
+            ]);
+        } else {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|max:50',
+                'username' => 'required|max:50',
+                'email' => 'required|max:35|unique:users|email',
+                'no_hp' => 'required',
+                'jenis_kelamin' => 'required',
+                'alamat' => 'required',
+                'role' => 'required',
+                'toko' => 'required',
+            ]);
+        }
 
         if ($validator->fails()) {
             return redirect()
@@ -98,12 +113,14 @@ class UserController extends Controller
             $make_password = 'qweasdzxc123';
             $user->password = Hash::make($make_password);
             $user->save();
+
             //create_admin
             $admin = new Admin;
             $admin->user_id = $user->id;
             $admin->no_hp = $request->no_hp;
             $admin->alamat = $request->alamat;
             $admin->username = $request->username;
+            $admin->toko_id = $request->toko;
             $admin->save();
         } elseif ($request->role == 'user') {
             //create_users
@@ -115,6 +132,7 @@ class UserController extends Controller
             $make_password = 'qweasdzxc123';
             $user->password = Hash::make($make_password);
             $user->save();
+
             //create_pelanggan
             $pelanggan = new Pelanggan;
             $pelanggan->user_id = $user->id;
@@ -132,12 +150,14 @@ class UserController extends Controller
             $make_password = 'qweasdzxc123';
             $user->password = Hash::make($make_password);
             $user->save();
+
             //create_kasir
             $kasir = new Kasir;
             $kasir->user_id = $user->id;
             $kasir->no_hp = $request->no_hp;
             $kasir->alamat = $request->alamat;
             $kasir->username = $request->username;
+            $kasir->toko_id = $request->toko;
             $kasir->save();
         } else {
             //create_users
@@ -149,12 +169,14 @@ class UserController extends Controller
             $make_password = 'qweasdzxc123';
             $user->password = Hash::make($make_password);
             $user->save();
+
             //create_dapur
             $dapur = new Dapur;
             $dapur->user_id = $user->id;
             $dapur->no_hp = $request->no_hp;
             $dapur->alamat = $request->alamat;
             $dapur->username = $request->username;
+            $dapur->toko_id = $request->toko;
             $dapur->save();
         }
 

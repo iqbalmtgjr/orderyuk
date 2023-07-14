@@ -10,11 +10,11 @@ class Menu extends Model
     use HasFactory;
 
     protected $table = 'menu';
-    protected $fillable = ['daftar_resto_id', 'qty', 'nama_produk', 'kategori', 'harga', 'estimasi', 'foto'];
+    protected $fillable = ['toko_id', 'qty', 'nama_produk', 'kategori', 'harga', 'estimasi', 'foto'];
     protected $guarded = [];
 
-    public function resto()
+    public function toko()
     {
-        return $this->belongsTo(Resto::class);
+        return $this->belongsTo(Toko::class);
     }
 }

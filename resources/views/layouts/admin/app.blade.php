@@ -419,18 +419,20 @@
                     <!--end::Page Heading-->
                 </div>
                 @if (auth()->user()->role == 'admin')
-                    <div class="d-flex align-items-center">
-                        <div class="col-6">
-                            <label for="">Status Toko</label>
+                    @if (auth()->user()->admin->toko_id != null)
+                        <div class="d-flex align-items-center">
+                            <div class="col-6">
+                                <label for="">Status Toko</label>
+                            </div>
+                            <div class="col-6">
+                                <input onchange="operasional({{ auth()->user()->admin->toko_id }})"
+                                    class="toggle-class" data-switch="true" type="checkbox"
+                                    {{ auth()->user()->admin->toko->operasional ? 'checked' : '' }} data-on-text="Buka"
+                                    data-handle-width="50" data-off-text="Tutup" data-on-color="success"
+                                    data-off-color="danger">
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <input onchange="operasional({{ auth()->user()->resto->id }})" class="toggle-class"
-                                data-switch="true" type="checkbox"
-                                {{ auth()->user()->resto->operasional ? 'checked' : '' }} data-on-text="Buka"
-                                data-handle-width="50" data-off-text="Tutup" data-on-color="success"
-                                data-off-color="danger">
-                        </div>
-                    </div>
+                    @endif
                 @endif
                 <!--end::Info-->
             </div>

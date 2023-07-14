@@ -67,8 +67,8 @@ class User extends Authenticatable
         return $this->hasOne(Kasir::class);
     }
 
-    public function resto()
+    public function toko()
     {
-        return $this->hasOne(Resto::class);
+        return $this->hasOne(Toko::class);
     }
 }

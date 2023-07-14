@@ -15,11 +15,11 @@
             dataType: "json",
             url: '/changeOperasional',
             data: {
-                'resto_id': id
+                'toko_id': id
             },
             success: function(result) {
-                console.log(data);
-                if (response == 1) {
+                console.log('asjkhas');
+                if (result) {
                     toastr.success("Toko Buka Hari ini", "Yeeeeyyy!!!");
                 } else {
                     toastr.warning("Toko Tutup Hari ini", "Istirahat!!!");

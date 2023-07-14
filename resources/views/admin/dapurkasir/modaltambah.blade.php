@@ -6,7 +6,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/user_dapur_kasir/input') }}" method="POST">
+                <form action="{{ url('/karyawan_toko/input') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">

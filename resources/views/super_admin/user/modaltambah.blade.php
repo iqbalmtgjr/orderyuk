@@ -1,5 +1,5 @@
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="tambah" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Pengguna</h5>
@@ -10,7 +10,7 @@
                     {{ csrf_field() }}
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12 ms-auto">
+                            <div class="col-md-6 ms-auto">
                                 <input type="hidden" id="role" name="role" value="admin">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Nama Lengkap</label>
@@ -55,6 +55,23 @@
                                         </div>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Toko</label>
+                                    <select class="form-control" name="toko">
+                                        <option value="">-- Pilih Toko --</option>
+                                        @foreach ($toko as $item)
+                                            <option value="{{ $item->id }}" @selected(old('toko'))>
+                                                {{ $item->nama_toko }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('toko')
+                                        <div class="text-danger ml-3 mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 ms-auto">
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Role</label>
                                     <select class="form-control" name="role">

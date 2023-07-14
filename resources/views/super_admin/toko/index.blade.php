@@ -12,7 +12,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">Data Resto/Cafe
+                        <h3 class="card-label">Data Toko
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -32,7 +32,7 @@
                                     </g>
                                 </svg>
                                 <!--end::Svg Icon-->
-                            </span>Tambah Resto/Cafe</button>
+                            </span>Tambah Toko</button>
                         @include('super_admin/toko/modaltambah')
                         <!--end::Button-->
                     </div>
@@ -45,7 +45,6 @@
                                 <th>No</th>
                                 <th>Foto Toko</th>
                                 <th>Nama Toko</th>
-                                <th>Pemilik</th>
                                 <th>Alamat</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -97,7 +96,7 @@
                 .then((result) => {
                     console.log(result);
                     if (result.value) {
-                        window.location = `{{ url('/resto/hapus/') }}/${Id}`;
+                        window.location = `{{ url('/toko/hapus/') }}/${Id}`;
                     }
                 });
         })
@@ -106,7 +105,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('/kelola_resto') }}",
+                ajax: "{{ url('/kelola_toko') }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -119,12 +118,8 @@
                         name: 'foto'
                     },
                     {
-                        data: 'nama_resto',
-                        name: 'nama_resto'
-                    },
-                    {
-                        data: 'pemilik',
-                        name: 'pemilik'
+                        data: 'nama_toko',
+                        name: 'nama_toko'
                     },
                     {
                         data: 'alamat',
