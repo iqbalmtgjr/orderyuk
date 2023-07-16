@@ -50,8 +50,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Foto Toko</label> <br>
-                                    <img style="height: 120px; width: 180px;"
-                                        src="{{ asset('assets/img/toko/1689342932065-bakso.jpg') }}" alt="">
+                                    {{-- <img style="height: 120px; width: 180px;"
+                                        src="{{ asset('assets/img/toko/1689342932065-bakso.jpg') }}" alt=""> --}}
                                     <input disabled class="form-control" type="text" id="foto">
                                     <input type="file" class="form-control" name="foto"
                                         value="{{ old('foto') }}">

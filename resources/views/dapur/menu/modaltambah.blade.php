@@ -11,7 +11,8 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 ms-auto">
-                                <input type="hidden" name="daftar_resto_id" value="{{ auth()->user()->resto->id }}">
+                                <input type="hidden" name="daftar_resto_id"
+                                    value="{{ auth()->user()->dapur->toko->id }}">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Nama Menu</label>
                                     <input type="text" class="form-control" name="nama_produk"

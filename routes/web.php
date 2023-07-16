@@ -90,4 +90,5 @@ Route::group(['middleware' => ['isLogin']], function () {
     Route::post('/profile/input', [ProfileController::class, 'store']);
     Route::post('/profile/update-password', [ProfileController::class, 'updatePassword']);
     Route::post('/upload/avatar', [ProfileController::class, 'updateAvatar'])->name('upload.avatar');
+    Route::get('/menu/toko/{id}', [HomeController::class, 'menu'])->name('menu-toko');
 });

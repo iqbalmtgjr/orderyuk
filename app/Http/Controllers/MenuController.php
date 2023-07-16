@@ -59,19 +59,21 @@ class MenuController extends Controller
             $nama_foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
             $request->file('foto')->move(public_path('assets/img/menu/'), $nama_foto);
             Menu::create([
-                'daftar_resto_id' => $request->daftar_resto_id,
+                'toko_id' => $request->daftar_resto_id,
                 'nama_produk' => $request->nama_produk,
                 'kategori' => $request->kategori,
                 'harga' => $request->harga,
                 'qty' => $request->qty,
+                'estimasi' => 0,
                 'foto' => $nama_foto,
             ]);
         } else {
             Menu::create([
-                'daftar_resto_id' => $request->daftar_resto_id,
+                'toko_id' => $request->daftar_resto_id,
                 'nama_produk' => $request->nama_produk,
                 'kategori' => $request->kategori,
                 'harga' => $request->harga,
+                'estimasi' => 0,
                 'qty' => $request->qty,
             ]);
         }

@@ -11,8 +11,12 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">Data Menu {{ auth()->user()->resto->nama_resto }}
-                        </h3>
+                        @if (auth()->user()->role == 'super_admin')
+                        @elseif(auth()->user()->role == 'admin')
+                            <h3 class="card-label">Data Menu {{ auth()->user()->admin->toko->nama_toko }}</h3>
+                        @elseif(auth()->user()->role == 'dapur')
+                            <h3 class="card-label">Data Menu {{ auth()->user()->dapur->toko->nama_toko }}</h3>
+                        @endif
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->

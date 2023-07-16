@@ -41,52 +41,21 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="container-xxl">
+        <div class="row align-center">
+            @foreach ($toko as $item)
+                <div class="col-md-3 mt-5">
+                    <div class="card" style="width: 18rem;">
+                        <img style="height: 12rem;width: 18rem; object-fit: cover; object-position: center;"
+                            src="{{ asset('assets/img/toko/' . $item->foto . '') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $item->nama_toko }}</h5>
+                            <p class="card-text">{{ $item->alamat }}</p>
+                            <a href="{{ url('menu/toko/' . $item->id . '') }}" class="btn btn-primary">Lihat Menu</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div> --}}
+            @endforeach
         </div>
     </div>
     <div class="container-xxl py-5">
@@ -117,8 +86,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
-                            href="#tab-3">
+                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
                             <i class="fa fa-utensils fa-2x text-primary"></i>
                             <div class="ps-3">
                                 <small class="text-body">Lovely</small>

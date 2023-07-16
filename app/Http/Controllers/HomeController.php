@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
+use App\Models\Toko;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,11 +25,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $toko = Toko::all();
+        return view('home', compact('toko'));
     }
 
-    public function index2()
+    public function menu($id)
     {
-        return view('super_admin.dashboard');
+        $toko = Menu::where('toko_id', $id)->first();
+        $menu = Menu::where('toko_id', $id)->get();
+        $makanan = Menu::where('toko_id', $id)->where('kategori', 'makanan')->get();
+        $minuman = Menu::where('toko_id', $id)->where('kategori', 'minuman')->get();
+        $snack = Menu::where('toko_id', $id)->where('kategori', 'snack')->get();
+        if (empty($toko)) {
+            return redirect()->back()->with('peringatan', 'Menu Belum Ada!');
+        }
+        // dd($menu);
+        return view('user.menu.index', compact('toko', 'menu', 'makanan', 'minuman', 'snack'));
     }
 }
