@@ -30,7 +30,7 @@ class MenuController extends Controller
                     return $actionBtn;
                 })
                 ->rawColumns(['foto', 'aksi'])
-                ->make(true);
+                ->toJson();
         }
         return view('dapur.menu.index');
     }

@@ -29,6 +29,11 @@ class HomeController extends Controller
         return view('home', compact('toko'));
     }
 
+    public function index2()
+    {
+        return view('super_admin/dashboard');
+    }
+
     public function menu($id)
     {
         $toko = Menu::where('toko_id', $id)->first();
@@ -39,7 +44,6 @@ class HomeController extends Controller
         if (empty($toko)) {
             return redirect()->back()->with('peringatan', 'Menu Belum Ada!');
         }
-        // dd($menu);
         return view('user.menu.index', compact('toko', 'menu', 'makanan', 'minuman', 'snack'));
     }
 }
