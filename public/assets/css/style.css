@@ -619,3 +619,26 @@
     padding-right: 0;
     border-right: none;
 }
+
+.badge {
+    padding-left: 2px;
+    padding-right: 2px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
+
+#lblCartCount {
+    font-size: 10px;
+    background: #ff0000;
+    color: #fff;
+    padding: 1px 4px;
+    vertical-align: top;
+    margin-left: -6px;
+    margin-top: -6px;
+}

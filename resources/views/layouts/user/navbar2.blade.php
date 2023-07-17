@@ -36,6 +36,8 @@
                         <a href="about.html" class="nav-item nav-link"><i class="fas fa-receipt"></i>&nbsp; Booking
                             Meja</a>
                         <a href="menu.html" class="nav-item nav-link"><i class="fas fa-history"></i>&nbsp; Riwayat</a>
+                        <a href="menu.html" class="nav-item nav-link"><i class="fas fa-shopping-cart"></i><span
+                                class='badge badge-warning' id='lblCartCount'>5</span></a>
                     </div>
                     @guest
                         @if (Route::has('login'))

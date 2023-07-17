@@ -1,6 +1,5 @@
 @include('layouts.user.header')
 @include('layouts.user.navbar')
-
 <!-- About Start -->
 <div class="container-xxl py-5">
     <div class="container">

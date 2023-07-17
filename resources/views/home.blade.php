@@ -43,6 +43,7 @@
     </div>
     <div class="container-xxl">
         <div class="row align-center">
+            <h2>Resto/Cafe</h2>
             @foreach ($toko as $item)
                 <div class="col-md-3 mt-5">
                     <div class="card" style="width: 18rem;">
@@ -50,8 +51,10 @@
                             src="{{ asset('assets/img/toko/' . $item->foto . '') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->nama_toko }}</h5>
-                            <p class="card-text">{{ $item->alamat }}</p>
-                            <a href="{{ url('menu/toko/' . $item->id . '') }}" class="btn btn-primary">Lihat Menu</a>
+                            <p class="card-text"><i style="color:red"
+                                    class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $item->alamat }}</p>
+                            <center><a href="{{ url('menu/toko/' . $item->id . '') }}" class="btn btn-primary">Lihat
+                                    Menu</a></center>
                         </div>
                     </div>
                 </div>
