@@ -131,7 +131,7 @@ class TokoController extends Controller
 
 
 
-        return redirect()->back()->with('sukses', 'Anda Berhasil Update Toko!!!');
+        return redirect()->back()->with('sukses', 'Data toko berhasil update!');
     }
 
     function changeOperasional(Request $request)
