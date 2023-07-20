@@ -108,7 +108,7 @@
     @endif
 
     @if (Session::has('info'))
-        toastr.warning("{{ Session::get('info') }}", "Info")
+        toastr.info("{{ Session::get('info') }}", "Info")
     @endif
     // toastr.warning("Huf", "Info")
 </script>
