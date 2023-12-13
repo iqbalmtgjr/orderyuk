@@ -12,7 +12,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="hero-header navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="/" class="navbar-brand p-0">
+                <a href="{{ auth()->user() == false ? url('/') : url('/home') }}" class="navbar-brand p-0">
                     <div class="row">
                         <div class="col-3">
                             <img src="{{ asset('assets/img/orderyuklogotr.png') }}" alt="">
@@ -36,8 +36,10 @@
                         <a href="about.html" class="nav-item nav-link"><i class="fas fa-receipt"></i>&nbsp; Booking
                             Meja</a>
                         <a href="menu.html" class="nav-item nav-link"><i class="fas fa-history"></i>&nbsp; Riwayat</a>
-                        <a href="menu.html" class="nav-item nav-link"><i class="fas fa-shopping-cart"></i><span
-                                class='badge badge-warning' id='lblCartCount'>5</span></a>
+                        @if (auth()->user() == true)
+                            <a href="menu.html" class="nav-item nav-link"><i class="fas fa-shopping-cart"></i><span
+                                    class='badge badge-warning' id='lblCartCount'>0</span></a>
+                        @endif
                     </div>
                     @guest
                         @if (Route::has('login'))
