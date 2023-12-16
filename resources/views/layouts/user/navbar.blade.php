@@ -31,7 +31,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="{{ url('/home') }}" class="nav-item nav-link"><i class="fas fa-home"></i>&nbsp;
+                        <a href="{{ auth()->user() == false ? url('/') : url('/home') }}" class="nav-item nav-link"><i
+                                class="fas fa-home"></i>&nbsp;
                             Home</a>
                         <a href="about.html" class="nav-item nav-link"><i class="fas fa-heart"></i>&nbsp; Menu
                             Favorit</a>

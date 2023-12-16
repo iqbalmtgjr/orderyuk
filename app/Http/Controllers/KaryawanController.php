@@ -112,6 +112,7 @@ class KaryawanController extends Controller
             //create_dapur
             $dapur = new Dapur;
             $dapur->user_id = $user->id;
+            $dapur->toko_id = auth()->user()->admin->toko_id;
             $dapur->no_hp = $request->no_hp;
             $dapur->alamat = $request->alamat;
             $dapur->username = $request->username;

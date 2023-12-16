@@ -14,9 +14,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+       $user = \App\Models\User::factory()->create([
+            'name' => 'Muhammad Iqbal',
+            'email' => 'iqbalmtgjr@gmail.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'role' => 'super_admin',
+        ]);
+
+        \App\Models\Superadmin::factory()->create([
+            'user_id' => $user->id,
+            'username' => 'iqbalmtgjr',
+            'jenis_kelamin' => 'laki-laki',
+            'no_hp' => '08996979079',
+            'alamat' => 'jl. mensiku jaya, menyumbung tengah, sintang',
+        ]);
     }
 }
