@@ -42,7 +42,7 @@ class HomeController extends Controller
         $minuman = Menu::where('toko_id', $id)->where('kategori', 'minuman')->get();
         $snack = Menu::where('toko_id', $id)->where('kategori', 'snack')->get();
         if (empty($toko)) {
-            return redirect()->back()->with('peringatan', 'Menu Belum Ada!');
+            return redirect()->back()->with('peringatan', 'Belum Ada Menu!');
         }
         return view('user.menu.index', compact('toko', 'menu', 'makanan', 'minuman', 'snack'));
     }

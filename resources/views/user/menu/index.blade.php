@@ -7,7 +7,7 @@
             <p>{{ $toko->toko->alamat }}</p>
         </div>
         <div class="row">
-            @if ($makanan == '')
+            @if ($makanan->count() > 0)
                 <h3>Menu Makanan</h3>
             @else
             @endif
@@ -26,7 +26,7 @@
             @endforeach
         </div>
         <div class="row mt-5">
-            @if ($minuman == '')
+            @if ($minuman->count() > 0)
                 <h3>Menu Minuman</h3>
             @else
             @endif
@@ -45,8 +45,7 @@
             @endforeach
         </div>
         <div class="row mt-5">
-            {{-- {{ dd($snack) }} --}}
-            @if ($snack == '')
+            @if ($snack->count() > 0)
                 <h3>Snack</h3>
             @else
             @endif

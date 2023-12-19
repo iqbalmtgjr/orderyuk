@@ -51,40 +51,40 @@ Route::controller(GoogleController::class)->group(function () {
 
 Route::group(['middleware' => ['isLogin']], function () {
     // Akses Super Admin
-    Route::group(['middleware' => ['checkRole:super_admin']], function () {
-        Route::get('/dashboard', [HomeController::class, 'index2']);
-        //Kelola_resto
-        Route::get('/kelola_toko', [TokoController::class, 'index'])->name('kelola-toko');
-        Route::get('/toko/getdata/{id}', [TokoController::class, 'getdata'])->name('getdatatoko');
-        Route::post('/toko/input', [TokoController::class, 'store'])->name('toko-input');
-        Route::post('/toko/update', [TokoController::class, 'update'])->name('update-toko');
-        Route::get('/toko/hapus/{id}', [TokoController::class, 'destroy'])->name('hapus-toko');
-        Route::get('/changeOperasional', [TokoController::class, 'changeOperasional'])->name('changeOperasional');
-        //Kelola_user
-        Route::get('/kelola_user', [UserController::class, 'index'])->name('kelola-user');
-        Route::get('/user/getdata/{id}', [UserController::class, 'getdata'])->name('getdatauser');
-        Route::post('/user/input', [UserController::class, 'store'])->name('user-input');
-        Route::post('/user/update', [UserController::class, 'update'])->name('update-user');
-        Route::get('/user/hapus/{id}', [UserController::class, 'destroy'])->name('hapus-user');
-    });
+    Route::get('/dashboard', [HomeController::class, 'index2']);
+    // Route::group(['middleware' => ['checkRole:super_admin']], function () {
+    //Kelola_resto
+    Route::get('/kelola_toko', [TokoController::class, 'index'])->name('kelola-toko');
+    Route::get('/toko/getdata/{id}', [TokoController::class, 'getdata'])->name('getdatatoko');
+    Route::post('/toko/input', [TokoController::class, 'store'])->name('toko-input');
+    Route::post('/toko/update', [TokoController::class, 'update'])->name('update-toko');
+    Route::get('/toko/hapus/{id}', [TokoController::class, 'destroy'])->name('hapus-toko');
+    Route::get('/changeOperasional', [TokoController::class, 'changeOperasional'])->name('changeOperasional');
+    //Kelola_user
+    Route::get('/kelola_user', [UserController::class, 'index'])->name('kelola-user');
+    Route::get('/user/getdata/{id}', [UserController::class, 'getdata'])->name('getdatauser');
+    Route::post('/user/input', [UserController::class, 'store'])->name('user-input');
+    Route::post('/user/update', [UserController::class, 'update'])->name('update-user');
+    Route::get('/user/hapus/{id}', [UserController::class, 'destroy'])->name('hapus-user');
+    // });
 
-    Route::group(['middleware' => ['checkRole:admin']], function () {
-        Route::get('/dashboard', [HomeController::class, 'index2']);
-        Route::get('/kelola_karyawan_toko', [KaryawanController::class, 'index']);
-        Route::get('/karyawan_toko/getdata/{id}', [KaryawanController::class, 'getdata']);
-        Route::post('/karyawan_toko/input', [KaryawanController::class, 'store']);
-        Route::post('/karyawan_toko/update', [KaryawanController::class, 'update']);
-        Route::get('/karyawan_toko/hapus/{id}', [KaryawanController::class, 'destroy']);
-        Route::get('/changeOperasional', [TokoController::class, 'changeOperasional'])->name('changeOperasional');
-    });
+    // Route::group(['middleware' => ['checkRole:admin']], function () {
+    // Route::get('/dashboard', [HomeController::class, 'index2']);
+    Route::get('/kelola_karyawan_toko', [KaryawanController::class, 'index']);
+    Route::get('/karyawan_toko/getdata/{id}', [KaryawanController::class, 'getdata']);
+    Route::post('/karyawan_toko/input', [KaryawanController::class, 'store']);
+    Route::post('/karyawan_toko/update', [KaryawanController::class, 'update']);
+    Route::get('/karyawan_toko/hapus/{id}', [KaryawanController::class, 'destroy']);
+    Route::get('/changeOperasional', [TokoController::class, 'changeOperasional'])->name('changeOperasional');
+    // });
 
-    Route::group(['middleware' => ['checkRole:dapur']], function () {
-        Route::get('/kelola_menu', [MenuController::class, 'index']);
-        Route::get('/menu/getdata/{id}', [MenuController::class, 'getdata']);
-        Route::post('/menu/input', [MenuController::class, 'store']);
-        Route::post('/menu/update', [MenuController::class, 'update']);
-        Route::get('/menu/hapus/{id}', [MenuController::class, 'destroy']);
-    });
+    // Route::group(['middleware' => ['checkRole:dapur']], function () {
+    Route::get('/kelola_menu', [MenuController::class, 'index']);
+    Route::get('/menu/getdata/{id}', [MenuController::class, 'getdata']);
+    Route::post('/menu/input', [MenuController::class, 'store']);
+    Route::post('/menu/update', [MenuController::class, 'update']);
+    Route::get('/menu/hapus/{id}', [MenuController::class, 'destroy']);
+    // });
 
     // Akses User
     Route::get('/home', [HomeController::class, 'index'])->name('home');
