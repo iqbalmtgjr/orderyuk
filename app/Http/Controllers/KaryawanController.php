@@ -95,6 +95,7 @@ class KaryawanController extends Controller
             //create_kasir
             $kasir = new Kasir;
             $kasir->user_id = $user->id;
+            $kasir->toko_id = auth()->user()->admin->toko_id;
             $kasir->no_hp = $request->no_hp;
             $kasir->alamat = $request->alamat;
             $kasir->username = $request->username;
@@ -157,6 +158,7 @@ class KaryawanController extends Controller
                 $dapur = Dapur::where('user_id', $request->id)->delete();
                 $kasir = Kasir::create([
                     'user_id' => $request->id,
+                    'toko_id' => auth()->user()->admin->toko_id,
                     'username' => $request->username,
                     'no_hp' => $request->no_hp,
                     'alamat' => $request->alamat,
@@ -165,6 +167,7 @@ class KaryawanController extends Controller
                 $kasir = Kasir::where('user_id', $request->id)->delete();
                 $dapur = Dapur::create([
                     'user_id' => $request->id,
+                    'toko_id' => auth()->user()->admin->toko_id,
                     'username' => $request->username,
                     'no_hp' => $request->no_hp,
                     'alamat' => $request->alamat,

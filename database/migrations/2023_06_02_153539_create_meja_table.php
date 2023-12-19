@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('meja', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_meja');
+            $table->foreignId('toko_id');
+            $table->integer('no_meja')->unique();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

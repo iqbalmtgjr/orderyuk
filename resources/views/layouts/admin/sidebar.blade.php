@@ -128,8 +128,8 @@
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24" />
-                                    <rect fill="#000000" opacity="0.3" x="5" y="20"
-                                        width="14" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="5" y="20" width="14" height="2"
+                                        rx="1" />
                                     <path
                                         d="M5,12.8739825 C3.27477279,12.4299397 2,10.8638394 2,9 C2,6.790861 3.790861,5 6,5 C6.11332888,5 6.22555698,5.00471299 6.33649899,5.01395368 C7.15621908,2.67628292 9.38235111,1 12,1 C14.6176489,1 16.8437809,2.67628292 17.663501,5.01395368 C17.774443,5.00471299 17.8866711,5 18,5 C20.209139,5 22,6.790861 22,9 C22,10.8638394 20.7252272,12.4299397 19,12.8739825 L19,17 C19,17.5522847 18.5522847,18 18,18 L6,18 C5.44771525,18 5,17.5522847 5,17 L5,12.8739825 Z"
                                         fill="#000000" />
@@ -141,8 +141,34 @@
                         <span class="menu-text">Kelola Karyawan Toko</span>
                     </a>
                 </li>
+                {{-- Kelola Dapur/Kasir --}}
+                <li class="menu-item {{ request()->is('kelola_meja') ? 'menu-item-active' : '' }}"
+                    aria-haspopup="true">
+                    <a href={{ url('/kelola_meja') }} class="menu-link">
+                        <span class="svg-icon menu-icon">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <path
+                                        d="M20,8 L18.173913,8 C17.0693435,8 16.173913,8.8954305 16.173913,10 L16.173913,12 C16.173913,12.5522847 15.7261978,13 15.173913,13 L8.86956522,13 C8.31728047,13 7.86956522,12.5522847 7.86956522,12 L7.86956522,10 C7.86956522,8.8954305 6.97413472,8 5.86956522,8 L4,8 L4,6 C4,4.34314575 5.34314575,3 7,3 L17,3 C18.6568542,3 20,4.34314575 20,6 L20,8 Z"
+                                        fill="#000000" opacity="0.3" />
+                                    <path
+                                        d="M6.15999985,21.0604779 L8.15999985,17.5963763 C8.43614222,17.1180837 9.04773263,16.9542085 9.52602525,17.2303509 C10.0043179,17.5064933 10.168193,18.1180837 9.89205065,18.5963763 L7.89205065,22.0604779 C7.61590828,22.5387706 7.00431787,22.7026457 6.52602525,22.4265033 C6.04773263,22.150361 5.88385747,21.5387706 6.15999985,21.0604779 Z M17.8320512,21.0301278 C18.1081936,21.5084204 17.9443184,22.1200108 17.4660258,22.3961532 C16.9877332,22.6722956 16.3761428,22.5084204 16.1000004,22.0301278 L14.1000004,18.5660262 C13.823858,18.0877335 13.9877332,17.4761431 14.4660258,17.2000008 C14.9443184,16.9238584 15.5559088,17.0877335 15.8320512,17.5660262 L17.8320512,21.0301278 Z"
+                                        fill="#000000" opacity="0.3" />
+                                    <path
+                                        d="M20,10 L20,15 C20,16.6568542 18.6568542,18 17,18 L7,18 C5.34314575,18 4,16.6568542 4,15 L4,10 L5.86956522,10 L5.86956522,12 C5.86956522,13.6568542 7.21271097,15 8.86956522,15 L15.173913,15 C16.8307673,15 18.173913,13.6568542 18.173913,12 L18.173913,10 L20,10 Z"
+                                        fill="#000000" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-text">Kelola Meja</span>
+                    </a>
+                </li>
                 {{-- Kelola Pelaporan --}}
-                <li class="menu-item {{ request()->is('pelaporan') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <li class="menu-item {{ request()->is('pelaporan') ? 'menu-item-active' : '' }}"
+                    aria-haspopup="true">
                     <a href={{ url('/pelaporan') }} class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
@@ -150,15 +176,15 @@
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="4"
-                                        width="3" height="13" rx="1.5" />
-                                    <rect fill="#000000" opacity="0.3" x="12" y="9"
-                                        width="3" height="8" rx="1.5" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="4" width="3" height="13"
+                                        rx="1.5" />
+                                    <rect fill="#000000" opacity="0.3" x="12" y="9" width="3" height="8"
+                                        rx="1.5" />
                                     <path
                                         d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z"
                                         fill="#000000" fill-rule="nonzero" />
-                                    <rect fill="#000000" opacity="0.3" x="17" y="11"
-                                        width="3" height="6" rx="1.5" />
+                                    <rect fill="#000000" opacity="0.3" x="17" y="11" width="3" height="6"
+                                        rx="1.5" />
                                 </g>
                             </svg>
                             {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
@@ -210,18 +236,18 @@
                                     <path
                                         d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
                                         fill="#000000" />
-                                    <rect fill="#000000" opacity="0.3" x="10" y="9"
-                                        width="7" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="9"
-                                        width="2" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="13"
-                                        width="2" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="10" y="13"
-                                        width="7" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="17"
-                                        width="2" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="10" y="17"
-                                        width="7" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2"
+                                        rx="1" />
                                 </g>
                             </svg>
                             {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}
@@ -250,18 +276,18 @@
                                     <path
                                         d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
                                         fill="#000000" />
-                                    <rect fill="#000000" opacity="0.3" x="10" y="9"
-                                        width="7" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="9"
-                                        width="2" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="13"
-                                        width="2" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="10" y="13"
-                                        width="7" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="7" y="17"
-                                        width="2" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.3" x="10" y="17"
-                                        width="7" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2"
+                                        rx="1" />
+                                    <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2"
+                                        rx="1" />
                                 </g>
                             </svg>
                             {{-- <img src="admin/media/svg/icons/Home/Library.svg" alt=""> --}}

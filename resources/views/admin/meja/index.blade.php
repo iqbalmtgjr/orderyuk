@@ -12,7 +12,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">Data Karyawan Toko
+                        <h3 class="card-label">Data Meja {{ auth()->user()->admin->toko->nama_toko }}
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -31,7 +31,7 @@
                                     </g>
                                 </svg>
                                 <!--end::Svg Icon-->
-                            </span>Tambah Pengguna</button>
+                            </span>Tambah Meja</button>
                         <!--end::Button-->
                     </div>
                 </div>
@@ -41,11 +41,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Alamat</th>
-                                <th>No Hp</th>
+                                <th>Nomor Meja</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -60,8 +56,8 @@
         <!--end::Container-->
     </div>
     <!--end::Entry-->
-    @include('admin/dapurkasir/modaltambah')
-    @include('admin/dapurkasir/modaledit')
+    @include('admin/meja/modaltambah')
+    @include('admin/meja/modaledit')
 @endsection
 @section('footer')
     <!--begin::Global Theme Bundle(used by all pages)-->
@@ -86,7 +82,7 @@
             // console.log(Id);
             Swal.fire({
                     title: 'Yakin?',
-                    text: "Mau Hapus " + Nama + "?",
+                    text: "Mau Hapus Meja Nomor " + Nama + "?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -96,7 +92,7 @@
                 .then((result) => {
                     console.log(result);
                     if (result.value) {
-                        window.location = `{{ url('/karyawan_toko/hapus/') }}/${Id}`;
+                        window.location = `{{ url('/meja/hapus/') }}/${Id}`;
                     }
                 });
         })
@@ -106,7 +102,7 @@
                 // responsive: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('/kelola_karyawan_toko') }}",
+                ajax: "{{ url('/kelola_meja') }}",
                 columns: [{
                         // data: 'id',
                         // name: 'id',
@@ -115,24 +111,8 @@
                         }
                     },
                     {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email'
-                    },
-                    {
-                        data: 'role',
-                        name: 'role'
-                    },
-                    {
-                        data: 'alamat',
-                        name: 'alamat'
-                    },
-                    {
-                        data: 'no_hp',
-                        name: 'no_hp'
+                        data: 'no_meja',
+                        name: 'no_meja'
                     },
                     {
                         data: 'aksi',

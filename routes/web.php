@@ -10,6 +10,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\MejaController;
 use App\Http\Controllers\MenuController;
 
 /*
@@ -75,7 +76,14 @@ Route::group(['middleware' => ['isLogin']], function () {
     Route::post('/karyawan_toko/input', [KaryawanController::class, 'store']);
     Route::post('/karyawan_toko/update', [KaryawanController::class, 'update']);
     Route::get('/karyawan_toko/hapus/{id}', [KaryawanController::class, 'destroy']);
+
     Route::get('/changeOperasional', [TokoController::class, 'changeOperasional'])->name('changeOperasional');
+
+    Route::get('/kelola_meja', [MejaController::class, 'index']);
+    Route::get('/meja/getdata/{id}', [MejaController::class, 'getdata']);
+    Route::post('/meja/input', [MejaController::class, 'store']);
+    Route::post('/meja/update', [MejaController::class, 'update']);
+    Route::get('/meja/hapus/{id}', [MejaController::class, 'destroy']);
     // });
 
     // Route::group(['middleware' => ['checkRole:dapur']], function () {
